@@ -1,0 +1,57 @@
+/* Sidebar Menu Arrow Animation */
+.submenu-arrow {
+    transition: transform 0.3s ease;
+}
+
+.submenu-arrow.rotated {
+    transform: rotate(90deg);
+}
+
+/* Submenu */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 500px; /* Arbitrary large number for smooth transition */
+    transition: max-height 0.5s ease-in;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotate {
+    transform: rotate(180deg);
+}
+
+/* Sidebar overlay for mobile */
+#sidebar {
+    /* Fixed position on mobile, slide in/out */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 50; /* Above content */
+}
+
+#sidebar.open {
+    transform: translateX(0);
+}
+
+/* On large screens, the sidebar is always visible and pushes content */
+@media (min-width: 1024px) {
+    #sidebar {
+        transform: translateX(0);
+        position: relative;
+    }
+}
