@@ -7,6 +7,7 @@
 
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">

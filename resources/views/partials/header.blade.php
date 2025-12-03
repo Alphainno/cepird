@@ -15,8 +15,8 @@
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center space-x-8">
-            <button onclick="scrollToSection('home')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Home</button>
-            <button onclick="scrollToSection('about')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">About</button>
+            <a href="{{ route('home') }}" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Home</a>
+            <a href="{{ route('about') }}" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">About</a>
             <button onclick="scrollToSection('focus-areas')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Focus Areas</button>
             <button onclick="scrollToSection('programs')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Programs</button>
             <button onclick="scrollToSection('vision')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Vision</button>
@@ -39,7 +39,8 @@
 
     <!-- Mobile Menu Dropdown -->
     <div id="mobile-menu" class="mobile-menu-closed md:hidden bg-white border-t border-slate-100 absolute w-full px-4 py-6 shadow-xl flex flex-col space-y-4">
-        <button onclick="scrollToSection('about')" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">About</button>
+        <a href="{{ route('home') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Home</a>
+        <a href="{{ route('about') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">About</a>
         <button onclick="scrollToSection('focus-areas')" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Focus Areas</button>
         <button onclick="scrollToSection('programs')" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Programs</button>
         <button onclick="scrollToSection('vision')" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Vision</button>

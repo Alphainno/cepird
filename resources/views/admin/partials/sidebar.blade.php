@@ -3,7 +3,7 @@
     class="fixed lg:relative w-64 min-h-screen bg-primary-dark text-white shadow-xl flex-shrink-0">
 
     <div class="p-6 border-b border-indigo-700">
-        <h1 class="text-xl font-extrabold tracking-wider text-text-light">Enterprise Connect</h1>
+         <img src="{{ asset('images/logo.png') }}" alt="Nexsports Logo" class="h-16 mx-auto mb-3 object-contain transform group-hover:scale-110 transition-all duration-300">
     </div>
 
     <!-- Sidebar Menu -->
