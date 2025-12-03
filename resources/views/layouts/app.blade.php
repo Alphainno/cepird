@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'CEPIRD - Center for Entrepreneurial Policy & Innovation')</title>
-    
+
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    
+
     <!-- Configure Tailwind Colors for the theme -->
     <script>
         tailwind.config = {
@@ -28,7 +28,7 @@
             }
         }
     </script>
-    
+
     @stack('styles')
 </head>
 <body class="font-sans text-slate-800 antialiased bg-white selection:bg-teal-100 selection:text-teal-900">
@@ -41,7 +41,7 @@
 
     <!-- Custom JavaScript -->
     <script src="{{ asset('js/landing.js') }}"></script>
-    
+
     @stack('scripts')
 </body>
 </html>
