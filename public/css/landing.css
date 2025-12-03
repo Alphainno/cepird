@@ -1,0 +1,25 @@
+/* Custom Font Setup (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.font-sans {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Smooth scrolling for anchors */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utility for smooth height transition on mobile menu */
+.mobile-menu-open {
+    max-height: 500px; /* Arbitrary large height */
+    opacity: 1;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in;
+}
+
+.mobile-menu-closed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-out;
+}
