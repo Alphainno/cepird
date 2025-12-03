@@ -8,7 +8,7 @@ function toggleMenu(menuId, element) {
 
     // Save submenu state to localStorage
     const isOpen = submenu.classList.contains("open");
-    localStorage.setItem('submenu_' + menuId, isOpen ? 'open' : 'closed');
+    localStorage.setItem("submenu_" + menuId, isOpen ? "open" : "closed");
 }
 
 // User Dropdown Toggle
@@ -33,47 +33,48 @@ document.addEventListener("click", function (event) {
 });
 
 // ================= Responsive Sidebar Logic =================
-const sidebar = document.getElementById('sidebar');
-const toggleButton = document.getElementById('sidebarToggle');
-const backdrop = document.getElementById('sidebarBackdrop');
+const sidebar = document.getElementById("sidebar");
+const toggleButton = document.getElementById("sidebarToggle");
+const backdrop = document.getElementById("sidebarBackdrop");
 
 function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.classList.remove('hidden');
+    sidebar.classList.add("open");
+    backdrop.classList.remove("hidden");
     // Save sidebar state to localStorage
-    localStorage.setItem('sidebarState', 'open');
+    localStorage.setItem("sidebarState", "open");
 }
 
 function closeSidebar() {
-    sidebar.classList.remove('open');
-    backdrop.classList.add('hidden');
+    sidebar.classList.remove("open");
+    backdrop.classList.add("hidden");
     // Save sidebar state to localStorage
-    localStorage.setItem('sidebarState', 'closed');
+    localStorage.setItem("sidebarState", "closed");
 }
 
 // Toggle button event
-toggleButton.addEventListener('click', openSidebar);
+toggleButton.addEventListener("click", openSidebar);
 
 // Close sidebar when clicking backdrop on mobile
-backdrop.addEventListener('click', closeSidebar);
+backdrop.addEventListener("click", closeSidebar);
 
 // Close sidebar when clicking any sidebar link on mobile/tablet (to mimic navigation)
-document.querySelectorAll('.sidebar-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth < 1024) { // Only on small screens
+document.querySelectorAll(".sidebar-link").forEach((link) => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth < 1024) {
+            // Only on small screens
             closeSidebar();
         }
     });
 });
 
 // Restore sidebar and submenu states on page load
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
     // Restore sidebar state
-    const sidebarState = localStorage.getItem('sidebarState');
+    const sidebarState = localStorage.getItem("sidebarState");
 
     if (window.innerWidth < 1024) {
         // On mobile: respect saved state or default to closed
-        if (sidebarState === 'open') {
+        if (sidebarState === "open") {
             openSidebar();
         } else {
             closeSidebar();
@@ -81,18 +82,18 @@ window.addEventListener('load', () => {
     }
 
     // Restore submenu states
-    document.querySelectorAll('[id$="Menu"]').forEach(submenu => {
+    document.querySelectorAll('[id$="Menu"]').forEach((submenu) => {
         const menuId = submenu.id;
-        const savedState = localStorage.getItem('submenu_' + menuId);
+        const savedState = localStorage.getItem("submenu_" + menuId);
 
-        if (savedState === 'open') {
-            submenu.classList.add('open');
+        if (savedState === "open") {
+            submenu.classList.add("open");
             // Find and rotate the arrow
             const button = submenu.previousElementSibling;
             if (button) {
-                const arrow = button.querySelector('.submenu-arrow');
+                const arrow = button.querySelector(".submenu-arrow");
                 if (arrow) {
-                    arrow.classList.add('rotated');
+                    arrow.classList.add("rotated");
                 }
             }
         }
@@ -101,12 +102,12 @@ window.addEventListener('load', () => {
 
 // Close sidebar when resizing from small to large (optional: prevents visual glitch)
 let isLargeScreen = window.innerWidth >= 1024;
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     const currentlyLarge = window.innerWidth >= 1024;
     if (currentlyLarge && !isLargeScreen) {
         // If transitioning from small to large
-        sidebar.classList.remove('open');
-        backdrop.classList.add('hidden');
+        sidebar.classList.remove("open");
+        backdrop.classList.add("hidden");
     }
     isLargeScreen = currentlyLarge;
 });

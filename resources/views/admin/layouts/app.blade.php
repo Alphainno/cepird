@@ -25,7 +25,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-    
+
     @stack('styles')
 </head>
 
@@ -48,13 +48,13 @@
 
         </div>
     </div>
-    
+
     <!-- Sidebar Backdrop for mobile -->
     <div id="sidebarBackdrop" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"></div>
 
     <!-- Custom JavaScript -->
     <script src="{{ asset('js/admin.js') }}"></script>
-    
+
     @stack('scripts')
 </body>
 </html>
