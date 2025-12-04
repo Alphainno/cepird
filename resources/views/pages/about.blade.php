@@ -5,27 +5,27 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white pt-40 pb-28 overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+<section class="relative bg-white pt-40 pb-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-5xl mx-auto">
-            <div class="inline-block mb-6 px-4 py-2 bg-teal-500/20 rounded-full border border-teal-400/30">
-                <span class="text-teal-300 text-sm font-medium">About Us</span>
+            <div class="inline-block mb-6 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
+                <span class="text-blue-900 text-sm font-medium">About Us</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-slate-900">
                 Center for Entrepreneurial<br>
-                <span class="bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">Policy, Innovation, Research & Development</span>
+                <span class="bg-gradient-to-r from-blue-900 to-teal-600 bg-clip-text text-transparent">Policy, Innovation, Research & Development</span>
             </h1>
-            <p class="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed font-light">
+            <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed font-light">
                 Shaping the future of entrepreneurship and socio-economic transformation in Bangladesh
             </p>
             <div class="flex flex-wrap justify-center gap-3">
-                <span class="px-6 py-2.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-sm font-medium hover:bg-white/20 transition-all">Empowering Ideas</span>
-                <span class="px-6 py-2.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-sm font-medium hover:bg-white/20 transition-all">Influencing Policy</span>
-                <span class="px-6 py-2.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-sm font-medium hover:bg-white/20 transition-all">Impacting the Future</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Empowering Ideas</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Influencing Policy</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Impacting the Future</span>
             </div>
         </div>
     </div>
@@ -220,85 +220,77 @@
 </section>
 
 <!-- What We Do -->
-<section class="py-24 bg-white">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
-                <span class="text-blue-900 text-sm font-semibold">Our Services</span>
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-100 pb-4">
+            <div>
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Services</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">What We Do</h2>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">What We Do</h2>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                Building a thriving entrepreneurial ecosystem through comprehensive initiatives
-            </p>
         </div>
 
         <div class="space-y-6">
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200">
+            <!-- Policy & Economic Research -->
+            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-blue-200 transition-colors">
                 <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center text-4xl group-hover:bg-blue-100 transition-colors">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-sm flex items-center justify-center text-3xl">
                         📊
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Policy & Economic Research</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg">
-                            Conducting research on entrepreneurship policies, market ecosystems, digital governance, and socio-economic trends — supporting evidence-based decision-making.
-                        </p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Policy & Economic Research</h3>
+                        <p class="text-slate-700">Conducting research on entrepreneurship policies, market ecosystems, digital governance, and socio-economic trends — supporting evidence-based decision-making.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200">
+            <!-- Innovation & Entrepreneurship Development -->
+            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-teal-200 transition-colors">
                 <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-teal-50 rounded-xl flex items-center justify-center text-4xl group-hover:bg-teal-100 transition-colors">
+                    <div class="flex-shrink-0 w-16 h-16 bg-teal-100 rounded-sm flex items-center justify-center text-3xl">
                         💡
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Innovation & Entrepreneurship Development</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg">
-                            Strengthening youth innovators and startups through incubators, accelerators, business model development, and hands-on mentorship.
-                        </p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Innovation & Entrepreneurship Development</h3>
+                        <p class="text-slate-700">Strengthening youth innovators and startups through incubators, accelerators, business model development, and hands-on mentorship.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200">
+            <!-- Skill Development & Training -->
+            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-amber-200 transition-colors">
                 <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-amber-50 rounded-xl flex items-center justify-center text-4xl group-hover:bg-amber-100 transition-colors">
+                    <div class="flex-shrink-0 w-16 h-16 bg-amber-100 rounded-sm flex items-center justify-center text-3xl">
                         🎓
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Skill Development & Training</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg">
-                            Offering capacity-building programs, certification courses, and workshops for future-ready skills and leadership.
-                        </p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Skill Development & Training</h3>
+                        <p class="text-slate-700">Offering capacity-building programs, certification courses, and workshops for future-ready skills and leadership in the digital economy.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200">
+            <!-- Public Policy Advisory -->
+            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-blue-200 transition-colors">
                 <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center text-4xl group-hover:bg-blue-100 transition-colors">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-sm flex items-center justify-center text-3xl">
                         🏛️
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Public Policy Advisory & Advocacy</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg">
-                            Collaborating with government bodies, NGOs, and private institutions to design policies ensuring sustainable economic growth.
-                        </p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Public Policy Advisory & Advocacy</h3>
+                        <p class="text-slate-700">Collaborating with government bodies, NGOs, and private institutions to design policies ensuring sustainable economic growth.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200">
+            <!-- Community & Ecosystem Building -->
+            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-teal-200 transition-colors">
                 <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-teal-50 rounded-xl flex items-center justify-center text-4xl group-hover:bg-teal-100 transition-colors">
+                    <div class="flex-shrink-0 w-16 h-16 bg-teal-100 rounded-sm flex items-center justify-center text-3xl">
                         🌐
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Community & Ecosystem Building</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg">
-                            Organizing national competitions, seminars, roundtables, publications, and networking events to nurture entrepreneurial culture.
-                        </p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Community & Ecosystem Building</h3>
+                        <p class="text-slate-700">Organizing national competitions, seminars, roundtables, publications, and networking events to nurture a strong entrepreneurial culture.</p>
                     </div>
                 </div>
             </div>
