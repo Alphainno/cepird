@@ -849,9 +849,7 @@
                 <a href="#" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg">
                     Apply Now
                 </a>
-                <a href="#" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg">
-                    Download Brochure
-                </a>
+            
             </div>
         </div>
     </div>
