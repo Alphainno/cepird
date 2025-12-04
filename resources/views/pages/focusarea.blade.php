@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="relative bg-white pt-32 pb-28 overflow-hidden mt-20">
+<section class="relative bg-white pt-32 pb-28 overflow-hidden mt-20 z-10">
     <div class="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&q=80"
              alt="Team collaboration"
@@ -13,7 +13,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-blue-900/85"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center max-w-5xl mx-auto">
             <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">Our Strategic Focus</span>
             <h1 class="text-5xl md:text-6xl font-bold mt-3 mb-6 leading-tight tracking-tight text-white">

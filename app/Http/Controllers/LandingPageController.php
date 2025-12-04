@@ -20,4 +20,9 @@ class LandingPageController extends Controller
     {
         return view('pages.focusarea');
     }
+
+    public function programs()
+    {
+        return view('pages.program');
+    }
 }
