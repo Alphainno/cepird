@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 // })->name('home');
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/about', [LandingPageController::class, 'about'])->name('about');
+Route::get('/focus-areas', [LandingPageController::class, 'focusAreas'])->name('focus-areas');
 
 // Route::get('/dashboard', function () {
 //     return view('admin.login');
