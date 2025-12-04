@@ -30,7 +30,7 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
-            <div class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-sm shadow-2xl overflow-hidden">
+            <div class="rounded-sm shadow-2xl overflow-hidden" style="background-color: #0f172a;">
                 <div class="p-12 md:p-16">
                     <div class="flex flex-col md:flex-row gap-12 items-center md:items-start">
                         <div class="flex-shrink-0">
@@ -290,7 +290,7 @@
 <!-- CTA Section -->
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-gradient-to-br from-blue-900 via-slate-900 to-teal-800 rounded-sm p-12 md:p-16 text-white text-center shadow-2xl">
+        <div class="rounded-sm p-12 md:p-16 text-white text-center shadow-2xl" style="background-color: #0f172a;">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Connect with Our Founder</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Interested in collaboration, partnership, or learning more about our initiatives? Reach out to explore opportunities together.

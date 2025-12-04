@@ -21,9 +21,11 @@
             <a href="{{ route('programs') }}" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Programs</a>
             {{-- <button onclick="scrollToSection('vision')" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Vision</button> --}}
             <a href="{{ route('founder') }}" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Founder</a>
-            <a href="#" class="bg-blue-900 hover:bg-blue-800 text-white px-5 py-2 rounded-sm text-sm font-semibold transition-colors shadow-sm">
+
+             <a href="{{ route('contact') }}" class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all">Contact Us</a>
+            {{-- <a href="#" class="bg-blue-900 hover:bg-blue-800 text-white px-5 py-2 rounded-sm text-sm font-semibold transition-colors shadow-sm">
                 Get Involved
-            </a>
+            </a> --}}
         </div>
 
         <!-- Mobile Menu Button -->
@@ -43,9 +45,9 @@
         <a href="{{ route('about') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">About</a>
         <a href="{{ route('focus-areas') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Focus Areas</a>
         <a href="{{ route('programs') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Programs</a>
-        <button onclick="scrollToSection('vision')" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Vision</button>
         <a href="{{ route('founder') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Founder</a>
-        <a href="#" class="bg-blue-900 text-white w-full py-3 rounded-sm font-semibold mt-4 text-center">
+        <a href="{{ route('contact') }}" class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50">Contact Us</a>
+        <a href="{{ route('contact') }}" class="bg-blue-900 text-white w-full py-3 rounded-sm font-semibold mt-4 text-center">
             Get Involved
         </a>
     </div>

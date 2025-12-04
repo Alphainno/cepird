@@ -838,9 +838,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-gradient-to-br from-blue-900 via-slate-900 to-teal-800 rounded-sm p-12 md:p-16 text-white text-center">
+<sectionter">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Our Programs</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Whether you're an aspiring entrepreneur, researcher, or innovator, CEPIRD has a program designed to help you achieve your goals and create meaningful impact.
@@ -849,7 +847,9 @@
                 <a href="#" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg">
                     Apply Now
                 </a>
-            
+                <a href="#" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg">
+                    Download Brochure
+                </a>
             </div>
         </div>
     </div>

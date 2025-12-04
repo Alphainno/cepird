@@ -30,4 +30,9 @@ class LandingPageController extends Controller
     {
         return view('pages.founder');
     }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
 }
