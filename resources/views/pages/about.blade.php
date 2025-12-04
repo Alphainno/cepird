@@ -414,7 +414,7 @@
 </section>
 
 <!-- Founder Section -->
-<section class="py-24 bg-white">
+{{-- <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
@@ -461,95 +461,71 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- Contact Section -->
-<section class="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+{{-- <section class="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
                 <span class="text-blue-900 text-sm font-semibold">Get In Touch</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Let's Connect</h2>
-            <p class="text-lg text-slate-600">Work with us to build a better future for Bangladesh</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Contact Us</h2>
+            <p class="text-lg text-slate-600">Let's work together to build a better future for Bangladesh</p>
         </div>
 
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl p-10 shadow-lg border border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-8">Contact Information</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-5">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl">
-                                📍
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900 mb-1">Head Office</h4>
-                                <p class="text-slate-600">50 Lake Circus, Kalabagan<br>Dhaka 1209, Bangladesh</p>
-                            </div>
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-2xl p-10 shadow-lg border border-slate-100">
+                <div class="space-y-6">
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl">
+                            📍
                         </div>
-
-                        <div class="flex items-start gap-5">
-                            <div class="flex-shrink-0 w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-2xl">
-                                📧
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900 mb-1">Email</h4>
-                                <a href="mailto:hello.cepird@gmail.com" class="text-blue-600 hover:text-blue-700 transition-colors">hello.cepird@gmail.com</a>
-                            </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-1">Head Office</h4>
+                            <p class="text-slate-600">50 Lake Circus, Kalabagan<br>Dhaka 1209, Bangladesh</p>
                         </div>
+                    </div>
 
-                        <div class="flex items-start gap-5">
-                            <div class="flex-shrink-0 w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl">
-                                📱
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900 mb-1">Phone</h4>
-                                <a href="tel:+8801776000008" class="text-blue-600 hover:text-blue-700 transition-colors">+880-1776000008</a>
-                            </div>
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-2xl">
+                            📧
                         </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-1">Email</h4>
+                            <a href="mailto:hello.cepird@gmail.com" class="text-blue-600 hover:text-blue-700 transition-colors">hello.cepird@gmail.com</a>
+                        </div>
+                    </div>
 
-                        <div class="flex items-start gap-5">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl">
-                                🌐
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900 mb-1">Website</h4>
-                                <a href="https://www.cepird.com" class="text-blue-600 hover:text-blue-700 transition-colors">www.cepird.com</a>
-                            </div>
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl">
+                            📱
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-1">Phone</h4>
+                            <a href="tel:+8801776000008" class="text-blue-600 hover:text-blue-700 transition-colors">+880-1776000008</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-1">Website</h4>
+                            <a href="https://www.cepird.com" class="text-blue-600 hover:text-blue-700 transition-colors">www.cepird.com</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 rounded-2xl p-10 text-white shadow-lg flex flex-col justify-center">
-                    <div class="text-5xl mb-6">🤝</div>
-                    <h3 class="text-3xl font-bold mb-5">Join Our Mission</h3>
-                    <p class="text-blue-100 text-lg mb-8 leading-relaxed">
-                        Whether you're a researcher, entrepreneur, policymaker, or innovator — there's a place for you at CEPIRD.
-                    </p>
-                    <a href="#" class="inline-block bg-white text-blue-900 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-all text-center shadow-lg transform hover:scale-105 duration-300">
+                <div class="mt-8 pt-8 border-t border-slate-100 text-center">
+                    <a href="#" class="inline-block bg-gradient-to-r from-blue-900 to-teal-600 text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-all shadow-lg">
                         Get Involved
                     </a>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Footer Taglines -->
-<section class="py-16 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="space-y-4">
-            <p class="text-2xl md:text-3xl font-bold">Innovating Policy. Inspiring Entrepreneurs. Impacting Nations.</p>
-            <p class="text-lg md:text-xl text-blue-200">Where Ideas Meet Action</p>
-            <div class="flex flex-wrap justify-center gap-3 mt-6">
-                <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20">Research</span>
-                <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20">Innovation</span>
-                <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20">Development</span>
-                <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20">Progress</span>
-            </div>
-        </div>
-    </div>
-</section>
+</section> --}}
 
 @endsection

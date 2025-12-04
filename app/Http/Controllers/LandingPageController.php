@@ -25,4 +25,9 @@ class LandingPageController extends Controller
     {
         return view('pages.program');
     }
+
+    public function founder()
+    {
+        return view('pages.founder');
+    }
 }
