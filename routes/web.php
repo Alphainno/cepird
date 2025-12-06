@@ -98,3 +98,7 @@ Route::post('/admin/program-initiatives', [App\Http\Controllers\Admin\ProgramIni
 // Admin Header Routes
 Route::get('/admin/header', [App\Http\Controllers\Admin\HeaderController::class, 'index'])->name('admin.header.index');
 Route::post('/admin/header', [App\Http\Controllers\Admin\HeaderController::class, 'update'])->name('admin.header.store');
+
+// Admin Footer Routes
+Route::get('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'index'])->name('admin.footer.index');
+Route::post('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'store'])->name('admin.footer.store');

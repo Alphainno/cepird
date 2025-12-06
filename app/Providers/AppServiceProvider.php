@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\HeaderSetting;
 use App\Models\MenuItem;
+use App\Models\FooterSetting;
+use App\Models\FooterLink;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,17 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('headerSetting', $headerSetting);
             $view->with('menuItems', $menuItems);
+        });
+
+        // Share footer data with all views
+        View::composer('partials.footer', function ($view) {
+            $footerSetting = FooterSetting::getActive();
+            $quickLinks = FooterLink::getQuickLinks();
+            $legalLinks = FooterLink::getLegalLinks();
+
+            $view->with('footerSetting', $footerSetting);
+            $view->with('quickLinks', $quickLinks);
+            $view->with('legalLinks', $legalLinks);
         });
     }
 }
