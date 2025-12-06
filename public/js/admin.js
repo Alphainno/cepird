@@ -113,22 +113,22 @@ window.addEventListener("resize", () => {
 });
 
 // ================= Toast Notification System =================
-function showToast(message, type = 'success', duration = 5000) {
-    const toastContainer = document.getElementById('toast-container');
+function showToast(message, type = "success", duration = 5000) {
+    const toastContainer = document.getElementById("toast-container");
 
     // Create toast element
-    const toast = document.createElement('div');
+    const toast = document.createElement("div");
     toast.className = `toast-notification flex items-center p-4 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 ease-in-out max-w-sm`;
 
     // Set colors based on type
     const colors = {
-        success: 'bg-green-500 text-white border-green-600',
-        error: 'bg-red-500 text-white border-red-600',
-        warning: 'bg-yellow-500 text-white border-yellow-600',
-        info: 'bg-blue-500 text-white border-blue-600'
+        success: "bg-green-500 text-white border-green-600",
+        error: "bg-red-500 text-white border-red-600",
+        warning: "bg-yellow-500 text-white border-yellow-600",
+        info: "bg-blue-500 text-white border-blue-600",
     };
 
-    toast.classList.add(...colors[type].split(' '));
+    toast.classList.add(...colors[type].split(" "));
 
     // Add icon based on type
     const icons = {
@@ -143,7 +143,7 @@ function showToast(message, type = 'success', duration = 5000) {
         </svg>`,
         info: `<svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-        </svg>`
+        </svg>`,
     };
 
     // Create toast content
@@ -162,22 +162,22 @@ function showToast(message, type = 'success', duration = 5000) {
 
     // Trigger animation
     setTimeout(() => {
-        toast.classList.remove('translate-x-full');
-        toast.classList.add('translate-x-0');
+        toast.classList.remove("translate-x-full");
+        toast.classList.add("translate-x-0");
     }, 10);
 
     // Auto dismiss
     if (duration > 0) {
         setTimeout(() => {
-            dismissToast(toast.querySelector('button'));
+            dismissToast(toast.querySelector("button"));
         }, duration);
     }
 }
 
 function dismissToast(button) {
-    const toast = button.closest('.toast-notification');
-    toast.classList.remove('translate-x-0');
-    toast.classList.add('translate-x-full');
+    const toast = button.closest(".toast-notification");
+    toast.classList.remove("translate-x-0");
+    toast.classList.add("translate-x-full");
 
     // Remove from DOM after animation
     setTimeout(() => {
