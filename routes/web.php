@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\FocusAreaController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\FounderController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -57,3 +58,13 @@ Route::get('/admin/programs', [ProgramController::class, 'index'])->name('admin.
 Route::post('/admin/programs', [ProgramController::class, 'store'])->name('admin.programs.store');
 Route::put('/admin/programs/{program}', [ProgramController::class, 'update'])->name('admin.programs.update');
 Route::delete('/admin/programs/{program}', [ProgramController::class, 'destroy'])->name('admin.programs.destroy');
+
+// Admin Founder Routes
+Route::get('/admin/founder', [FounderController::class, 'index'])->name('admin.founder.index');
+Route::put('/admin/founder', [FounderController::class, 'update'])->name('admin.founder.update');
+Route::post('/admin/founder', [FounderController::class, 'update'])->name('admin.founder.store');
+
+// Admin CTA Routes
+Route::get('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'index'])->name('admin.cta.index');
+Route::put('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.update');
+Route::post('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.store');

@@ -8,6 +8,8 @@ use App\Models\AboutSection;
 use App\Models\FocusAreaSection;
 use App\Models\VisionSection;
 use App\Models\Program;
+use App\Models\Founder;
+use App\Models\CtaSection;
 
 class LandingPageController extends Controller
 {
@@ -18,7 +20,9 @@ class LandingPageController extends Controller
         $focusAreaSection = FocusAreaSection::with('focusAreas')->where('is_active', true)->first();
         $visionSection = VisionSection::with('missionPoints')->where('is_active', true)->first();
         $programs = Program::active()->ordered()->get()->groupBy('category');
-        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs'));
+        $founder = Founder::getActive();
+        $ctaSection = CtaSection::getActive();
+        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs', 'founder', 'ctaSection'));
     }
 
     public function about()

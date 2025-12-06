@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
             FocusAreaSeeder::class,
             VisionSectionSeeder::class,
             ProgramSeeder::class,
+            FounderSeeder::class,
+            CtaSectionSeeder::class,
         ]);
     }
 }

@@ -1,0 +1,26 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\CtaSection;
+
+class CtaSectionSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        CtaSection::create([
+            'title' => 'Join the Movement Toward a Future-Ready Bangladesh.',
+            'description' => 'Whether you are a policy maker, student, or entrepreneur, there is a place for you at CEPIRD.',
+            'primary_button_text' => 'Become a Member',
+            'primary_button_url' => '#',
+            'secondary_button_text' => 'Contact CEPIRD',
+            'secondary_button_url' => '#',
+            'is_active' => true
+        ]);
+    }
+}
