@@ -18,6 +18,15 @@
             Dashboard
         </a>
 
+        <!-- Header -->
+        <a href="{{ route('admin.header.index') }}"
+            class="sidebar-link flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+            <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Header
+        </a>
+
         <!-- Home (submenu) -->
         <div>
             <button onclick="toggleMenu('homeMenu', this)"

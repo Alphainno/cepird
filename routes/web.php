@@ -94,3 +94,7 @@ Route::post('/admin/what-we-do', [App\Http\Controllers\Admin\WhatWeDoController:
 // Admin Program Initiatives Routes
 Route::get('/admin/program-initiatives', [App\Http\Controllers\Admin\ProgramInitiativeController::class, 'index'])->name('admin.program-initiatives.index');
 Route::post('/admin/program-initiatives', [App\Http\Controllers\Admin\ProgramInitiativeController::class, 'update'])->name('admin.program-initiatives.store');
+
+// Admin Header Routes
+Route::get('/admin/header', [App\Http\Controllers\Admin\HeaderController::class, 'index'])->name('admin.header.index');
+Route::post('/admin/header', [App\Http\Controllers\Admin\HeaderController::class, 'update'])->name('admin.header.store');
