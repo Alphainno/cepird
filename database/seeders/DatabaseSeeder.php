@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         // Seed Hero Section
         $this->call([
             HeroSectionSeeder::class,
+            AboutSectionSeeder::class,
         ]);
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\AboutSectionController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -33,4 +34,7 @@ Route::get('/admin/hero', [HeroSectionController::class, 'index'])->name('admin.
 Route::put('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.update');
 Route::post('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.store');
 
-
+// Admin About Section Routes
+Route::get('/admin/about', [AboutSectionController::class, 'index'])->name('admin.about.index');
+Route::put('/admin/about', [AboutSectionController::class, 'update'])->name('admin.about.update');
+Route::post('/admin/about', [AboutSectionController::class, 'update'])->name('admin.about.store');
