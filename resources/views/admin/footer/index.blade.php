@@ -34,9 +34,9 @@
                             <!-- Logo Preview -->
                             <div id="logoPreviewContainer" class="@if(!$footerSetting->logo) hidden @endif">
                                 <div class="relative inline-block">
-                                    <img id="logoPreview" 
-                                        src="{{ $footerSetting->logo ? asset('storage/' . $footerSetting->logo) : '' }}" 
-                                        alt="Logo Preview" 
+                                    <img id="logoPreview"
+                                        src="{{ $footerSetting->logo ? asset('storage/' . $footerSetting->logo) : '' }}"
+                                        alt="Logo Preview"
                                         class="h-20 w-auto object-contain border border-slate-200 rounded-sm p-2 bg-slate-800">
                                 </div>
                                 @if($footerSetting->logo)
@@ -46,7 +46,7 @@
                                 </label>
                                 @endif
                             </div>
-                            
+
                             <!-- File Input -->
                             <div>
                                 <input type="file" name="logo" id="logoInput" accept="image/*"
