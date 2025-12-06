@@ -22,16 +22,28 @@
         <form action="{{ route('admin.about.hero.store') }}" method="POST" class="p-6 space-y-6">
             @csrf
 
-            <!-- Title -->
-            <div>
-                <label for="title" class="block text-sm font-medium text-slate-700 mb-2">Main Title <span class="text-red-500">*</span></label>
-                <input type="text" name="title" id="title"
-                    value="{{ old('title', $aboutHero->title ?? '') }}"
-                    class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="e.g., Center for Entrepreneurial Policy, Innovation, Research & Development" required>
-                @error('title')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
+            <!-- Title Lines -->
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label for="title_line1" class="block text-sm font-medium text-slate-700 mb-2">Title Line 1 <span class="text-red-500">*</span></label>
+                    <input type="text" name="title_line1" id="title_line1"
+                        value="{{ old('title_line1', $aboutHero->title_line1 ?? '') }}"
+                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="e.g., Center for Entrepreneurial" required>
+                    @error('title_line1')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div>
+                    <label for="title_line2" class="block text-sm font-medium text-slate-700 mb-2">Title Line 2 (Gradient) <span class="text-red-500">*</span></label>
+                    <input type="text" name="title_line2" id="title_line2"
+                        value="{{ old('title_line2', $aboutHero->title_line2 ?? '') }}"
+                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="e.g., Policy, Innovation, Research & Development" required>
+                    @error('title_line2')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <!-- Subtitle -->
@@ -88,7 +100,7 @@
             <!-- Submit Button -->
             <div class="flex justify-end pt-4">
                 <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                    Update About Hero Section
+                    Update 
                 </button>
             </div>
         </form>

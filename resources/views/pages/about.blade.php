@@ -16,7 +16,8 @@
                 <span class="text-blue-900 text-sm font-medium">About Us</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-slate-900">
-                {{ $aboutHero->title ?? 'Center for Entrepreneurial Policy, Innovation, Research & Development' }}
+                {{ $aboutHero->title_line1 ?? 'Center for Entrepreneurial' }}<br>
+                <span class="bg-gradient-to-r from-blue-900 to-teal-600 bg-clip-text text-transparent">{{ $aboutHero->title_line2 ?? 'Policy, Innovation, Research & Development' }}</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed font-light">
                 {{ $aboutHero->subtitle ?? 'Shaping the future of entrepreneurship and socio-economic transformation in Bangladesh' }}

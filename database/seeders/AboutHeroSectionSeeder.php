@@ -14,7 +14,8 @@ class AboutHeroSectionSeeder extends Seeder
     public function run(): void
     {
         AboutHeroSection::create([
-            'title' => 'Center for Entrepreneurial Policy, Innovation, Research & Development',
+            'title_line1' => 'Center for Entrepreneurial',
+            'title_line2' => 'Policy, Innovation, Research & Development',
             'subtitle' => 'Shaping the future of entrepreneurship and socio-economic transformation in Bangladesh',
             'tag1' => 'Empowering Ideas',
             'tag2' => 'Influencing Policy',

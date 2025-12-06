@@ -17,7 +17,8 @@ class AboutHeroController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title_line1' => 'required|string|max:255',
+            'title_line2' => 'required|string|max:255',
             'subtitle' => 'required|string',
             'tag1' => 'required|string|max:255',
             'tag2' => 'required|string|max:255',
