@@ -66,7 +66,7 @@ class AboutSectionController extends Controller
 
         foreach ($validated['pillars'] as $index => $pillarData) {
             $pillarIsActive = isset($pillarData['is_active']) && ($pillarData['is_active'] === 'on' || $pillarData['is_active'] === true || $pillarData['is_active'] === '1');
-            
+
             $pillarToSave = [
                 'title' => $pillarData['title'],
                 'description' => $pillarData['description'],
