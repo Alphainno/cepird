@@ -9,7 +9,6 @@ class MenuItem extends Model
     protected $fillable = [
         'title',
         'url',
-        'route_name',
         'open_in_new_tab',
         'sort_order',
         'is_active',
@@ -29,22 +28,6 @@ class MenuItem extends Model
     }
 
     /**
-     * Get the URL for this menu item
-     */
-    public function getUrlAttribute($value)
-    {
-        // If route_name is set, try to generate route URL
-        if ($this->route_name) {
-            try {
-                return route($this->route_name);
-            } catch (\Exception $e) {
-                return $value ?? '#';
-            }
-        }
-        return $value ?? '#';
-    }
-
-    /**
      * Scope for active items
      */
     public function scopeActive($query)
@@ -58,5 +41,7 @@ class MenuItem extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order');
+    }
+}
     }
 }

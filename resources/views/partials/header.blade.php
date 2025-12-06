@@ -23,7 +23,7 @@
         <div class="hidden md:flex items-center space-x-8">
             @if($menuItems && $menuItems->count() > 0)
                 @foreach($menuItems as $item)
-                    <a href="{{ $item->url }}" 
+                    <a href="{{ $item->url }}"
                        class="text-sm font-medium text-slate-600 hover:text-blue-900 hover:underline decoration-teal-500 decoration-2 underline-offset-4 transition-all"
                        @if($item->open_in_new_tab) target="_blank" rel="noopener noreferrer" @endif>
                         {{ $item->title }}
@@ -54,7 +54,7 @@
     <div id="mobile-menu" class="mobile-menu-closed md:hidden bg-white border-t border-slate-100 absolute w-full px-4 py-6 shadow-xl flex flex-col space-y-4">
         @if($menuItems && $menuItems->count() > 0)
             @foreach($menuItems as $item)
-                <a href="{{ $item->url }}" 
+                <a href="{{ $item->url }}"
                    class="text-left text-lg font-medium text-slate-800 py-2 border-b border-slate-50"
                    @if($item->open_in_new_tab) target="_blank" rel="noopener noreferrer" @endif>
                     {{ $item->title }}

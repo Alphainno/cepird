@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('partials.header', function ($view) {
             $headerSetting = HeaderSetting::getActive();
             $menuItems = MenuItem::active()->ordered()->get();
-            
+
             $view->with('headerSetting', $headerSetting);
             $view->with('menuItems', $menuItems);
         });

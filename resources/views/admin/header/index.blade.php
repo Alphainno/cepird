@@ -25,7 +25,7 @@
             <!-- Brand Settings -->
             <div class="border-b border-slate-200 pb-6">
                 <h3 class="text-lg font-semibold text-slate-900 mb-4">Brand Settings</h3>
-                
+
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Logo -->
                     <div>
