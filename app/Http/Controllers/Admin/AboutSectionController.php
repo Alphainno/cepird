@@ -36,25 +36,26 @@ class AboutSectionController extends Controller
             'pillars.*.title' => 'required|string|max:255',
             'pillars.*.description' => 'required|string',
             'pillars.*.icon' => 'nullable|string|max:255',
-            'pillars.*.is_active' => 'nullable|boolean',
+            'pillars.*.is_active' => 'nullable',
         ]);
 
-        $validated['is_active'] = $request->has('is_active');
+        $isActive = $request->has('is_active');
 
-        $aboutSection = AboutSection::first();
+        // Get the active about section or first one
+        $aboutSection = AboutSection::where('is_active', true)->first() ?? AboutSection::first();
 
         if ($aboutSection) {
             $aboutSection->update([
                 'main_title' => $validated['main_title'],
                 'subtitle' => $validated['subtitle'],
-                'is_active' => $validated['is_active'],
+                'is_active' => $isActive,
             ]);
             $message = 'About section updated successfully!';
         } else {
             $aboutSection = AboutSection::create([
                 'main_title' => $validated['main_title'],
                 'subtitle' => $validated['subtitle'],
-                'is_active' => $validated['is_active'],
+                'is_active' => $isActive,
             ]);
             $message = 'About section created successfully!';
         }
@@ -64,20 +65,27 @@ class AboutSectionController extends Controller
         $updatedPillarIds = [];
 
         foreach ($validated['pillars'] as $index => $pillarData) {
-            $pillarData['sort_order'] = $index + 1;
-            $pillarData['is_active'] = isset($pillarData['is_active']) ? $pillarData['is_active'] : true;
+            $pillarIsActive = isset($pillarData['is_active']) && ($pillarData['is_active'] === 'on' || $pillarData['is_active'] === true || $pillarData['is_active'] === '1');
+            
+            $pillarToSave = [
+                'title' => $pillarData['title'],
+                'description' => $pillarData['description'],
+                'icon' => $pillarData['icon'] ?? 'file-text',
+                'sort_order' => $index + 1,
+                'is_active' => $pillarIsActive,
+            ];
 
             if (isset($pillarData['id']) && in_array($pillarData['id'], $existingPillarIds)) {
                 // Update existing pillar
                 $pillar = Pillar::find($pillarData['id']);
                 if ($pillar) {
-                    $pillar->update($pillarData);
+                    $pillar->update($pillarToSave);
                     $updatedPillarIds[] = $pillar->id;
                 }
             } else {
                 // Create new pillar
-                $pillarData['about_section_id'] = $aboutSection->id;
-                $pillar = Pillar::create($pillarData);
+                $pillarToSave['about_section_id'] = $aboutSection->id;
+                $pillar = Pillar::create($pillarToSave);
                 $updatedPillarIds[] = $pillar->id;
             }
         }
