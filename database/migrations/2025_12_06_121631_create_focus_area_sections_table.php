@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about_hero_sections', function (Blueprint $table) {
+        Schema::create('focus_area_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('subtitle');
-            $table->string('tag1');
-            $table->string('tag2');
-            $table->string('tag3');
+            $table->string('badge_text')->nullable(); // e.g., 'What We Focus On'
+            $table->string('title')->nullable(); // e.g., 'Core Focus Areas'
+            $table->text('subtitle')->nullable(); // Description under title
+            $table->text('quote')->nullable(); // The quote at the bottom
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about_hero_sections');
+        Schema::dropIfExists('focus_area_sections');
     }
 };

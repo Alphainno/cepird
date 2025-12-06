@@ -15,41 +15,39 @@ class FocusAreaSeeder extends Seeder
     public function run(): void
     {
         $focusAreaSection = FocusAreaSection::create([
-            'main_title' => 'Core Strategic Areas',
-            'subtitle' => null,
+            'badge_text' => 'What We Focus On',
+            'title' => 'Core Focus Areas',
+            'subtitle' => 'Driving meaningful change at the intersection of research, innovation, and policy',
+            'quote' => 'Ideas create progress — but policies turn progress into national prosperity.',
             'is_active' => true,
         ]);
 
         $focusAreas = [
             [
+                'icon' => '📋',
                 'title' => 'Policy Development',
-                'description' => 'Drafting frameworks for digital commerce and SME growth.',
-                'icon' => 'file-text',
-                'icon_color' => 'blue',
+                'description' => 'Evidence-based frameworks strengthening entrepreneurship and digital transformation.',
                 'sort_order' => 1,
                 'is_active' => true,
             ],
             [
-                'title' => 'Tech-Enabled Innovation',
-                'description' => 'Integrating AI and Blockchain into public sector solutions.',
-                'icon' => 'cpu',
-                'icon_color' => 'teal',
+                'icon' => '💡',
+                'title' => 'Technology Innovation',
+                'description' => 'Promoting digital adoption and tech-driven solutions for emerging industries.',
                 'sort_order' => 2,
                 'is_active' => true,
             ],
             [
-                'title' => 'Applied Research',
-                'description' => 'Publishing indices, whitepapers, and economic impact studies.',
-                'icon' => 'book-open',
-                'icon_color' => 'amber',
+                'icon' => '📊',
+                'title' => 'Research',
+                'description' => 'In-depth studies guiding policymakers, institutions, and entrepreneurs.',
                 'sort_order' => 3,
                 'is_active' => true,
             ],
             [
-                'title' => 'Entrepreneur Support',
-                'description' => 'Mentorship and funding bridges for early-stage startups.',
-                'icon' => 'award',
-                'icon_color' => 'indigo',
+                'icon' => '🚀',
+                'title' => 'Entrepreneurship',
+                'description' => 'Empowering startups through training, mentorship, and ecosystem development.',
                 'sort_order' => 4,
                 'is_active' => true,
             ],

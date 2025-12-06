@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('about_introduction_sections', function (Blueprint $table) {
-            //
+        Schema::table('focus_areas', function (Blueprint $table) {
+            $table->foreignId('focus_area_section_id')->nullable()->constrained()->onDelete('cascade')->after('id');
         });
     }
 
@@ -21,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('about_introduction_sections', function (Blueprint $table) {
-            //
+        Schema::table('focus_areas', function (Blueprint $table) {
+            $table->dropForeign(['focus_area_section_id']);
+            $table->dropColumn('focus_area_section_id');
         });
     }
 };

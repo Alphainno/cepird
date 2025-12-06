@@ -22,14 +22,26 @@
         <form action="{{ route('admin.focus-areas.store') }}" method="POST" class="p-6 space-y-6" id="focusAreasForm">
             @csrf
 
-            <!-- Main Title -->
+            <!-- Badge Text -->
             <div>
-                <label for="main_title" class="block text-sm font-medium text-slate-700 mb-2">Section Title <span class="text-red-500">*</span></label>
-                <input type="text" name="main_title" id="main_title"
-                    value="{{ old('main_title', $focusAreaSection->main_title ?? 'Core Strategic Areas') }}"
+                <label for="badge_text" class="block text-sm font-medium text-slate-700 mb-2">Badge Text</label>
+                <input type="text" name="badge_text" id="badge_text"
+                    value="{{ old('badge_text', $focusAreaSection->badge_text ?? 'What We Focus On') }}"
                     class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="e.g., Core Strategic Areas" required>
-                @error('main_title')
+                    placeholder="e.g., What We Focus On">
+                @error('badge_text')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Title -->
+            <div>
+                <label for="title" class="block text-sm font-medium text-slate-700 mb-2">Section Title <span class="text-red-500">*</span></label>
+                <input type="text" name="title" id="title"
+                    value="{{ old('title', $focusAreaSection->title ?? 'Core Focus Areas') }}"
+                    class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="e.g., Core Focus Areas" required>
+                @error('title')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
@@ -39,8 +51,19 @@
                 <label for="subtitle" class="block text-sm font-medium text-slate-700 mb-2">Section Subtitle</label>
                 <textarea name="subtitle" id="subtitle" rows="2"
                     class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter the focus areas section subtitle...">{{ old('subtitle', $focusAreaSection->subtitle) }}</textarea>
+                    placeholder="Enter the focus areas section subtitle...">{{ old('subtitle', $focusAreaSection->subtitle ?? 'Driving meaningful change at the intersection of research, innovation, and policy') }}</textarea>
                 @error('subtitle')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Quote -->
+            <div>
+                <label for="quote" class="block text-sm font-medium text-slate-700 mb-2">Quote</label>
+                <textarea name="quote" id="quote" rows="2"
+                    class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter the quote...">{{ old('quote', $focusAreaSection->quote ?? 'Ideas create progress — but policies turn progress into national prosperity.') }}</textarea>
+                @error('quote')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
@@ -74,7 +97,7 @@
 
                                 <input type="hidden" name="focus_areas[{{ $index }}][id]" value="{{ $focusArea->id }}">
 
-                                <div class="grid md:grid-cols-3 gap-4">
+                                <div class="grid md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                                         <input type="text" name="focus_areas[{{ $index }}][title]"
@@ -90,24 +113,12 @@
                                         <input type="text" name="focus_areas[{{ $index }}][icon]"
                                             value="{{ old('focus_areas.' . $index . '.icon', $focusArea->icon) }}"
                                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                            placeholder="e.g., file-text">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-2">Icon Color</label>
-                                        <select name="focus_areas[{{ $index }}][icon_color]"
-                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                            <option value="blue" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'blue') ? 'selected' : '' }}>Blue</option>
-                                            <option value="teal" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'teal') ? 'selected' : '' }}>Teal</option>
-                                            <option value="amber" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'amber') ? 'selected' : '' }}>Amber</option>
-                                            <option value="indigo" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'indigo') ? 'selected' : '' }}>Indigo</option>
-                                            <option value="green" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'green') ? 'selected' : '' }}>Green</option>
-                                            <option value="red" {{ (old('focus_areas.' . $index . '.icon_color', $focusArea->icon_color) == 'red') ? 'selected' : '' }}>Red</option>
-                                        </select>
+                                            placeholder="e.g., 📋">
                                     </div>
                                 </div>
                                 <div class="mt-4">
                                     <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                                    <textarea name="focus_areas[{{ $index }}][description]" rows="2"
+                                    <textarea name="focus_areas[{{ $index }}][description]" rows="3"
                                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         placeholder="Enter focus area description..." required>{{ old('focus_areas.' . $index . '.description', $focusArea->description) }}</textarea>
                                     @error('focus_areas.' . $index . '.description')
@@ -135,7 +146,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid md:grid-cols-3 gap-4">
+                            <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                                     <input type="text" name="focus_areas[0][title]" value="Policy Development"
@@ -144,28 +155,16 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                                    <input type="text" name="focus_areas[0][icon]" value="file-text"
+                                    <input type="text" name="focus_areas[0][icon]" value="📋"
                                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="e.g., file-text">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Icon Color</label>
-                                    <select name="focus_areas[0][icon_color]"
-                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="blue" selected>Blue</option>
-                                        <option value="teal">Teal</option>
-                                        <option value="amber">Amber</option>
-                                        <option value="indigo">Indigo</option>
-                                        <option value="green">Green</option>
-                                        <option value="red">Red</option>
-                                    </select>
+                                        placeholder="e.g., 📋">
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                                <textarea name="focus_areas[0][description]" rows="2"
+                                <textarea name="focus_areas[0][description]" rows="3"
                                     class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Enter focus area description..." required>Drafting frameworks for digital commerce and SME growth.</textarea>
+                                    placeholder="Enter focus area description..." required>Evidence-based frameworks strengthening entrepreneurship and digital transformation.</textarea>
                             </div>
                         </div>
                     @endif
@@ -241,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                         <input type="text" name="focus_areas[${focusAreaIndex}][title]"
@@ -250,26 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                        <input type="text" name="focus_areas[${focusAreaIndex}][icon]" value="file-text"
+                        <input type="text" name="focus_areas[${focusAreaIndex}][icon]" value="📋"
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="e.g., file-text">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Icon Color</label>
-                        <select name="focus_areas[${focusAreaIndex}][icon_color]"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="blue" selected>Blue</option>
-                            <option value="teal">Teal</option>
-                            <option value="amber">Amber</option>
-                            <option value="indigo">Indigo</option>
-                            <option value="green">Green</option>
-                            <option value="red">Red</option>
-                        </select>
+                            placeholder="e.g., 📋">
                     </div>
                 </div>
                 <div class="mt-4">
                     <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                    <textarea name="focus_areas[${focusAreaIndex}][description]" rows="2"
+                    <textarea name="focus_areas[${focusAreaIndex}][description]" rows="3"
                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter focus area description..." required></textarea>
                 </div>

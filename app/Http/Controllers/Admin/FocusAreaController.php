@@ -30,32 +30,37 @@ class FocusAreaController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'main_title' => 'required|string|max:255',
+            'badge_text' => 'nullable|string|max:255',
+            'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string',
+            'quote' => 'nullable|string',
             'focus_areas' => 'required|array|min:1',
             'focus_areas.*.title' => 'required|string|max:255',
             'focus_areas.*.description' => 'required|string',
             'focus_areas.*.icon' => 'nullable|string|max:255',
-            'focus_areas.*.icon_color' => 'nullable|string|max:255',
             'focus_areas.*.is_active' => 'nullable',
         ]);
 
         $isActive = $request->has('is_active');
 
-        // Get the active focus area section or first one
-        $focusAreaSection = FocusAreaSection::where('is_active', true)->first() ?? FocusAreaSection::first();
+        // Get or create the focus area section
+        $focusAreaSection = FocusAreaSection::where('is_active', true)->first();
 
         if ($focusAreaSection) {
             $focusAreaSection->update([
-                'main_title' => $validated['main_title'],
+                'badge_text' => $validated['badge_text'],
+                'title' => $validated['title'],
                 'subtitle' => $validated['subtitle'],
+                'quote' => $validated['quote'],
                 'is_active' => $isActive,
             ]);
             $message = 'Focus areas section updated successfully!';
         } else {
             $focusAreaSection = FocusAreaSection::create([
-                'main_title' => $validated['main_title'],
+                'badge_text' => $validated['badge_text'],
+                'title' => $validated['title'],
                 'subtitle' => $validated['subtitle'],
+                'quote' => $validated['quote'],
                 'is_active' => $isActive,
             ]);
             $message = 'Focus areas section created successfully!';
@@ -71,8 +76,7 @@ class FocusAreaController extends Controller
             $focusAreaToSave = [
                 'title' => $focusAreaData['title'],
                 'description' => $focusAreaData['description'],
-                'icon' => $focusAreaData['icon'] ?? 'file-text',
-                'icon_color' => $focusAreaData['icon_color'] ?? 'blue',
+                'icon' => $focusAreaData['icon'] ?? '📋',
                 'sort_order' => $index + 1,
                 'is_active' => $focusAreaIsActive,
             ];

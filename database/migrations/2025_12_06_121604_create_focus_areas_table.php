@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('focus_areas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('focus_area_section_id')->constrained()->onDelete('cascade');
+            $table->string('icon')->nullable(); // Emoji or icon class
             $table->string('title');
             $table->text('description');
-            $table->string('icon')->default('file-text');
-            $table->string('icon_color')->default('blue');
             $table->integer('sort_order')->default(0);
             $table->boolean('is_active')->default(true);
+            $table->string('hover_border_class')->nullable(); // e.g., 'hover:border-blue-200'
+            $table->string('bg_color_class')->nullable(); // e.g., 'bg-blue-50'
+            $table->string('icon_bg_class')->nullable(); // e.g., 'group-hover:bg-blue-100'
             $table->timestamps();
         });
     }

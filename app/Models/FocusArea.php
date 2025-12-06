@@ -9,10 +9,9 @@ class FocusArea extends Model
 {
     protected $fillable = [
         'focus_area_section_id',
+        'icon',
         'title',
         'description',
-        'icon',
-        'icon_color',
         'sort_order',
         'is_active',
     ];

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HeroSection;
 use App\Models\AboutSection;
 use App\Models\FocusAreaSection;
+use App\Models\FocusArea;
 use App\Models\VisionSection;
 use App\Models\Program;
 use App\Models\Founder;
@@ -31,7 +32,9 @@ class LandingPageController extends Controller
     {
         $aboutHero = AboutHeroSection::getActive();
         $aboutIntroduction = AboutIntroductionSection::getActive();
-        return view('pages.about', compact('aboutHero', 'aboutIntroduction'));
+        $focusAreaSection = FocusAreaSection::where('is_active', true)->first();
+        $focusAreas = FocusArea::active()->ordered()->get();
+        return view('pages.about', compact('aboutHero', 'aboutIntroduction', 'focusAreaSection', 'focusAreas'));
     }
 
     public function focusAreas()

@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class FocusAreaSection extends Model
 {
     protected $fillable = [
-        'main_title',
+        'badge_text',
+        'title',
         'subtitle',
+        'quote',
         'is_active',
     ];
 

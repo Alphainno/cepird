@@ -34,7 +34,6 @@
 
             <div id="homeMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
                 <a href="{{ route('admin.hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
-                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
                 <a href="{{ route('admin.vision.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Vision & Mission</a>
                 <a href="{{ route('admin.programs.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Programs</a>
                 <a href="{{ route('admin.founder.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Founder</a>
@@ -59,6 +58,7 @@
             <div id="aboutMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
                 <a href="{{ route('admin.about.hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
                 <a href="{{ route('admin.about.introduction.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Introduction Section</a>
+                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
                 <a href="{{ route('admin.about.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">About Section</a>
             </div>
         </div>

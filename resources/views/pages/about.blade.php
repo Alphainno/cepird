@@ -72,60 +72,32 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
             <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
-                <span class="text-blue-900 text-sm font-semibold">What We Focus On</span>
+                <span class="text-blue-900 text-sm font-semibold">{{ $focusAreaSection->badge_text ?? 'What We Focus On' }}</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Core Focus Areas</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{{ $focusAreaSection->title ?? 'Core Focus Areas' }}</h2>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                Driving meaningful change at the intersection of research, innovation, and policy
+                {{ $focusAreaSection->subtitle ?? 'Driving meaningful change at the intersection of research, innovation, and policy' }}
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200">
-                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-100 transition-colors">
-                    📋
+            @foreach($focusAreas as $focusArea)
+            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 {{ $focusArea->hover_border_class ?? 'hover:border-blue-200' }}">
+                <div class="w-14 h-14 {{ $focusArea->bg_color_class ?? 'bg-blue-50' }} rounded-xl flex items-center justify-center text-3xl mb-6 {{ $focusArea->icon_bg_class ?? 'group-hover:bg-blue-100' }} transition-colors">
+                    {{ $focusArea->icon ?? '📋' }}
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Policy Development</h3>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $focusArea->title }}</h3>
                 <p class="text-slate-600 leading-relaxed">
-                    Evidence-based frameworks strengthening entrepreneurship and digital transformation.
+                    {{ $focusArea->description }}
                 </p>
             </div>
-
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200">
-                <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-teal-100 transition-colors">
-                    💡
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Technology Innovation</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    Promoting digital adoption and tech-driven solutions for emerging industries.
-                </p>
-            </div>
-
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200">
-                <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-amber-100 transition-colors">
-                    📊
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Research</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    In-depth studies guiding policymakers, institutions, and entrepreneurs.
-                </p>
-            </div>
-
-            <div class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200">
-                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-100 transition-colors">
-                    🚀
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Entrepreneurship</h3>
-                <p class="text-slate-600 leading-relaxed">
-                    Empowering startups through training, mentorship, and ecosystem development.
-                </p>
-            </div>
+            @endforeach
         </div>
 
         <div class="mt-16 text-center">
             <div class="inline-block bg-gradient-to-r from-blue-900 to-teal-600 rounded-2xl p-10 max-w-4xl shadow-xl">
                 <p class="text-2xl text-white font-medium italic">
-                    "Ideas create progress — but policies turn progress into national prosperity."
+                    {{ $focusAreaSection->quote ?? '"Ideas create progress — but policies turn progress into national prosperity."' }}
                 </p>
             </div>
         </div>
