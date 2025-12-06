@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\FocusAreaController;
 use App\Http\Controllers\Admin\VisionController;
+use App\Http\Controllers\Admin\ProgramController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -50,3 +51,9 @@ Route::post('/admin/focus-areas', [FocusAreaController::class, 'update'])->name(
 Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');
 Route::put('/admin/vision', [VisionController::class, 'update'])->name('admin.vision.update');
 Route::post('/admin/vision', [VisionController::class, 'update'])->name('admin.vision.store');
+
+// Admin Programs Routes
+Route::get('/admin/programs', [ProgramController::class, 'index'])->name('admin.programs.index');
+Route::post('/admin/programs', [ProgramController::class, 'store'])->name('admin.programs.store');
+Route::put('/admin/programs/{program}', [ProgramController::class, 'update'])->name('admin.programs.update');
+Route::delete('/admin/programs/{program}', [ProgramController::class, 'destroy'])->name('admin.programs.destroy');
