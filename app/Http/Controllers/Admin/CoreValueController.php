@@ -15,7 +15,7 @@ class CoreValueController extends Controller
     public function index()
     {
         $coreValueSection = CoreValueSection::with('allCoreValues')->first();
-        
+
         if (!$coreValueSection) {
             $coreValueSection = new CoreValueSection([
                 'badge_text' => 'Our Foundation',
@@ -24,7 +24,7 @@ class CoreValueController extends Controller
                 'is_active' => true,
             ]);
         }
-        
+
         return view('admin.core-values.index', compact('coreValueSection'));
     }
 
@@ -45,7 +45,7 @@ class CoreValueController extends Controller
 
         // Get or create section
         $coreValueSection = CoreValueSection::first();
-        
+
         if ($coreValueSection) {
             $coreValueSection->update([
                 'badge_text' => $validated['badge_text'] ?? 'Our Foundation',
