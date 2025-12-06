@@ -73,3 +73,8 @@ Route::post('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'upd
 Route::get('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'index'])->name('admin.about.hero.index');
 Route::put('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'update'])->name('admin.about.hero.update');
 Route::post('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'update'])->name('admin.about.hero.store');
+
+// Admin About Introduction Routes
+Route::get('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'index'])->name('admin.about.introduction.index');
+Route::put('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'update'])->name('admin.about.introduction.update');
+Route::post('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'update'])->name('admin.about.introduction.store');

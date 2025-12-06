@@ -37,28 +37,28 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-6">
                 <div class="inline-block px-4 py-1 bg-blue-50 rounded-full">
-                    <span class="text-blue-900 text-sm font-semibold">Who We Are</span>
+                    <span class="text-blue-900 text-sm font-semibold">{{ $aboutIntroduction->badge_text ?? 'Who We Are' }}</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-                    Where Research Meets<br>
-                    <span class="text-blue-900">Real-World Impact</span>
+                    {{ $aboutIntroduction->title_line1 ?? 'Where Research Meets' }}<br>
+                    <span class="text-blue-900">{{ $aboutIntroduction->title_line2 ?? 'Real-World Impact' }}</span>
                 </h2>
                 <div class="space-y-5 text-slate-600 text-lg leading-relaxed">
                     <p>
-                        CEPIRD is a forward-thinking national initiative dedicated to shaping the future of entrepreneurship, policy innovation, and socio-economic transformation in Bangladesh.
+                        {{ $aboutIntroduction->paragraph1 ?? 'CEPIRD is a forward-thinking national initiative dedicated to shaping the future of entrepreneurship, policy innovation, and socio-economic transformation in Bangladesh.' }}
                     </p>
                     <p>
-                        Founded by <span class="font-semibold text-slate-900">Mohammad Shahriar Khan</span>, a visionary entrepreneur and ecosystem builder, we connect policymakers, entrepreneurs, educators, and innovators to design sustainable strategies for emerging economies.
+                        {{ $aboutIntroduction->paragraph2 ?? 'Founded by Mohammad Shahriar Khan, a visionary entrepreneur and ecosystem builder, we connect policymakers, entrepreneurs, educators, and innovators to design sustainable strategies for emerging economies.' }}
                     </p>
                     <p class="text-blue-900 font-medium">
-                        We operate where ideas transform into action and research shapes national progress.
+                        {{ $aboutIntroduction->paragraph3 ?? 'We operate where ideas transform into action and research shapes national progress.' }}
                     </p>
                 </div>
             </div>
             <div class="relative">
                 <div class="relative overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                     <!-- Background Image -->
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
+                    <img src="{{ $aboutIntroduction->image ? asset('storage/' . $aboutIntroduction->image) : ($aboutIntroduction->image_url ?? 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80') }}"
                          alt="Successful team"
                          class="w-full h-full object-cover">
                 </div>

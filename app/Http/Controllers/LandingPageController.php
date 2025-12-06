@@ -11,6 +11,7 @@ use App\Models\Program;
 use App\Models\Founder;
 use App\Models\CtaSection;
 use App\Models\AboutHeroSection;
+use App\Models\AboutIntroductionSection;
 
 class LandingPageController extends Controller
 {
@@ -29,7 +30,8 @@ class LandingPageController extends Controller
     public function about()
     {
         $aboutHero = AboutHeroSection::getActive();
-        return view('pages.about', compact('aboutHero'));
+        $aboutIntroduction = AboutIntroductionSection::getActive();
+        return view('pages.about', compact('aboutHero', 'aboutIntroduction'));
     }
 
     public function focusAreas()
