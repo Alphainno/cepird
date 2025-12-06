@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             HeroSectionSeeder::class,
             AboutSectionSeeder::class,
             FocusAreaSeeder::class,
+            VisionSectionSeeder::class,
         ]);
     }
 }

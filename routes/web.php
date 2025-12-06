@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\FocusAreaController;
+use App\Http\Controllers\Admin\VisionController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -44,3 +45,8 @@ Route::post('/admin/about', [AboutSectionController::class, 'update'])->name('ad
 Route::get('/admin/focus-areas', [FocusAreaController::class, 'index'])->name('admin.focus-areas.index');
 Route::put('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.update');
 Route::post('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.store');
+
+// Admin Vision Routes
+Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');
+Route::put('/admin/vision', [VisionController::class, 'update'])->name('admin.vision.update');
+Route::post('/admin/vision', [VisionController::class, 'update'])->name('admin.vision.store');
