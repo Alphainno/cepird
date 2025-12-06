@@ -53,8 +53,29 @@
     <!-- Sidebar Backdrop for mobile -->
     <div id="sidebarBackdrop" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"></div>
 
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
     <!-- Custom JavaScript -->
     <script src="{{ asset('js/admin.js') }}"></script>
+
+    <!-- Session Messages Toast -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session('success'))
+                showToast("{{ session('success') }}", 'success');
+            @endif
+            @if(session('error'))
+                showToast("{{ session('error') }}", 'error');
+            @endif
+            @if(session('warning'))
+                showToast("{{ session('warning') }}", 'warning');
+            @endif
+            @if(session('info'))
+                showToast("{{ session('info') }}", 'info');
+            @endif
+        });
+    </script>
 
     @stack('scripts')
 </body>

@@ -12,13 +12,6 @@
         </div>
     </div>
 
-    <!-- Success Message -->
-    @if(session('success'))
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm relative" role="alert">
-        <span class="block sm:inline">{{ session('success') }}</span>
-    </div>
-    @endif
-
     <!-- Hero Section Form -->
     <div class="bg-white rounded-sm shadow-sm border border-slate-200">
         <div class="p-6 border-b border-slate-200">
