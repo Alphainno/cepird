@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HeroSection;
 use App\Models\AboutSection;
+use App\Models\FocusAreaSection;
 
 class LandingPageController extends Controller
 {
@@ -12,7 +13,8 @@ class LandingPageController extends Controller
     {
         $heroSection = HeroSection::getActive();
         $aboutSection = AboutSection::with('pillars')->where('is_active', true)->first();
-        return view('pages.landing', compact('heroSection', 'aboutSection'));
+        $focusAreaSection = FocusAreaSection::with('focusAreas')->where('is_active', true)->first();
+        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection'));
     }
 
     public function about()

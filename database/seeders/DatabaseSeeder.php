@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HeroSectionSeeder::class,
             AboutSectionSeeder::class,
+            FocusAreaSeeder::class,
         ]);
     }
 }

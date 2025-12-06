@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\AboutSectionController;
+use App\Http\Controllers\Admin\FocusAreaController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -38,3 +39,8 @@ Route::post('/admin/hero', [HeroSectionController::class, 'update'])->name('admi
 Route::get('/admin/about', [AboutSectionController::class, 'index'])->name('admin.about.index');
 Route::put('/admin/about', [AboutSectionController::class, 'update'])->name('admin.about.update');
 Route::post('/admin/about', [AboutSectionController::class, 'update'])->name('admin.about.store');
+
+// Admin Focus Areas Routes
+Route::get('/admin/focus-areas', [FocusAreaController::class, 'index'])->name('admin.focus-areas.index');
+Route::put('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.update');
+Route::post('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.store');
