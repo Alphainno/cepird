@@ -82,3 +82,7 @@ Route::post('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntrod
 // Admin Vision & Mission Routes
 Route::get('/admin/vision-mission', [App\Http\Controllers\Admin\VisionMissionController::class, 'index'])->name('admin.vision-mission.index');
 Route::post('/admin/vision-mission', [App\Http\Controllers\Admin\VisionMissionController::class, 'store'])->name('admin.vision-mission.store');
+
+// Admin Core Values Routes
+Route::get('/admin/core-values', [App\Http\Controllers\Admin\CoreValueController::class, 'index'])->name('admin.core-values.index');
+Route::post('/admin/core-values', [App\Http\Controllers\Admin\CoreValueController::class, 'update'])->name('admin.core-values.store');

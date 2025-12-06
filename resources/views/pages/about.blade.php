@@ -155,52 +155,75 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
             <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
-                <span class="text-blue-900 text-sm font-semibold">Our Foundation</span>
+                <span class="text-blue-900 text-sm font-semibold">{{ $coreValueSection->badge_text ?? 'Our Foundation' }}</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Core Values</h2>
-            <p class="text-lg text-slate-600">The principles that guide everything we do</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{{ $coreValueSection->title ?? 'Core Values' }}</h2>
+            <p class="text-lg text-slate-600">{{ $coreValueSection->subtitle ?? 'The principles that guide everything we do' }}</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
-                    ⭐
+            @if($coreValueSection && $coreValueSection->coreValues->count() > 0)
+                @foreach($coreValueSection->coreValues as $index => $coreValue)
+                    @php
+                        $colors = [
+                            ['from' => 'from-blue-500', 'to' => 'to-blue-600', 'border' => 'hover:border-blue-200'],
+                            ['from' => 'from-teal-500', 'to' => 'to-teal-600', 'border' => 'hover:border-teal-200'],
+                            ['from' => 'from-amber-500', 'to' => 'to-amber-600', 'border' => 'hover:border-amber-200'],
+                            ['from' => 'from-blue-600', 'to' => 'to-blue-700', 'border' => 'hover:border-blue-200'],
+                            ['from' => 'from-teal-600', 'to' => 'to-blue-600', 'border' => 'hover:border-teal-200'],
+                        ];
+                        $colorIndex = $index % count($colors);
+                    @endphp
+                    <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 {{ $colors[$colorIndex]['border'] }} transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-gradient-to-br {{ $colors[$colorIndex]['from'] }} {{ $colors[$colorIndex]['to'] }} rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                            {{ $coreValue->icon ?? '⭐' }}
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $coreValue->title }}</h3>
+                        <p class="text-slate-600 leading-relaxed">{{ $coreValue->description }}</p>
+                    </div>
+                @endforeach
+            @else
+                <!-- Default fallback values -->
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                        ⭐
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Innovation</h3>
+                    <p class="text-slate-600 leading-relaxed">Bold thinking, creative solutions</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Innovation</h3>
-                <p class="text-slate-600 leading-relaxed">Bold thinking, creative solutions</p>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
-                    🛡️
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Integrity</h3>
+                    <p class="text-slate-600 leading-relaxed">Ethics and accountability</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Integrity</h3>
-                <p class="text-slate-600 leading-relaxed">Ethics and accountability</p>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
-                    🤝
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                        🤝
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Inclusivity</h3>
+                    <p class="text-slate-600 leading-relaxed">Equal opportunities</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Inclusivity</h3>
-                <p class="text-slate-600 leading-relaxed">Equal opportunities</p>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
-                    🎯
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                        🎯
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Impact</h3>
+                    <p class="text-slate-600 leading-relaxed">Meaningful outcomes</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Impact</h3>
-                <p class="text-slate-600 leading-relaxed">Meaningful outcomes</p>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-br from-teal-600 to-blue-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
-                    🧭
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-600 to-blue-600 rounded-2xl mx-auto mb-5 flex items-center justify-center text-3xl shadow-lg">
+                        🧭
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Collaboration</h3>
+                    <p class="text-slate-600 leading-relaxed">Partnership-driven</p>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Collaboration</h3>
-                <p class="text-slate-600 leading-relaxed">Partnership-driven</p>
-            </div>
+            @endif
         </div>
     </div>
 </section>

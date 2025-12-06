@@ -60,6 +60,7 @@
                 <a href="{{ route('admin.about.introduction.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Introduction Section</a>
                 <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
                 <a href="{{ route('admin.vision-mission.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Vision & Mission</a>
+                <a href="{{ route('admin.core-values.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Core Values</a>
                 <a href="{{ route('admin.about.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">About Section</a>
             </div>
         </div>

@@ -14,6 +14,7 @@ use App\Models\CtaSection;
 use App\Models\AboutHeroSection;
 use App\Models\AboutIntroductionSection;
 use App\Models\VisionMissionSection;
+use App\Models\CoreValueSection;
 
 class LandingPageController extends Controller
 {
@@ -36,7 +37,8 @@ class LandingPageController extends Controller
         $focusAreaSection = FocusAreaSection::where('is_active', true)->first();
         $focusAreas = FocusArea::active()->ordered()->get();
         $visionMission = VisionMissionSection::getActive();
-        return view('pages.about', compact('aboutHero', 'aboutIntroduction', 'focusAreaSection', 'focusAreas', 'visionMission'));
+        $coreValueSection = CoreValueSection::with('coreValues')->where('is_active', true)->first();
+        return view('pages.about', compact('aboutHero', 'aboutIntroduction', 'focusAreaSection', 'focusAreas', 'visionMission', 'coreValueSection'));
     }
 
     public function focusAreas()
