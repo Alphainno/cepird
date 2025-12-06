@@ -34,12 +34,30 @@
 
             <div id="homeMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
                 <a href="{{ route('admin.hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
-                <a href="{{ route('admin.about.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">About Section</a>
                 <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
                 <a href="{{ route('admin.vision.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Vision & Mission</a>
                 <a href="{{ route('admin.programs.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Programs</a>
                 <a href="{{ route('admin.founder.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Founder</a>
                 <a href="{{ route('admin.cta.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">CTA Section</a>
+            </div>
+        </div>
+
+        <!-- About (submenu) -->
+        <div>
+            <button onclick="toggleMenu('aboutMenu', this)"
+                class="sidebar-link w-full flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+                <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="flex-1 text-left">About</span>
+                <svg class="w-4 h-4 submenu-arrow text-indigo-300" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <div id="aboutMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
+                <a href="{{ route('admin.about.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
             </div>
         </div>
         <div>
