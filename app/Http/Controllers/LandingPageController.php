@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\HeroSection;
 
 class LandingPageController extends Controller
 {
     public function index()
     {
-        return view('pages.landing');
+        $heroSection = HeroSection::getActive();
+        return view('pages.landing', compact('heroSection'));
     }
 
     public function about()

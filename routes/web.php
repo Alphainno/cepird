@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\HeroSectionController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -26,5 +27,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.log
 Route::post('/dashboard', [DashboardController::class, 'authenticate'])->name('admin.login.perform');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+// Admin Hero Section Routes
+Route::get('/admin/hero', [HeroSectionController::class, 'index'])->name('admin.hero.index');
+Route::put('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.update');
+Route::post('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.store');
 
 

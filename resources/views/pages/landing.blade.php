@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('landingSection.hero')
+    @include('landingSection.hero', ['heroSection' => $heroSection])
 
     @include('landingSection.about')
 
