@@ -78,3 +78,7 @@ Route::post('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController
 Route::get('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'index'])->name('admin.about.introduction.index');
 Route::put('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'update'])->name('admin.about.introduction.update');
 Route::post('/admin/about/introduction', [App\Http\Controllers\Admin\AboutIntroductionController::class, 'update'])->name('admin.about.introduction.store');
+
+// Admin Vision & Mission Routes
+Route::get('/admin/vision-mission', [App\Http\Controllers\Admin\VisionMissionController::class, 'index'])->name('admin.vision-mission.index');
+Route::post('/admin/vision-mission', [App\Http\Controllers\Admin\VisionMissionController::class, 'store'])->name('admin.vision-mission.store');

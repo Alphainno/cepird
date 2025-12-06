@@ -110,26 +110,40 @@
         <div class="grid lg:grid-cols-2 gap-8">
             <!-- Vision Card -->
             <div class="bg-white p-6 rounded-sm shadow-md hover:shadow-2xl transition-shadow duration-300 border-t-4 border-blue-900 group">
-                <div class="text-4xl mb-4">🎯</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Our Vision</h3>
+                <div class="text-4xl mb-4">{{ $visionMission->vision_icon ?? '🎯' }}</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $visionMission->vision_title ?? 'Our Vision' }}</h3>
+                @if($visionMission->vision_paragraph1 ?? false)
                 <p class="text-slate-600 leading-relaxed text-sm mb-3">
-                    To build a globally competitive entrepreneurial ecosystem for Bangladesh through research-driven policy innovation, digital transformation, and sustainable economic development.
+                    {{ $visionMission->vision_paragraph1 }}
                 </p>
+                @endif
+                @if($visionMission->vision_paragraph2 ?? false)
                 <p class="text-slate-600 leading-relaxed text-sm">
-                    We envision Bangladesh as a leading innovation hub in South Asia, where evidence-based policies empower startups and every entrepreneur has access to the resources needed to transform ideas into impactful ventures.
+                    {{ $visionMission->vision_paragraph2 }}
                 </p>
+                @endif
             </div>
 
             <!-- Mission Card -->
             <div class="bg-white p-6 rounded-sm shadow-md hover:shadow-2xl transition-shadow duration-300 border-t-4 border-teal-600 group">
-                <div class="text-4xl mb-4">📌</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">Our Mission</h3>
+                <div class="text-4xl mb-4">{{ $visionMission->mission_icon ?? '📌' }}</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $visionMission->mission_title ?? 'Our Mission' }}</h3>
                 <ul class="space-y-2 text-slate-600 leading-relaxed text-sm">
-                    <li>• Conduct high-quality research on entrepreneurship</li>
-                    <li>• Develop policy frameworks for startups and SMEs</li>
-                    <li>• Bridge gaps between academia and industry</li>
-                    <li>• Train future leaders in digital economy</li>
-                    <li>• Promote sustainable equitable growth</li>
+                    @if($visionMission->mission_point1 ?? false)
+                    <li>• {{ $visionMission->mission_point1 }}</li>
+                    @endif
+                    @if($visionMission->mission_point2 ?? false)
+                    <li>• {{ $visionMission->mission_point2 }}</li>
+                    @endif
+                    @if($visionMission->mission_point3 ?? false)
+                    <li>• {{ $visionMission->mission_point3 }}</li>
+                    @endif
+                    @if($visionMission->mission_point4 ?? false)
+                    <li>• {{ $visionMission->mission_point4 }}</li>
+                    @endif
+                    @if($visionMission->mission_point5 ?? false)
+                    <li>• {{ $visionMission->mission_point5 }}</li>
+                    @endif
                 </ul>
             </div>
         </div>
