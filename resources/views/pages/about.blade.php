@@ -233,76 +233,70 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-100 pb-4">
             <div>
-                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Services</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-2">What We Do</h2>
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $whatWeDoSection->badge_text ?? 'Our Services' }}</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ $whatWeDoSection->title ?? 'What We Do' }}</h2>
             </div>
         </div>
 
         <div class="space-y-6">
-            <!-- Policy & Economic Research -->
-            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-blue-200 transition-colors">
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-sm flex items-center justify-center text-3xl">
-                        📊
+            @if($whatWeDoSection && $whatWeDoSection->items && $whatWeDoSection->items->count() > 0)
+                @php
+                    $colors = ['blue', 'teal', 'amber', 'blue', 'teal', 'amber'];
+                @endphp
+                @foreach($whatWeDoSection->items as $index => $item)
+                    @php
+                        $color = $colors[$index % count($colors)];
+                    @endphp
+                    <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-{{ $color }}-200 transition-colors">
+                        <div class="flex items-start gap-6">
+                            <div class="flex-shrink-0 w-16 h-16 bg-{{ $color }}-100 rounded-sm flex items-center justify-center text-3xl">
+                                <i class="{{ $item->icon }} text-{{ $color }}-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">{{ $item->title }}</h3>
+                                <p class="text-slate-700">{{ $item->description }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Policy & Economic Research</h3>
-                        <p class="text-slate-700">Conducting research on entrepreneurship policies, market ecosystems, digital governance, and socio-economic trends — supporting evidence-based decision-making.</p>
+                @endforeach
+            @else
+                <!-- Default fallback items -->
+                <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-blue-200 transition-colors">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-sm flex items-center justify-center text-3xl">
+                            <i class="fas fa-file-alt text-blue-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Policy & Economic Research</h3>
+                            <p class="text-slate-700">Conducting research on entrepreneurship policies, market ecosystems, digital governance, and socio-economic trends.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Innovation & Entrepreneurship Development -->
-            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-teal-200 transition-colors">
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-teal-100 rounded-sm flex items-center justify-center text-3xl">
-                        💡
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Innovation & Entrepreneurship Development</h3>
-                        <p class="text-slate-700">Strengthening youth innovators and startups through incubators, accelerators, business model development, and hands-on mentorship.</p>
+                <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-teal-200 transition-colors">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-teal-100 rounded-sm flex items-center justify-center text-3xl">
+                            <i class="fas fa-lightbulb text-teal-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Innovation & Entrepreneurship Development</h3>
+                            <p class="text-slate-700">Strengthening youth innovators and startups through incubators, accelerators, business model development, and mentorship.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Skill Development & Training -->
-            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-amber-200 transition-colors">
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-amber-100 rounded-sm flex items-center justify-center text-3xl">
-                        🎓
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Skill Development & Training</h3>
-                        <p class="text-slate-700">Offering capacity-building programs, certification courses, and workshops for future-ready skills and leadership in the digital economy.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Public Policy Advisory -->
-            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-blue-200 transition-colors">
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-sm flex items-center justify-center text-3xl">
-                        🏛️
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Public Policy Advisory & Advocacy</h3>
-                        <p class="text-slate-700">Collaborating with government bodies, NGOs, and private institutions to design policies ensuring sustainable economic growth.</p>
+                <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-amber-100 rounded-sm flex items-center justify-center text-3xl">
+                            <i class="fas fa-users text-amber-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Skill Development & Training</h3>
+                            <p class="text-slate-700">Offering capacity-building programs, certification courses, and workshops for future-ready skills.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Community & Ecosystem Building -->
-            <div class="p-6 bg-slate-50 rounded-sm border border-slate-100 hover:border-teal-200 transition-colors">
-                <div class="flex items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-teal-100 rounded-sm flex items-center justify-center text-3xl">
-                        🌐
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Community & Ecosystem Building</h3>
-                        <p class="text-slate-700">Organizing national competitions, seminars, roundtables, publications, and networking events to nurture a strong entrepreneurial culture.</p>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </div>
 </section>
