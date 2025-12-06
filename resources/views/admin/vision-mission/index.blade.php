@@ -25,7 +25,7 @@
             <!-- Vision Section -->
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">Vision</h3>
-                
+
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label for="vision_icon" class="block text-sm font-medium text-slate-700 mb-2">Vision Icon</label>
@@ -73,7 +73,7 @@
             <!-- Mission Section -->
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">Mission</h3>
-                
+
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label for="mission_icon" class="block text-sm font-medium text-slate-700 mb-2">Mission Icon</label>
@@ -99,7 +99,7 @@
 
                 <div class="space-y-4">
                     <p class="text-sm text-slate-600">Enter your mission points (leave empty to hide):</p>
-                    
+
                     <div>
                         <label for="mission_point1" class="block text-sm font-medium text-slate-700 mb-2">Mission Point 1</label>
                         <input type="text" name="mission_point1" id="mission_point1"
@@ -107,7 +107,7 @@
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="e.g., Conduct high-quality research on entrepreneurship">
                     </div>
-                    
+
                     <div>
                         <label for="mission_point2" class="block text-sm font-medium text-slate-700 mb-2">Mission Point 2</label>
                         <input type="text" name="mission_point2" id="mission_point2"
@@ -115,7 +115,7 @@
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="e.g., Develop policy frameworks for startups and SMEs">
                     </div>
-                    
+
                     <div>
                         <label for="mission_point3" class="block text-sm font-medium text-slate-700 mb-2">Mission Point 3</label>
                         <input type="text" name="mission_point3" id="mission_point3"
@@ -123,7 +123,7 @@
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="e.g., Bridge gaps between academia and industry">
                     </div>
-                    
+
                     <div>
                         <label for="mission_point4" class="block text-sm font-medium text-slate-700 mb-2">Mission Point 4</label>
                         <input type="text" name="mission_point4" id="mission_point4"
@@ -131,7 +131,7 @@
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="e.g., Train future leaders in digital economy">
                     </div>
-                    
+
                     <div>
                         <label for="mission_point5" class="block text-sm font-medium text-slate-700 mb-2">Mission Point 5</label>
                         <input type="text" name="mission_point5" id="mission_point5"

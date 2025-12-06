@@ -14,7 +14,7 @@ class VisionMissionController extends Controller
     public function index()
     {
         $visionMission = VisionMissionSection::first() ?? new VisionMissionSection();
-        
+
         return view('admin.vision-mission.index', compact('visionMission'));
     }
 
