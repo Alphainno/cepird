@@ -16,6 +16,7 @@ use App\Models\AboutIntroductionSection;
 use App\Models\VisionMissionSection;
 use App\Models\CoreValueSection;
 use App\Models\WhatWeDoSection;
+use App\Models\ProgramInitiativeSection;
 
 class LandingPageController extends Controller
 {
@@ -40,7 +41,8 @@ class LandingPageController extends Controller
         $visionMission = VisionMissionSection::getActive();
         $coreValueSection = CoreValueSection::with('coreValues')->where('is_active', true)->first();
         $whatWeDoSection = WhatWeDoSection::with('items')->where('is_active', true)->first();
-        return view('pages.about', compact('aboutHero', 'aboutIntroduction', 'focusAreaSection', 'focusAreas', 'visionMission', 'coreValueSection', 'whatWeDoSection'));
+        $programSection = ProgramInitiativeSection::with(['programs.items'])->where('is_active', true)->first();
+        return view('pages.about', compact('aboutHero', 'aboutIntroduction', 'focusAreaSection', 'focusAreas', 'visionMission', 'coreValueSection', 'whatWeDoSection', 'programSection'));
     }
 
     public function focusAreas()

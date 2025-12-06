@@ -90,3 +90,7 @@ Route::post('/admin/core-values', [App\Http\Controllers\Admin\CoreValueControlle
 // Admin What We Do Routes
 Route::get('/admin/what-we-do', [App\Http\Controllers\Admin\WhatWeDoController::class, 'index'])->name('admin.what-we-do.index');
 Route::post('/admin/what-we-do', [App\Http\Controllers\Admin\WhatWeDoController::class, 'update'])->name('admin.what-we-do.store');
+
+// Admin Program Initiatives Routes
+Route::get('/admin/program-initiatives', [App\Http\Controllers\Admin\ProgramInitiativeController::class, 'index'])->name('admin.program-initiatives.index');
+Route::post('/admin/program-initiatives', [App\Http\Controllers\Admin\ProgramInitiativeController::class, 'update'])->name('admin.program-initiatives.store');

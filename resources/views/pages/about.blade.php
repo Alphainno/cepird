@@ -306,112 +306,108 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
             <div class="inline-block px-4 py-1 bg-blue-50 rounded-full mb-4">
-                <span class="text-blue-900 text-sm font-semibold">Our Initiatives</span>
+                <span class="text-blue-900 text-sm font-semibold">{{ $programSection->badge_text ?? 'Our Initiatives' }}</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Programs & Initiatives</h2>
-            <p class="text-lg text-slate-600">Transforming ideas into impact through structured programs</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{{ $programSection->title ?? 'Programs & Initiatives' }}</h2>
+            <p class="text-lg text-slate-600">{{ $programSection->subtitle ?? 'Transforming ideas into impact through structured programs' }}</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-1">
-                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6">
-                    📘
+            @if($programSection && $programSection->programs && $programSection->programs->count() > 0)
+                @foreach($programSection->programs as $program)
+                    @php
+                        $colorClasses = [
+                            'blue' => ['bg' => 'bg-blue-50', 'border' => 'hover:border-blue-200', 'bullet' => 'text-blue-500'],
+                            'teal' => ['bg' => 'bg-teal-50', 'border' => 'hover:border-teal-200', 'bullet' => 'text-teal-500'],
+                            'amber' => ['bg' => 'bg-amber-50', 'border' => 'hover:border-amber-200', 'bullet' => 'text-amber-500'],
+                        ];
+                        $color = $colorClasses[$program->color] ?? $colorClasses['blue'];
+                    @endphp
+                    <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 {{ $color['border'] }} transform hover:-translate-y-1">
+                        <div class="w-14 h-14 {{ $color['bg'] }} rounded-xl flex items-center justify-center text-3xl mb-6">
+                            {{ $program->icon }}
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-5">{{ $program->title }}</h3>
+                        <ul class="space-y-3 text-slate-600">
+                            @foreach($program->items as $item)
+                                <li class="flex items-start">
+                                    <span class="{{ $color['bullet'] }} mr-2">•</span>
+                                    <span>{{ $item->text }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
+            @else
+                <!-- Default fallback cards -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6">
+                        📘
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-5">Research & Publications</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>Annual Bangladesh Entrepreneurship Policy Report</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>Startup Ecosystem Index</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-5">Research & Publications</h3>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Annual Bangladesh Entrepreneurship Policy Report</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Startup Ecosystem Index</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Digital Transformation Study</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Women Entrepreneurship Report</span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-1">
-                <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-3xl mb-6">
-                    🎓
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-3xl mb-6">
+                        🎓
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-5">Training & Certification</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-teal-500 mr-2">•</span>
+                            <span>Entrepreneurship & Business Model Masterclass</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-500 mr-2">•</span>
+                            <span>Digital Innovation Certificate</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-5">Training & Certification</h3>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <span>Entrepreneurship & Business Model Masterclass</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <span>Digital Innovation Certificate</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <span>AI & Future Skills Program</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <span>Startup Legal Framework Training</span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200 transform hover:-translate-y-1">
-                <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl mb-6">
-                    💡
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-amber-200 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl mb-6">
+                        💡
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-5">Innovation Programs</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">•</span>
+                            <span>CEPIRD Innovation Lab</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-2">•</span>
+                            <span>Youth Startup Accelerator</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-5">Innovation Programs</h3>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start">
-                        <span class="text-amber-500 mr-2">•</span>
-                        <span>CEPIRD Innovation Lab</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-amber-500 mr-2">•</span>
-                        <span>Youth Startup Accelerator</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-amber-500 mr-2">•</span>
-                        <span>National Policy Hackathon</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-amber-500 mr-2">•</span>
-                        <span>Research Fellowship</span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-1">
-                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6">
-                    📣
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-blue-200 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6">
+                        📣
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-5">Conferences & Events</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>Entrepreneurship Policy Summit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span>Innovation Leadership Forum</span>
+                        </li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-5">Conferences & Events</h3>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Entrepreneurship Policy Summit</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Innovation Leadership Forum</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Digital Economy Conference</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">•</span>
-                        <span>Women in Innovation Expo</span>
-                    </li>
-                </ul>
-            </div>
+            @endif
         </div>
     </div>
 </section>
