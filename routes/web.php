@@ -68,3 +68,8 @@ Route::post('/admin/founder', [FounderController::class, 'update'])->name('admin
 Route::get('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'index'])->name('admin.cta.index');
 Route::put('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.update');
 Route::post('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.store');
+
+// Admin About Hero Routes
+Route::get('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'index'])->name('admin.about.hero.index');
+Route::put('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'update'])->name('admin.about.hero.update');
+Route::post('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'update'])->name('admin.about.hero.store');

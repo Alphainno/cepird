@@ -16,16 +16,15 @@
                 <span class="text-blue-900 text-sm font-medium">About Us</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-slate-900">
-                Center for Entrepreneurial<br>
-                <span class="bg-gradient-to-r from-blue-900 to-teal-600 bg-clip-text text-transparent">Policy, Innovation, Research & Development</span>
+                {{ $aboutHero->title ?? 'Center for Entrepreneurial Policy, Innovation, Research & Development' }}
             </h1>
             <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed font-light">
-                Shaping the future of entrepreneurship and socio-economic transformation in Bangladesh
+                {{ $aboutHero->subtitle ?? 'Shaping the future of entrepreneurship and socio-economic transformation in Bangladesh' }}
             </p>
             <div class="flex flex-wrap justify-center gap-3">
-                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Empowering Ideas</span>
-                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Influencing Policy</span>
-                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">Impacting the Future</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">{{ $aboutHero->tag1 ?? 'Empowering Ideas' }}</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">{{ $aboutHero->tag2 ?? 'Influencing Policy' }}</span>
+                <span class="px-6 py-2.5 bg-blue-50 rounded-full border border-blue-200 text-sm font-medium text-slate-700 hover:bg-blue-100 transition-all">{{ $aboutHero->tag3 ?? 'Impacting the Future' }}</span>
             </div>
         </div>
     </div>
