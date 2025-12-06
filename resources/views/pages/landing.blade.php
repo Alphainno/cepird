@@ -8,9 +8,9 @@
 
     @include('landingSection.about', ['aboutSection' => $aboutSection])
 
-    @include('landingSection.focus-areas')
+    @include('landingSection.focus-areas', ['focusAreaSection' => $focusAreaSection])
 
-    @include('landingSection.vision')
+    @include('landingSection.vision', ['visionSection' => $visionSection])
 
     @include('landingSection.programs')
 
