@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AboutSection extends Model
 {
@@ -10,18 +11,6 @@ class AboutSection extends Model
         'main_title',
         'subtitle',
         'is_active',
-        'pillar1_title',
-        'pillar1_description',
-        'pillar1_icon',
-        'pillar2_title',
-        'pillar2_description',
-        'pillar2_icon',
-        'pillar3_title',
-        'pillar3_description',
-        'pillar3_icon',
-        'pillar4_title',
-        'pillar4_description',
-        'pillar4_icon',
     ];
 
     protected $casts = [
@@ -34,5 +23,21 @@ class AboutSection extends Model
     public static function getActive()
     {
         return self::where('is_active', true)->first();
+    }
+
+    /**
+     * Get the pillars for the about section
+     */
+    public function pillars(): HasMany
+    {
+        return $this->hasMany(Pillar::class)->active()->ordered();
+    }
+
+    /**
+     * Get all pillars including inactive ones
+     */
+    public function allPillars(): HasMany
+    {
+        return $this->hasMany(Pillar::class)->ordered();
     }
 }

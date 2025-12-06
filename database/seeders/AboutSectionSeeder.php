@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AboutSection;
+use App\Models\Pillar;
 
 class AboutSectionSeeder extends Seeder
 {
@@ -13,22 +14,42 @@ class AboutSectionSeeder extends Seeder
      */
     public function run(): void
     {
-        AboutSection::create([
+        $aboutSection = AboutSection::create([
             'main_title' => 'Accelerating a Knowledge-Driven Economy',
             'subtitle' => 'CEPIRD serves as the premier think-tank and execution hub for modernizing the entrepreneurial landscape.',
             'is_active' => true,
-            'pillar1_title' => 'Policy Research',
-            'pillar1_description' => 'Data-driven insights to shape national frameworks.',
-            'pillar1_icon' => 'file-text',
-            'pillar2_title' => 'Innovation',
-            'pillar2_description' => 'Fostering creative solutions for systemic challenges.',
-            'pillar2_icon' => 'lightbulb',
-            'pillar3_title' => 'Entrepreneurship',
-            'pillar3_description' => 'Supporting startups from ideation to scale.',
-            'pillar3_icon' => 'trending-up',
-            'pillar4_title' => 'Skill Development',
-            'pillar4_description' => 'Equipping the workforce for the 4th Industrial Revolution.',
-            'pillar4_icon' => 'users',
         ]);
+
+        // Create pillars
+        $pillars = [
+            [
+                'title' => 'Policy Research',
+                'description' => 'Data-driven insights to shape national frameworks.',
+                'icon' => 'file-text',
+                'sort_order' => 1,
+            ],
+            [
+                'title' => 'Innovation',
+                'description' => 'Fostering creative solutions for systemic challenges.',
+                'icon' => 'lightbulb',
+                'sort_order' => 2,
+            ],
+            [
+                'title' => 'Entrepreneurship',
+                'description' => 'Supporting startups from ideation to scale.',
+                'icon' => 'trending-up',
+                'sort_order' => 3,
+            ],
+            [
+                'title' => 'Skill Development',
+                'description' => 'Equipping the workforce for the 4th Industrial Revolution.',
+                'icon' => 'users',
+                'sort_order' => 4,
+            ],
+        ];
+
+        foreach ($pillars as $pillarData) {
+            $aboutSection->pillars()->create($pillarData);
+        }
     }
 }

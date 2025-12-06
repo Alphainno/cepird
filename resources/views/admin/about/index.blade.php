@@ -19,7 +19,7 @@
             <p class="text-sm text-slate-600 mt-1">Update the content displayed in the about section of your landing page</p>
         </div>
 
-        <form action="{{ route('admin.about.store') }}" method="POST" class="p-6 space-y-6">
+        <form action="{{ route('admin.about.store') }}" method="POST" class="p-6 space-y-6" id="aboutForm">
             @csrf
 
             <!-- Main Title -->
@@ -47,138 +47,111 @@
 
             <!-- Pillars -->
             <div class="space-y-6">
-                <h3 class="text-lg font-semibold text-slate-900">Mission Pillars</h3>
-
-                <!-- Pillar 1 -->
-                <div class="bg-slate-50 p-4 rounded-sm">
-                    <h4 class="text-md font-medium text-slate-800 mb-3">Pillar 1</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="pillar1_title" class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
-                            <input type="text" name="pillar1_title" id="pillar1_title"
-                                value="{{ old('pillar1_title', $aboutSection->pillar1_title) }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., Policy Research" required>
-                            @error('pillar1_title')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="pillar1_icon" class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                            <input type="text" name="pillar1_icon" id="pillar1_icon"
-                                value="{{ old('pillar1_icon', $aboutSection->pillar1_icon ?? 'file-text') }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., file-text">
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <label for="pillar1_description" class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                        <textarea name="pillar1_description" id="pillar1_description" rows="2"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter pillar description..." required>{{ old('pillar1_description', $aboutSection->pillar1_description) }}</textarea>
-                        @error('pillar1_description')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-slate-900">Mission Pillars</h3>
+                    <button type="button" id="addPillarBtn"
+                        class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-sm hover:bg-blue-700 transition-colors">
+                        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Add Pillar
+                    </button>
                 </div>
 
-                <!-- Pillar 2 -->
-                <div class="bg-slate-50 p-4 rounded-sm">
-                    <h4 class="text-md font-medium text-slate-800 mb-3">Pillar 2</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="pillar2_title" class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
-                            <input type="text" name="pillar2_title" id="pillar2_title"
-                                value="{{ old('pillar2_title', $aboutSection->pillar2_title) }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., Innovation" required>
-                            @error('pillar2_title')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="pillar2_icon" class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                            <input type="text" name="pillar2_icon" id="pillar2_icon"
-                                value="{{ old('pillar2_icon', $aboutSection->pillar2_icon ?? 'lightbulb') }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., lightbulb">
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <label for="pillar2_description" class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                        <textarea name="pillar2_description" id="pillar2_description" rows="2"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter pillar description..." required>{{ old('pillar2_description', $aboutSection->pillar2_description) }}</textarea>
-                        @error('pillar2_description')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
+                <div id="pillarsContainer" class="space-y-4">
+                    @if($aboutSection->allPillars->count() > 0)
+                        @foreach($aboutSection->allPillars as $index => $pillar)
+                            <div class="pillar-item bg-slate-50 p-4 rounded-sm border border-slate-200" data-pillar-id="{{ $pillar->id }}">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="text-md font-medium text-slate-800">Pillar {{ $index + 1 }}</h4>
+                                    <div class="flex items-center space-x-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="pillars[{{ $index }}][is_active]"
+                                                {{ $pillar->is_active ? 'checked' : '' }}
+                                                class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">
+                                            <span class="ml-2 text-sm text-slate-600">Active</span>
+                                        </label>
+                                        <button type="button" class="removePillarBtn text-red-600 hover:text-red-800 p-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
 
-                <!-- Pillar 3 -->
-                <div class="bg-slate-50 p-4 rounded-sm">
-                    <h4 class="text-md font-medium text-slate-800 mb-3">Pillar 3</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="pillar3_title" class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
-                            <input type="text" name="pillar3_title" id="pillar3_title"
-                                value="{{ old('pillar3_title', $aboutSection->pillar3_title) }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., Entrepreneurship" required>
-                            @error('pillar3_title')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="pillar3_icon" class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                            <input type="text" name="pillar3_icon" id="pillar3_icon"
-                                value="{{ old('pillar3_icon', $aboutSection->pillar3_icon ?? 'trending-up') }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., trending-up">
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <label for="pillar3_description" class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                        <textarea name="pillar3_description" id="pillar3_description" rows="2"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter pillar description..." required>{{ old('pillar3_description', $aboutSection->pillar3_description) }}</textarea>
-                        @error('pillar3_description')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
+                                <input type="hidden" name="pillars[{{ $index }}][id]" value="{{ $pillar->id }}">
 
-                <!-- Pillar 4 -->
-                <div class="bg-slate-50 p-4 rounded-sm">
-                    <h4 class="text-md font-medium text-slate-800 mb-3">Pillar 4</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="pillar4_title" class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
-                            <input type="text" name="pillar4_title" id="pillar4_title"
-                                value="{{ old('pillar4_title', $aboutSection->pillar4_title) }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., Skill Development" required>
-                            @error('pillar4_title')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
+                                        <input type="text" name="pillars[{{ $index }}][title]"
+                                            value="{{ old('pillars.' . $index . '.title', $pillar->title) }}"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="e.g., Policy Research" required>
+                                        @error('pillars.' . $index . '.title')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
+                                        <input type="text" name="pillars[{{ $index }}][icon]"
+                                            value="{{ old('pillars.' . $index . '.icon', $pillar->icon) }}"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="e.g., file-text">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
+                                    <textarea name="pillars[{{ $index }}][description]" rows="2"
+                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Enter pillar description..." required>{{ old('pillars.' . $index . '.description', $pillar->description) }}</textarea>
+                                    @error('pillars.' . $index . '.description')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <!-- Default pillar template -->
+                        <div class="pillar-item bg-slate-50 p-4 rounded-sm border border-slate-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-md font-medium text-slate-800">Pillar 1</h4>
+                                <div class="flex items-center space-x-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="pillars[0][is_active]" checked
+                                            class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">
+                                        <span class="ml-2 text-sm text-slate-600">Active</span>
+                                    </label>
+                                    <button type="button" class="removePillarBtn text-red-600 hover:text-red-800 p-1" style="display: none;">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
+                                    <input type="text" name="pillars[0][title]"
+                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="e.g., Policy Research" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
+                                    <input type="text" name="pillars[0][icon]" value="file-text"
+                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="e.g., file-text">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
+                                <textarea name="pillars[0][description]" rows="2"
+                                    class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Enter pillar description..." required></textarea>
+                            </div>
                         </div>
-                        <div>
-                            <label for="pillar4_icon" class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
-                            <input type="text" name="pillar4_icon" id="pillar4_icon"
-                                value="{{ old('pillar4_icon', $aboutSection->pillar4_icon ?? 'users') }}"
-                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g., users">
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <label for="pillar4_description" class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
-                        <textarea name="pillar4_description" id="pillar4_description" rows="2"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter pillar description..." required>{{ old('pillar4_description', $aboutSection->pillar4_description) }}</textarea>
-                        @error('pillar4_description')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                    </div>
+                    @endif
                 </div>
             </div>
 
@@ -200,4 +173,92 @@
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let pillarIndex = {{ $aboutSection->allPillars->count() ?: 1 }};
+
+    // Add new pillar
+    document.getElementById('addPillarBtn').addEventListener('click', function() {
+        addNewPillar();
+    });
+
+    // Remove pillar
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.removePillarBtn')) {
+            e.target.closest('.pillar-item').remove();
+            updatePillarNumbers();
+        }
+    });
+
+    function addNewPillar() {
+        const container = document.getElementById('pillarsContainer');
+        const pillarCount = container.querySelectorAll('.pillar-item').length;
+
+        const pillarHtml = `
+            <div class="pillar-item bg-slate-50 p-4 rounded-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-md font-medium text-slate-800">Pillar ${pillarCount + 1}</h4>
+                    <div class="flex items-center space-x-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="pillars[${pillarIndex}][is_active]" checked
+                                class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">
+                            <span class="ml-2 text-sm text-slate-600">Active</span>
+                        </label>
+                        <button type="button" class="removePillarBtn text-red-600 hover:text-red-800 p-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
+                        <input type="text" name="pillars[${pillarIndex}][title]"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="e.g., Policy Research" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Icon</label>
+                        <input type="text" name="pillars[${pillarIndex}][icon]" value="file-text"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="e.g., file-text">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Description <span class="text-red-500">*</span></label>
+                    <textarea name="pillars[${pillarIndex}][description]" rows="2"
+                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Enter pillar description..." required></textarea>
+                </div>
+            </div>
+        `;
+
+        container.insertAdjacentHTML('beforeend', pillarHtml);
+        pillarIndex++;
+        updatePillarNumbers();
+    }
+
+    function updatePillarNumbers() {
+        const pillars = document.querySelectorAll('.pillar-item');
+        pillars.forEach((pillar, index) => {
+            const title = pillar.querySelector('h4');
+            title.textContent = `Pillar ${index + 1}`;
+
+            // Show remove button only if there are more than 1 pillars
+            const removeBtn = pillar.querySelector('.removePillarBtn');
+            if (pillars.length > 1) {
+                removeBtn.style.display = 'block';
+            } else {
+                removeBtn.style.display = 'none';
+            }
+        });
+    }
+
+    // Initialize pillar numbers on page load
+    updatePillarNumbers();
+});
+</script>
 @endsection

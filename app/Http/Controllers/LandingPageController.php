@@ -11,7 +11,7 @@ class LandingPageController extends Controller
     public function index()
     {
         $heroSection = HeroSection::getActive();
-        $aboutSection = AboutSection::getActive();
+        $aboutSection = AboutSection::with('pillars')->where('is_active', true)->first();
         return view('pages.landing', compact('heroSection', 'aboutSection'));
     }
 
