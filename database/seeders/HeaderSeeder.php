@@ -26,32 +26,32 @@ class HeaderSeeder extends Seeder
         $menuItems = [
             [
                 'title' => 'Home',
-                'route_name' => 'home',
+                'url' => '/',
                 'sort_order' => 1,
             ],
             [
                 'title' => 'About',
-                'route_name' => 'about',
+                'url' => '/about',
                 'sort_order' => 2,
             ],
             [
                 'title' => 'Focus Areas',
-                'route_name' => 'focus-areas',
+                'url' => '/focus-areas',
                 'sort_order' => 3,
             ],
             [
                 'title' => 'Programs',
-                'route_name' => 'programs',
+                'url' => '/programs',
                 'sort_order' => 4,
             ],
             [
                 'title' => 'Founder',
-                'route_name' => 'founder',
+                'url' => '/founder',
                 'sort_order' => 5,
             ],
             [
                 'title' => 'Contact Us',
-                'route_name' => 'contact',
+                'url' => '/contact',
                 'sort_order' => 6,
             ],
         ];

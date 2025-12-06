@@ -30,18 +30,26 @@
                     <!-- Logo -->
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Logo</label>
-                        <div class="flex items-center gap-4">
-                            @if($headerSetting->logo)
-                                <div class="relative">
-                                    <img src="{{ asset('storage/' . $headerSetting->logo) }}" alt="Logo" class="h-16 w-auto object-contain border border-slate-200 rounded-sm p-2">
-                                    <label class="flex items-center mt-2">
-                                        <input type="checkbox" name="remove_logo" class="w-4 h-4 text-red-600 border-slate-300 rounded focus:ring-red-500">
-                                        <span class="ml-2 text-sm text-red-600">Remove logo</span>
-                                    </label>
+                        <div class="space-y-4">
+                            <!-- Logo Preview -->
+                            <div id="logoPreviewContainer" class="@if(!$headerSetting->logo) hidden @endif">
+                                <div class="relative inline-block">
+                                    <img id="logoPreview" 
+                                        src="{{ $headerSetting->logo ? asset('storage/' . $headerSetting->logo) : '' }}" 
+                                        alt="Logo Preview" 
+                                        class="h-20 w-auto object-contain border border-slate-200 rounded-sm p-2 bg-slate-50">
                                 </div>
-                            @endif
-                            <div class="flex-1">
-                                <input type="file" name="logo" accept="image/*"
+                                @if($headerSetting->logo)
+                                <label class="flex items-center mt-2">
+                                    <input type="checkbox" name="remove_logo" id="removeLogo" class="w-4 h-4 text-red-600 border-slate-300 rounded focus:ring-red-500">
+                                    <span class="ml-2 text-sm text-red-600">Remove logo</span>
+                                </label>
+                                @endif
+                            </div>
+                            
+                            <!-- File Input -->
+                            <div>
+                                <input type="file" name="logo" id="logoInput" accept="image/*"
                                     class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                 <p class="text-xs text-slate-500 mt-1">Recommended: PNG or SVG, max 2MB</p>
                             </div>
@@ -84,8 +92,8 @@
 
                 <div class="bg-slate-50 p-4 rounded-sm mb-4">
                     <p class="text-sm text-slate-600">
-                        <strong>Route Names:</strong> Use Laravel route names like <code class="bg-slate-200 px-1 rounded">home</code>, <code class="bg-slate-200 px-1 rounded">about</code>, <code class="bg-slate-200 px-1 rounded">contact</code>, etc.<br>
-                        <strong>Custom URL:</strong> For external links, leave route name empty and enter the full URL.
+                        <strong>Link URL:</strong> Enter the URL path for each menu item. Use <code class="bg-slate-200 px-1 rounded">/</code> for home, <code class="bg-slate-200 px-1 rounded">/about</code> for about page, etc.<br>
+                        For external links, enter the full URL like <code class="bg-slate-200 px-1 rounded">https://example.com</code>
                     </p>
                 </div>
 
@@ -112,7 +120,7 @@
 
                                 <input type="hidden" name="menu_items[{{ $index }}][id]" value="{{ $menuItem->id }}">
 
-                                <div class="grid md:grid-cols-3 gap-4">
+                                <div class="grid md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                                         <input type="text" name="menu_items[{{ $index }}][title]"
@@ -121,18 +129,11 @@
                                             placeholder="e.g., Home" required>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-2">Route Name</label>
-                                        <input type="text" name="menu_items[{{ $index }}][route_name]"
-                                            value="{{ old('menu_items.' . $index . '.route_name', $menuItem->route_name) }}"
-                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                            placeholder="e.g., home">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-2">Custom URL</label>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Link URL <span class="text-red-500">*</span></label>
                                         <input type="text" name="menu_items[{{ $index }}][url]"
-                                            value="{{ old('menu_items.' . $index . '.url', $menuItem->getRawOriginal('url')) }}"
+                                            value="{{ old('menu_items.' . $index . '.url', $menuItem->url) }}"
                                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                            placeholder="e.g., https://example.com">
+                                            placeholder="e.g., / or /about" required>
                                     </div>
                                 </div>
                                 <div class="mt-3">
@@ -164,7 +165,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid md:grid-cols-3 gap-4">
+                            <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                                     <input type="text" name="menu_items[0][title]" value="Home"
@@ -172,16 +173,10 @@
                                         placeholder="e.g., Home" required>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Route Name</label>
-                                    <input type="text" name="menu_items[0][route_name]" value="home"
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Link URL <span class="text-red-500">*</span></label>
+                                    <input type="text" name="menu_items[0][url]" value="/"
                                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="e.g., home">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Custom URL</label>
-                                    <input type="text" name="menu_items[0][url]"
-                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="e.g., https://example.com">
+                                        placeholder="e.g., / or /about" required>
                                 </div>
                             </div>
                             <div class="mt-3">
@@ -261,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Title <span class="text-red-500">*</span></label>
                         <input type="text" name="menu_items[${menuItemIndex}][title]"
@@ -269,16 +264,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             placeholder="e.g., Home" required>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Route Name</label>
-                        <input type="text" name="menu_items[${menuItemIndex}][route_name]"
-                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="e.g., home">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Custom URL</label>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Link URL <span class="text-red-500">*</span></label>
                         <input type="text" name="menu_items[${menuItemIndex}][url]"
                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="e.g., https://example.com">
+                            placeholder="e.g., / or /about" required>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -314,6 +303,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize menu item numbers on page load
     updateMenuItemNumbers();
+
+    // Logo Preview functionality
+    const logoInput = document.getElementById('logoInput');
+    const logoPreview = document.getElementById('logoPreview');
+    const logoPreviewContainer = document.getElementById('logoPreviewContainer');
+    const removeLogo = document.getElementById('removeLogo');
+
+    if (logoInput) {
+        logoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    logoPreview.src = e.target.result;
+                    logoPreviewContainer.classList.remove('hidden');
+                    // Uncheck remove logo if a new file is selected
+                    if (removeLogo) {
+                        removeLogo.checked = false;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Handle remove logo checkbox
+    if (removeLogo) {
+        removeLogo.addEventListener('change', function() {
+            if (this.checked) {
+                logoPreview.style.opacity = '0.3';
+            } else {
+                logoPreview.style.opacity = '1';
+            }
+        });
+    }
 });
 </script>
 @endsection

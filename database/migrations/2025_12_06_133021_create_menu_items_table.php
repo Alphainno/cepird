@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('url')->nullable();
-            $table->string('route_name')->nullable();
+            $table->string('url');
             $table->boolean('open_in_new_tab')->default(false);
             $table->integer('sort_order')->default(0);
             $table->boolean('is_active')->default(true);

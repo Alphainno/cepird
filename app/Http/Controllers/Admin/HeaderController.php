@@ -42,8 +42,7 @@ class HeaderController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'menu_items' => 'required|array|min:1',
             'menu_items.*.title' => 'required|string|max:255',
-            'menu_items.*.route_name' => 'nullable|string|max:255',
-            'menu_items.*.url' => 'nullable|string|max:500',
+            'menu_items.*.url' => 'required|string|max:500',
         ]);
 
         // Get or create header settings
@@ -87,8 +86,7 @@ class HeaderController extends Controller
 
             $itemToSave = [
                 'title' => $itemData['title'],
-                'route_name' => $itemData['route_name'] ?? null,
-                'url' => $itemData['url'] ?? null,
+                'url' => $itemData['url'],
                 'open_in_new_tab' => $openInNewTab,
                 'sort_order' => $index + 1,
                 'is_active' => $itemIsActive,
