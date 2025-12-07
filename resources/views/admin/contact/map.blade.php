@@ -20,9 +20,9 @@
                     <label for="section_badge" class="block text-sm font-semibold text-slate-700 mb-2">
                         Section Badge *
                     </label>
-                    <input type="text" 
-                           id="section_badge" 
-                           name="section_badge" 
+                    <input type="text"
+                           id="section_badge"
+                           name="section_badge"
                            value="{{ old('section_badge', $mapSection->section_badge ?? 'Our Location') }}"
                            required
                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -37,9 +37,9 @@
                     <label for="section_title" class="block text-sm font-semibold text-slate-700 mb-2">
                         Section Title *
                     </label>
-                    <input type="text" 
-                           id="section_title" 
-                           name="section_title" 
+                    <input type="text"
+                           id="section_title"
+                           name="section_title"
                            value="{{ old('section_title', $mapSection->section_title ?? 'Find Us Here') }}"
                            required
                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -54,8 +54,8 @@
                     <label for="section_description" class="block text-sm font-semibold text-slate-700 mb-2">
                         Section Description
                     </label>
-                    <textarea id="section_description" 
-                              name="section_description" 
+                    <textarea id="section_description"
+                              name="section_description"
                               rows="3"
                               class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                               placeholder="Visit our office in Dhaka to meet our team and discuss opportunities in person.">{{ old('section_description', $mapSection->section_description ?? '') }}</textarea>
@@ -69,8 +69,8 @@
                     <label for="map_embed_url" class="block text-sm font-semibold text-slate-700 mb-2">
                         Google Maps Embed URL *
                     </label>
-                    <textarea id="map_embed_url" 
-                              name="map_embed_url" 
+                    <textarea id="map_embed_url"
+                              name="map_embed_url"
                               rows="4"
                               required
                               class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
@@ -106,9 +106,9 @@
 
                 <!-- Active Status -->
                 <div class="flex items-center">
-                    <input type="checkbox" 
-                           id="is_active" 
-                           name="is_active" 
+                    <input type="checkbox"
+                           id="is_active"
+                           name="is_active"
                            value="1"
                            {{ old('is_active', $mapSection->is_active ?? true) ? 'checked' : '' }}
                            class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">

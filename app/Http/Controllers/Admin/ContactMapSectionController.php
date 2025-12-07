@@ -11,7 +11,7 @@ class ContactMapSectionController extends Controller
     public function index()
     {
         $mapSection = ContactMapSection::first();
-        
+
         return view('admin.contact.map', compact('mapSection'));
     }
 
@@ -26,7 +26,7 @@ class ContactMapSectionController extends Controller
         ]);
 
         $mapSection = ContactMapSection::first();
-        
+
         if (!$mapSection) {
             $mapSection = new ContactMapSection();
         }
