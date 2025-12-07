@@ -236,16 +236,16 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Location</span>
-            <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-4">Find Us Here</h2>
+            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ ($contactMap && $contactMap->section_badge) ? $contactMap->section_badge : 'Our Location' }}</span>
+            <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-4">{{ ($contactMap && $contactMap->section_title) ? $contactMap->section_title : 'Find Us Here' }}</h2>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                Visit our office in Dhaka to meet our team and discuss opportunities in person.
+                {{ ($contactMap && $contactMap->section_description) ? $contactMap->section_description : 'Visit our office in Dhaka to meet our team and discuss opportunities in person.' }}
             </p>
         </div>
 
         <div class="bg-slate-100 rounded-sm overflow-hidden shadow-lg">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.2089949619437!2d90.38283287536858!3d23.751619078660695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b0c3e0e6a5%3A0x5f9b5a9b0c8b7a9a!2sLake%20Circus%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1701700000000!5m2!1sen!2sbd"
+                src="{{ ($contactMap && $contactMap->map_embed_url) ? $contactMap->map_embed_url : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.2089949619437!2d90.38283287536858!3d23.751619078660695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b0c3e0e6a5%3A0x5f9b5a9b0c8b7a9a!2sLake%20Circus%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1701700000000!5m2!1sen!2sbd' }}"
                 width="100%"
                 height="450"
                 style="border:0;"
@@ -258,7 +258,7 @@
     </div>
 </section>
 
-<!-- Quick Contact Options -->
+{{-- <!-- Quick Contact Options -->
 <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -316,7 +316,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- CTA Section -->
 <section class="py-20 bg-white">

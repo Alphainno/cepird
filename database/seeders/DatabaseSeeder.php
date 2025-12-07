@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
             FocusAreaCtaSectionSeeder::class,
             ContactHeroSectionSeeder::class,
             ContactInfoSectionSeeder::class,
+            ContactMapSectionSeeder::class,
         ]);
     }
 }

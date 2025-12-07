@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ImpactMetricController;
 use App\Http\Controllers\Admin\ImpactSectionController;
 use App\Http\Controllers\Admin\ContactHeroSectionController;
 use App\Http\Controllers\Admin\ContactInfoSectionController;
+use App\Http\Controllers\Admin\ContactMapSectionController;
 use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
@@ -112,6 +113,11 @@ Route::post('/admin/contact-hero', [ContactHeroSectionController::class, 'update
 Route::get('/admin/contact-info', [ContactInfoSectionController::class, 'index'])->name('admin.contact-info.index');
 Route::put('/admin/contact-info', [ContactInfoSectionController::class, 'update'])->name('admin.contact-info.update');
 Route::post('/admin/contact-info', [ContactInfoSectionController::class, 'update'])->name('admin.contact-info.store');
+
+// Admin Contact Map Routes
+Route::get('/admin/contact-map', [ContactMapSectionController::class, 'index'])->name('admin.contact-map.index');
+Route::put('/admin/contact-map', [ContactMapSectionController::class, 'update'])->name('admin.contact-map.update');
+Route::post('/admin/contact-map', [ContactMapSectionController::class, 'update'])->name('admin.contact-map.store');
 
 // Admin Contact Submissions Routes
 Route::get('/admin/contact/submissions', [ContactSubmissionController::class, 'index'])->name('admin.contact.submissions.index');

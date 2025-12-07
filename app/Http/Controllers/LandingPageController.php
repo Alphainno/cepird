@@ -26,6 +26,7 @@ use App\Models\ImpactMetric;
 use App\Models\FocusAreaCtaSection;
 use App\Models\ContactHeroSection;
 use App\Models\ContactInfoSection;
+use App\Models\ContactMapSection;
 
 class LandingPageController extends Controller
 {
@@ -82,6 +83,7 @@ class LandingPageController extends Controller
     {
         $contactHero = ContactHeroSection::getActive();
         $contactInfo = ContactInfoSection::getActive();
-        return view('pages.contact', compact('contactHero', 'contactInfo'));
+        $contactMap = ContactMapSection::getActive();
+        return view('pages.contact', compact('contactHero', 'contactInfo', 'contactMap'));
     }
 }
