@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeController;
 use App\Http\Controllers\Admin\ImpactMetricController;
 use App\Http\Controllers\Admin\ImpactSectionController;
+use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
@@ -71,6 +72,10 @@ Route::put('/admin/impact-metrics/{impactMetric}', [ImpactMetricController::clas
 // Admin Impact Section Routes
 Route::get('/admin/impact-section', [ImpactSectionController::class, 'index'])->name('admin.impact-section.index');
 Route::put('/admin/impact-section', [ImpactSectionController::class, 'update'])->name('admin.impact-section.update');
+
+// Admin Focus Area CTA Section Routes
+Route::get('/admin/focus-area-cta-section', [FocusAreaCtaSectionController::class, 'index'])->name('admin.focus-area-cta-section.index');
+Route::put('/admin/focus-area-cta-section', [FocusAreaCtaSectionController::class, 'update'])->name('admin.focus-area-cta-section.update');
 
 // Admin Vision Routes
 Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');

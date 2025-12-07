@@ -23,28 +23,36 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
+        User::firstOrCreate([
+            'email' => 'admin@gmail.com',
+        ], [
             'name' => 'Admin User',
             'email' => 'admin@gmail.com',
-            'password' =>Hash::make('password'), // Use bcrypt to hash the password
+            'password' => Hash::make('password'),
         ]);
 
         // Seed Hero Section
         $this->call([
             HeroSectionSeeder::class,
             AboutSectionSeeder::class,
+            AboutHeroSectionSeeder::class,
+            AboutIntroductionSectionSeeder::class,
+            VisionMissionSectionSeeder::class,
+            CoreValueSeeder::class,
+            WhatWeDoSeeder::class,
+            ProgramInitiativeSeeder::class,
             FocusAreaSeeder::class,
             VisionSectionSeeder::class,
             ProgramSeeder::class,
             FounderSeeder::class,
             CtaSectionSeeder::class,
-            AboutHeroSectionSeeder::class,
             FocusAreaHeroSectionSeeder::class,
             StrategicPillarSeeder::class,
             FocusAreaOutcomeSeeder::class,
             FocusAreaOutcomeSectionSeeder::class,
             ImpactMetricSeeder::class,
             ImpactSectionSeeder::class,
+            FocusAreaCtaSectionSeeder::class,
         ]);
     }
 }

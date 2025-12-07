@@ -119,9 +119,9 @@
                 </div>
 
                 @if($focusArea->cta_text || $focusArea->cta_link)
-                <a href="{{ $focusArea->cta_link ?? '#' }}" class="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-sm hover:bg-blue-800 transition-colors">
+                {{-- <a href="{{ $focusArea->cta_link ?? '#' }}" class="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-sm hover:bg-blue-800 transition-colors">
                     {{ $focusArea->cta_text ?? 'Learn More' }}
-                </a>
+                </a> --}}
                 @endif
             </div>
         </div>
@@ -195,23 +195,22 @@
 </section>
 
 <!-- CTA Section -->
+@if($focusAreaCtaSection)
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-gradient-to-br from-blue-900 to-teal-700 rounded-sm p-12 md:p-16 text-white text-center">
-            <h2 class="text-4xl font-bold mb-6">Join Our Focus Areas</h2>
+            <h2 class="text-4xl font-bold mb-6">{{ $focusAreaCtaSection->title }}</h2>
             <p class="text-lg text-blue-100 mb-10 max-w-3xl mx-auto">
-                Whether you're a policymaker, researcher, entrepreneur, or innovator, there's a way for you to contribute to shaping Bangladesh's entrepreneurial future.
+                {{ $focusAreaCtaSection->description }}
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#" class="px-8 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors">
-                    Get Involved
-                </a>
-                <a href="#" class="px-8 py-4 bg-blue-800 text-white font-bold rounded-sm hover:bg-blue-700 transition-colors border border-blue-600">
-                    Learn More
+            <div class="flex justify-center">
+                <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors">
+                    Contact Us
                 </a>
             </div>
         </div>
     </div>
 </section>
+@endif
 
 @endsection

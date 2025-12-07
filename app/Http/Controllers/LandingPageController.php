@@ -23,6 +23,7 @@ use App\Models\StrategicPillar;
 use App\Models\ImpactSection;
 use App\Models\FocusAreaOutcomeSection;
 use App\Models\ImpactMetric;
+use App\Models\FocusAreaCtaSection;
 
 class LandingPageController extends Controller
 {
@@ -61,7 +62,8 @@ class LandingPageController extends Controller
         $focusAreaOutcomeSection = FocusAreaOutcomeSection::active()->first();
         $impactMetrics = ImpactMetric::active()->ordered()->get();
         $impactSection = ImpactSection::active()->first();
-        return view('pages.focusarea', compact('heroSection', 'focusAreaSection', 'strategicPillars', 'focusAreas', 'focusAreaOutcomes', 'focusAreaOutcomeSection', 'impactMetrics', 'impactSection'));
+        $focusAreaCtaSection = FocusAreaCtaSection::active()->first();
+        return view('pages.focusarea', compact('heroSection', 'focusAreaSection', 'strategicPillars', 'focusAreas', 'focusAreaOutcomes', 'focusAreaOutcomeSection', 'impactMetrics', 'impactSection', 'focusAreaCtaSection'));
     }
 
     public function programs()
