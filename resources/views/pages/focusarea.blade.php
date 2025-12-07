@@ -172,8 +172,8 @@
 <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Impact</span>
-            <h2 class="text-3xl font-bold text-slate-900 mt-2">Driving Change Across Bangladesh</h2>
+            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $impactSection->badge_text ?? 'Our Impact' }}</span>
+            <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ $impactSection->title ?? 'Driving Change Across Bangladesh' }}</h2>
         </div>
 
         <div class="grid md:grid-cols-4 gap-6">

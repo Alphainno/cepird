@@ -58,6 +58,7 @@
                 <a href="{{ route('admin.focus-area-outcome-section.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Outcome Section</a>
                 <a href="{{ route('admin.focus-area-outcomes.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Key Outcomes</a>
                 <a href="{{ route('admin.impact-metrics.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Impact Metrics</a>
+                <a href="{{ route('admin.impact-section.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Impact Section</a>
                 <a href="{{ route('admin.strategic-pillars.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Strategic Pillars</a>
             </div>
         </div>

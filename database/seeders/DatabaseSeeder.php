@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
             FocusAreaOutcomeSeeder::class,
             FocusAreaOutcomeSectionSeeder::class,
             ImpactMetricSeeder::class,
+            ImpactSectionSeeder::class,
         ]);
     }
 }

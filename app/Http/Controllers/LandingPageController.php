@@ -20,8 +20,9 @@ use App\Models\WhatWeDoSection;
 use App\Models\ProgramInitiativeSection;
 use App\Models\FocusAreaOutcome;
 use App\Models\StrategicPillar;
-use App\Models\ImpactMetric;
+use App\Models\ImpactSection;
 use App\Models\FocusAreaOutcomeSection;
+use App\Models\ImpactMetric;
 
 class LandingPageController extends Controller
 {
@@ -59,7 +60,8 @@ class LandingPageController extends Controller
         $focusAreaOutcomes = FocusAreaOutcome::active()->ordered()->get();
         $focusAreaOutcomeSection = FocusAreaOutcomeSection::active()->first();
         $impactMetrics = ImpactMetric::active()->ordered()->get();
-        return view('pages.focusarea', compact('heroSection', 'focusAreaSection', 'strategicPillars', 'focusAreas', 'focusAreaOutcomes', 'focusAreaOutcomeSection', 'impactMetrics'));
+        $impactSection = ImpactSection::active()->first();
+        return view('pages.focusarea', compact('heroSection', 'focusAreaSection', 'strategicPillars', 'focusAreas', 'focusAreaOutcomes', 'focusAreaOutcomeSection', 'impactMetrics', 'impactSection'));
     }
 
     public function programs()

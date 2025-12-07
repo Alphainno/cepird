@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeController;
 use App\Http\Controllers\Admin\ImpactMetricController;
+use App\Http\Controllers\Admin\ImpactSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
@@ -66,6 +67,10 @@ Route::put('/admin/focus-area-outcome-section', [FocusAreaOutcomeSectionControll
 Route::get('/admin/impact-metrics', [ImpactMetricController::class, 'index'])->name('admin.impact-metrics.index');
 Route::post('/admin/impact-metrics', [ImpactMetricController::class, 'store'])->name('admin.impact-metrics.store');
 Route::put('/admin/impact-metrics/{impactMetric}', [ImpactMetricController::class, 'update'])->name('admin.impact-metrics.update');
+
+// Admin Impact Section Routes
+Route::get('/admin/impact-section', [ImpactSectionController::class, 'index'])->name('admin.impact-section.index');
+Route::put('/admin/impact-section', [ImpactSectionController::class, 'update'])->name('admin.impact-section.update');
 
 // Admin Vision Routes
 Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');
