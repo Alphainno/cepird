@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\FocusAreaController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\FounderController;
+use App\Http\Controllers\Admin\FocusAreaOutcomeController;
+use App\Http\Controllers\Admin\ImpactMetricController;
+use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
 
@@ -49,6 +52,20 @@ Route::get('/admin/focus-areas', [FocusAreaController::class, 'index'])->name('a
 Route::put('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.update');
 Route::post('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.store');
 Route::put('/admin/focus-areas/{focusArea}', [FocusAreaController::class, 'updateFocusArea'])->name('admin.focus-areas.update-focus-area');
+
+// Admin Focus Area Outcomes Routes
+Route::get('/admin/focus-area-outcomes', [FocusAreaOutcomeController::class, 'index'])->name('admin.focus-area-outcomes.index');
+Route::post('/admin/focus-area-outcomes', [FocusAreaOutcomeController::class, 'store'])->name('admin.focus-area-outcomes.store');
+Route::put('/admin/focus-area-outcomes/{focusAreaOutcome}', [FocusAreaOutcomeController::class, 'update'])->name('admin.focus-area-outcomes.update');
+
+// Admin Focus Area Outcome Section Routes
+Route::get('/admin/focus-area-outcome-section', [FocusAreaOutcomeSectionController::class, 'index'])->name('admin.focus-area-outcome-section.index');
+Route::put('/admin/focus-area-outcome-section', [FocusAreaOutcomeSectionController::class, 'update'])->name('admin.focus-area-outcome-section.update');
+
+// Admin Impact Metrics Routes
+Route::get('/admin/impact-metrics', [ImpactMetricController::class, 'index'])->name('admin.impact-metrics.index');
+Route::post('/admin/impact-metrics', [ImpactMetricController::class, 'store'])->name('admin.impact-metrics.store');
+Route::put('/admin/impact-metrics/{impactMetric}', [ImpactMetricController::class, 'update'])->name('admin.impact-metrics.update');
 
 // Admin Vision Routes
 Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');

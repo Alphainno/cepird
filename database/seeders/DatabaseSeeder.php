@@ -41,6 +41,9 @@ class DatabaseSeeder extends Seeder
             AboutHeroSectionSeeder::class,
             FocusAreaHeroSectionSeeder::class,
             StrategicPillarSeeder::class,
+            FocusAreaOutcomeSeeder::class,
+            FocusAreaOutcomeSectionSeeder::class,
+            ImpactMetricSeeder::class,
         ]);
     }
 }

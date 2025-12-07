@@ -133,15 +133,26 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Key Outcomes</span>
-            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-6">What We Deliver</h2>
+            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $focusAreaOutcomeSection->badge_text ?? 'Key Outcomes' }}</span>
+            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-6">{{ $focusAreaOutcomeSection->title ?? 'What We Deliver' }}</h2>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                Our focus areas translate into concrete deliverables that drive real impact across Bangladesh's entrepreneurial ecosystem.
+                {{ $focusAreaOutcomeSection->description ?? 'Our focus areas translate into concrete deliverables that drive real impact across Bangladesh\'s entrepreneurial ecosystem.' }}
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Deliverable 1 -->
+            @forelse($focusAreaOutcomes ?? [] as $outcome)
+            <div class="p-6 bg-blue-50 rounded-sm border border-blue-200">
+                <div class="text-3xl mb-4">{{ $outcome->icon ?? '📌' }}</div>
+                <h3 class="font-bold text-slate-900 mb-2">{{ $outcome->title }}</h3>
+                <p class="text-sm text-slate-600">{{ $outcome->description }}</p>
+                <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                    @if($outcome->bullet1)<li>✓ {{ $outcome->bullet1 }}</li>@endif
+                    @if($outcome->bullet2)<li>✓ {{ $outcome->bullet2 }}</li>@endif
+                    @if($outcome->bullet3)<li>✓ {{ $outcome->bullet3 }}</li>@endif
+                </ul>
+            </div>
+            @empty
             <div class="p-6 bg-blue-50 rounded-sm border border-blue-200">
                 <div class="text-3xl mb-4">📋</div>
                 <h3 class="font-bold text-slate-900 mb-2">Policy Frameworks</h3>
@@ -152,42 +163,7 @@
                     <li>✓ SME Development Guidelines</li>
                 </ul>
             </div>
-
-            <!-- Deliverable 2 -->
-            <div class="p-6 bg-teal-50 rounded-sm border border-teal-200">
-                <div class="text-3xl mb-4">💡</div>
-                <h3 class="font-bold text-slate-900 mb-2">Technology Solutions</h3>
-                <p class="text-sm text-slate-600">Innovative tech platforms and digital tools for entrepreneurs</p>
-                <ul class="mt-4 space-y-2 text-xs text-slate-600">
-                    <li>✓ AI-powered Business Tools</li>
-                    <li>✓ Digital Skills Platform</li>
-                    <li>✓ Entrepreneur Network App</li>
-                </ul>
-            </div>
-
-            <!-- Deliverable 3 -->
-            <div class="p-6 bg-amber-50 rounded-sm border border-amber-200">
-                <div class="text-3xl mb-4">📊</div>
-                <h3 class="font-bold text-slate-900 mb-2">Research Publications</h3>
-                <p class="text-sm text-slate-600">Evidence-based insights and market analysis reports</p>
-                <ul class="mt-4 space-y-2 text-xs text-slate-600">
-                    <li>✓ Annual Policy Report</li>
-                    <li>✓ Startup Ecosystem Index</li>
-                    <li>✓ Market Research Studies</li>
-                </ul>
-            </div>
-
-            <!-- Deliverable 4 -->
-            <div class="p-6 bg-indigo-50 rounded-sm border border-indigo-200">
-                <div class="text-3xl mb-4">🚀</div>
-                <h3 class="font-bold text-slate-900 mb-2">Training & Mentorship</h3>
-                <p class="text-sm text-slate-600">Comprehensive capacity-building for entrepreneurs and teams</p>
-                <ul class="mt-4 space-y-2 text-xs text-slate-600">
-                    <li>✓ Masterclasses & Workshops</li>
-                    <li>✓ Mentorship Programs</li>
-                    <li>✓ Certification Courses</li>
-                </ul>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -201,26 +177,19 @@
         </div>
 
         <div class="grid md:grid-cols-4 gap-6">
+            @forelse($impactMetrics ?? [] as $metric)
+            <div class="p-6 bg-white rounded-sm border border-slate-100 text-center">
+                <div class="text-4xl font-bold text-blue-900 mb-2">{{ $metric->value }}</div>
+                <p class="font-semibold text-slate-900">{{ $metric->title }}</p>
+                <p class="text-sm text-slate-600 mt-2">{{ $metric->description }}</p>
+            </div>
+            @empty
             <div class="p-6 bg-white rounded-sm border border-slate-100 text-center">
                 <div class="text-4xl font-bold text-blue-900 mb-2">500+</div>
                 <p class="font-semibold text-slate-900">Entrepreneurs Supported</p>
                 <p class="text-sm text-slate-600 mt-2">Through mentorship and training programs</p>
             </div>
-            <div class="p-6 bg-white rounded-sm border border-slate-100 text-center">
-                <div class="text-4xl font-bold text-teal-600 mb-2">50+</div>
-                <p class="font-semibold text-slate-900">Research Studies</p>
-                <p class="text-sm text-slate-600 mt-2">Evidence-based insights published</p>
-            </div>
-            <div class="p-6 bg-white rounded-sm border border-slate-100 text-center">
-                <div class="text-4xl font-bold text-amber-600 mb-2">100+</div>
-                <p class="font-semibold text-slate-900">Policy Recommendations</p>
-                <p class="text-sm text-slate-600 mt-2">Submitted to government bodies</p>
-            </div>
-            <div class="p-6 bg-white rounded-sm border border-slate-100 text-center">
-                <div class="text-4xl font-bold text-indigo-600 mb-2">200+</div>
-                <p class="font-semibold text-slate-900">Tech Innovations</p>
-                <p class="text-sm text-slate-600 mt-2">Accelerated and supported</p>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
