@@ -4,6 +4,41 @@
 
 @section('content')
 
+@if(session('success'))
+    <div class="fixed top-24 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg max-w-md">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">✅</span>
+            <p class="font-semibold">{{ session('success') }}</p>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.fixed.top-24').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
+
+@if($errors->any())
+    <div class="fixed top-24 right-4 z-50 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg max-w-md">
+        <div class="flex items-start gap-3">
+            <span class="text-2xl">❌</span>
+            <div>
+                <p class="font-semibold mb-2">Please fix the following errors:</p>
+                <ul class="list-disc list-inside text-sm">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.fixed.top-24').style.display = 'none';
+        }, 7000);
+    </script>
+@endif
+
 @php
     $contactHeroTitle = $contactHero?->title ?? 'Contact Us';
     $contactHeroBadge = $contactHero?->badge_text ?? 'Get In Touch';
@@ -42,10 +77,10 @@
             <!-- Contact Information -->
             <div>
                 <div class="mb-8">
-                    <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Reach Out</span>
-                    <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-4">Contact Information</h2>
+                    <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">{{ ($contactInfo && $contactInfo->section_badge) ? $contactInfo->section_badge : 'Reach Out' }}</span>
+                    <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-4">{{ ($contactInfo && $contactInfo->section_title) ? $contactInfo->section_title : 'Contact Information' }}</h2>
                     <p class="text-lg text-slate-600">
-                        Whether you're a researcher, entrepreneur, policymaker, or innovator — we're here to connect, collaborate, and create impact together.
+                        {{ ($contactInfo && $contactInfo->section_description) ? $contactInfo->section_description : "Whether you're a researcher, entrepreneur, policymaker, or innovator — we're here to connect, collaborate, and create impact together." }}
                     </p>
                 </div>
 
@@ -57,10 +92,9 @@
                                 📍
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-slate-900 mb-2">Head Office</h3>
+                                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ ($contactInfo && $contactInfo->office_title) ? $contactInfo->office_title : 'Head Office' }}</h3>
                                 <p class="text-slate-600 leading-relaxed">
-                                    50 Lake Circus, Kalabagan<br>
-                                    Dhaka 1209, Bangladesh
+                                    {!! ($contactInfo && $contactInfo->office_address) ? nl2br(e($contactInfo->office_address)) : '50 Lake Circus, Kalabagan<br>Dhaka 1209, Bangladesh' !!}
                                 </p>
                             </div>
                         </div>
@@ -73,11 +107,11 @@
                                 📧
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-slate-900 mb-2">Email</h3>
-                                <a href="mailto:hello.cepird@gmail.com" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
-                                    hello.cepird@gmail.com
+                                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ ($contactInfo && $contactInfo->email_title) ? $contactInfo->email_title : 'Email' }}</h3>
+                                <a href="mailto:{{ ($contactInfo && $contactInfo->email) ? $contactInfo->email : 'hello.cepird@gmail.com' }}" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
+                                    {{ ($contactInfo && $contactInfo->email) ? $contactInfo->email : 'hello.cepird@gmail.com' }}
                                 </a>
-                                <p class="text-slate-500 text-sm mt-1">We'll respond within 24-48 hours</p>
+                                <p class="text-slate-500 text-sm mt-1">{{ ($contactInfo && $contactInfo->email_subtitle) ? $contactInfo->email_subtitle : "We'll respond within 24-48 hours" }}</p>
                             </div>
                         </div>
                     </div>
@@ -89,11 +123,11 @@
                                 📱
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-slate-900 mb-2">Phone</h3>
-                                <a href="tel:+8801776000008" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
-                                    +880-1776000008
+                                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ ($contactInfo && $contactInfo->phone_title) ? $contactInfo->phone_title : 'Phone' }}</h3>
+                                <a href="tel:{{ ($contactInfo && $contactInfo->phone) ? str_replace([' ', '-'], '', $contactInfo->phone) : '+8801776000008' }}" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
+                                    {{ ($contactInfo && $contactInfo->phone) ? $contactInfo->phone : '+880-1776000008' }}
                                 </a>
-                                <p class="text-slate-500 text-sm mt-1">Sun - Thu, 9:00 AM - 6:00 PM (BST)</p>
+                                <p class="text-slate-500 text-sm mt-1">{{ ($contactInfo && $contactInfo->phone_subtitle) ? $contactInfo->phone_subtitle : 'Sun - Thu, 9:00 AM - 6:00 PM (BST)' }}</p>
                             </div>
                         </div>
                     </div>
@@ -105,11 +139,11 @@
                                 🌐
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-slate-900 mb-2">Website</h3>
-                                <a href="https://www.cepird.com" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
-                                    www.cepird.com
+                                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ ($contactInfo && $contactInfo->website_title) ? $contactInfo->website_title : 'Website' }}</h3>
+                                <a href="{{ ($contactInfo && $contactInfo->website) ? $contactInfo->website : 'https://www.cepird.com' }}" class="text-blue-600 hover:text-blue-700 transition-colors text-lg">
+                                    {{ ($contactInfo && $contactInfo->website) ? str_replace(['https://', 'http://'], '', $contactInfo->website) : 'www.cepird.com' }}
                                 </a>
-                                <p class="text-slate-500 text-sm mt-1">Visit our website for more information</p>
+                                <p class="text-slate-500 text-sm mt-1">{{ ($contactInfo && $contactInfo->website_subtitle) ? $contactInfo->website_subtitle : 'Visit our website for more information' }}</p>
                             </div>
                         </div>
                     </div>
@@ -120,11 +154,11 @@
             <div>
                 <div class="bg-white p-8 md:p-10 rounded-sm border border-slate-200 shadow-sm">
                     <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h3>
-                        <p class="text-slate-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">{{ ($contactInfo && $contactInfo->form_title) ? $contactInfo->form_title : 'Send Us a Message' }}</h3>
+                        <p class="text-slate-600">{{ ($contactInfo && $contactInfo->form_description) ? $contactInfo->form_description : "Fill out the form below and we'll get back to you as soon as possible." }}</p>
                     </div>
 
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
                         @csrf
                         <div class="grid md:grid-cols-2 gap-6">
                             <!-- First Name -->

@@ -13,8 +13,11 @@ use App\Http\Controllers\Admin\FocusAreaOutcomeController;
 use App\Http\Controllers\Admin\ImpactMetricController;
 use App\Http\Controllers\Admin\ImpactSectionController;
 use App\Http\Controllers\Admin\ContactHeroSectionController;
+use App\Http\Controllers\Admin\ContactInfoSectionController;
+use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
 
@@ -25,6 +28,7 @@ Route::get('/focus-areas', [LandingPageController::class, 'focusAreas'])->name('
 Route::get('/programs', [LandingPageController::class, 'programs'])->name('programs');
 Route::get('/founder', [LandingPageController::class, 'founder'])->name('founder');
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactFormController::class, 'submit'])->name('contact.submit');
 
 // Route::get('/dashboard', function () {
 //     return view('admin.login');
@@ -103,6 +107,18 @@ Route::post('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'upd
 Route::get('/admin/contact-hero', [ContactHeroSectionController::class, 'index'])->name('admin.contact-hero.index');
 Route::put('/admin/contact-hero', [ContactHeroSectionController::class, 'update'])->name('admin.contact-hero.update');
 Route::post('/admin/contact-hero', [ContactHeroSectionController::class, 'update'])->name('admin.contact-hero.store');
+
+// Admin Contact Info Routes
+Route::get('/admin/contact-info', [ContactInfoSectionController::class, 'index'])->name('admin.contact-info.index');
+Route::put('/admin/contact-info', [ContactInfoSectionController::class, 'update'])->name('admin.contact-info.update');
+Route::post('/admin/contact-info', [ContactInfoSectionController::class, 'update'])->name('admin.contact-info.store');
+
+// Admin Contact Submissions Routes
+Route::get('/admin/contact/submissions', [ContactSubmissionController::class, 'index'])->name('admin.contact.submissions.index');
+Route::get('/admin/contact/submissions/{submission}', [ContactSubmissionController::class, 'show'])->name('admin.contact.submissions.show');
+Route::put('/admin/contact/submissions/{submission}/mark-read', [ContactSubmissionController::class, 'markAsRead'])->name('admin.contact.submissions.mark-read');
+Route::put('/admin/contact/submissions/{submission}/mark-unread', [ContactSubmissionController::class, 'markAsUnread'])->name('admin.contact.submissions.mark-unread');
+Route::delete('/admin/contact/submissions/{submission}', [ContactSubmissionController::class, 'destroy'])->name('admin.contact.submissions.destroy');
 
 // Admin About Hero Routes
 Route::get('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'index'])->name('admin.about.hero.index');
