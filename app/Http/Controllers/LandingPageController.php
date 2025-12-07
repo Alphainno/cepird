@@ -18,6 +18,7 @@ use App\Models\VisionMissionSection;
 use App\Models\CoreValueSection;
 use App\Models\WhatWeDoSection;
 use App\Models\ProgramInitiativeSection;
+use App\Models\StrategicPillar;
 
 class LandingPageController extends Controller
 {
@@ -49,7 +50,8 @@ class LandingPageController extends Controller
     public function focusAreas()
     {
         $heroSection = FocusAreaHeroSection::getActive();
-        return view('pages.focusarea', compact('heroSection'));
+        $strategicPillars = StrategicPillar::active()->ordered()->get();
+        return view('pages.focusarea', compact('heroSection', 'strategicPillars'));
     }
 
     public function programs()

@@ -54,7 +54,7 @@
 
             <div id="focusAreaMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
                 <a href="{{ route('admin.focus-area-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
-                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Core Focus Area</a>
+                <a href="{{ route('admin.strategic-pillars.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Strategic Pillars</a>
             </div>
         </div>
 

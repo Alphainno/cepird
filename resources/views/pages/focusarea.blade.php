@@ -31,13 +31,26 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col justify-center items-center mb-12 border-b border-slate-100 pb-4 w-full">
             <div class="text-center">
-                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Strategic Pillars</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-2">Four Core Focus Areas</h2>
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $strategicPillars->first()->badge_text ?? 'Our Strategic Pillars' }}</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ $strategicPillars->first()->section_title ?? 'Four Core Focus Areas' }}</h2>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <!-- Focus Area 1: Policy Development -->
+            @forelse($strategicPillars ?? [] as $pillar)
+            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-{{ $pillar->color_theme }}-200 transition-colors group cursor-pointer">
+                <div class="bg-{{ $pillar->color_theme }}-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-{{ $pillar->color_theme }}-900 text-xl group-hover:bg-{{ $pillar->color_theme }}-200 transition-colors">
+                    {{ $pillar->icon }}
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ $pillar->title }}</h3>
+                <p class="text-sm text-slate-600 mb-4">{{ $pillar->description }}</p>
+                <a href="{{ $pillar->link_href }}" class="text-{{ $pillar->color_theme }}-600 hover:text-{{ $pillar->color_theme }}-700 font-semibold text-sm flex items-center gap-2">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+            @empty
+            <!-- Fallback: Policy Development -->
             <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-blue-200 transition-colors group cursor-pointer">
                 <div class="bg-blue-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-blue-900 text-xl group-hover:bg-blue-200 transition-colors">
                     📋
@@ -49,45 +62,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
-
-            <!-- Focus Area 2: Technology-Enabled Innovation -->
-            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-teal-200 transition-colors group cursor-pointer">
-                <div class="bg-teal-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-teal-800 text-xl group-hover:bg-teal-200 transition-colors">
-                    💡
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-2">Technology-Enabled Innovation</h3>
-                <p class="text-sm text-slate-600 mb-4">Promoting digital adoption and tech-driven solutions for emerging industries.</p>
-                <a href="#technology-innovation" class="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center gap-2">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <!-- Focus Area 3: Research -->
-            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-amber-200 transition-colors group cursor-pointer">
-                <div class="bg-amber-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-amber-700 text-xl group-hover:bg-amber-200 transition-colors">
-                    📊
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-2">Research</h3>
-                <p class="text-sm text-slate-600 mb-4">In-depth studies and publications guiding policymakers and entrepreneurs.</p>
-                <a href="#research" class="text-amber-600 hover:text-amber-700 font-semibold text-sm flex items-center gap-2">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <!-- Focus Area 4: Entrepreneurship Support -->
-            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-indigo-200 transition-colors group cursor-pointer">
-                <div class="bg-indigo-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-indigo-800 text-xl group-hover:bg-indigo-200 transition-colors">
-                    🚀
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-2">Entrepreneurship Support</h3>
-                <p class="text-sm text-slate-600 mb-4">Empowering startups through mentorship, training, and ecosystem development.</p>
-                <a href="#entrepreneurship-support" class="text-indigo-600 hover:text-indigo-700 font-semibold text-sm flex items-center gap-2">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>

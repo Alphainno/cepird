@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\FocusAreaController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\FounderController;
+use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
 
 // })->name('home');
@@ -107,3 +108,9 @@ Route::post('/admin/footer', [App\Http\Controllers\Admin\FooterController::class
 Route::get('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'index'])->name('admin.focus-area-hero.index');
 Route::put('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'update'])->name('admin.focus-area-hero.update');
 Route::post('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'update'])->name('admin.focus-area-hero.store');
+
+// Admin Strategic Pillars Routes
+Route::get('/admin/strategic-pillars', [StrategicPillarController::class, 'index'])->name('admin.strategic-pillars.index');
+Route::post('/admin/strategic-pillars', [StrategicPillarController::class, 'store'])->name('admin.strategic-pillars.store');
+Route::put('/admin/strategic-pillars/{strategicPillar}', [StrategicPillarController::class, 'update'])->name('admin.strategic-pillars.update');
+Route::delete('/admin/strategic-pillars/{strategicPillar}', [StrategicPillarController::class, 'destroy'])->name('admin.strategic-pillars.destroy');

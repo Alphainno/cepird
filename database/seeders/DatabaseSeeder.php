@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             CtaSectionSeeder::class,
             AboutHeroSectionSeeder::class,
             FocusAreaHeroSectionSeeder::class,
+            StrategicPillarSeeder::class,
         ]);
     }
 }
