@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="space-y-6">
-   
+
 
     @if($errors->any())
         <div class="p-4 rounded-sm border border-red-200 bg-red-50 text-red-800 text-sm space-y-1">
