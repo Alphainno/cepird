@@ -36,6 +36,17 @@
             Footer
         </a>
 
+        <!-- Focus Area -->
+        <a href="{{ route('admin.focus-areas.index') }}"
+            class="sidebar-link flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+            <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                <path d="M12 14l-2 2 2 2" />
+            </svg>
+            Focus Area
+        </a>
+
         <!-- Home (submenu) -->
         <div>
             <button onclick="toggleMenu('homeMenu', this)"
@@ -76,13 +87,11 @@
             <div id="aboutMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
                 <a href="{{ route('admin.about.hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
                 <a href="{{ route('admin.about.introduction.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Introduction Section</a>
-                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
                 <a href="{{ route('admin.vision-mission.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Vision & Mission</a>
                 <a href="{{ route('admin.core-values.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Core Values</a>
                 <a href="{{ route('admin.what-we-do.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">What We Do</a>
                 <a href="{{ route('admin.program-initiatives.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Programs & Initiatives</a>
-                <a href="{{ route('admin.about.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">About Section</a>
-            </div>
+                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
         </div>
         <div>
             <button onclick="toggleMenu('productsMenu', this)"
