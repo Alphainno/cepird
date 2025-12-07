@@ -12,7 +12,7 @@ class ContactSubmissionController extends Controller
     {
         $submissions = ContactSubmission::recent()->paginate(20);
         $unreadCount = ContactSubmission::unread()->count();
-        
+
         return view('admin.contact.submissions', compact('submissions', 'unreadCount'));
     }
 
@@ -29,21 +29,21 @@ class ContactSubmissionController extends Controller
     public function markAsRead(ContactSubmission $submission)
     {
         $submission->update(['is_read' => true]);
-        
+
         return redirect()->back()->with('success', 'Message marked as read');
     }
 
     public function markAsUnread(ContactSubmission $submission)
     {
         $submission->update(['is_read' => false]);
-        
+
         return redirect()->back()->with('success', 'Message marked as unread');
     }
 
     public function destroy(ContactSubmission $submission)
     {
         $submission->delete();
-        
+
         return redirect()->route('admin.contact.submissions.index')
             ->with('success', 'Message deleted successfully');
     }
