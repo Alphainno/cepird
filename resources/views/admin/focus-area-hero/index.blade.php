@@ -72,7 +72,11 @@
                 <div id="image_preview" class="mt-4">
                     @if($heroSection && $heroSection->background_image)
                         <p class="text-sm text-slate-600 mb-2">Current image:</p>
-                        <img src="{{ asset('storage/' . $heroSection->background_image) }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
+                        @if(str_starts_with($heroSection->background_image, 'http'))
+                            <img src="{{ $heroSection->background_image }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
+                        @else
+                            <img src="{{ asset('storage/' . $heroSection->background_image) }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
+                        @endif
                     @else
                         <p class="text-sm text-slate-600 mb-2">No image selected</p>
                         <div class="w-32 h-20 bg-slate-100 border border-slate-200 rounded-sm flex items-center justify-center">
@@ -91,47 +95,10 @@
             </div>
         </form>
     </div>
-
-    <!-- Preview Section -->
-    <div class="bg-white rounded-sm shadow-sm border border-slate-200">
-        <div class="p-6 border-b border-slate-200">
-            <h2 class="text-lg font-semibold text-slate-900">Live Preview</h2>
-            <p class="text-sm text-slate-600 mt-1">This preview updates as you type</p>
-        </div>
-        <div class="p-6 bg-slate-50">
-            <div class="text-center max-w-3xl mx-auto">
-                <span id="preview_subtitle" class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $heroSection->subtitle ?? 'Our Strategic Focus' }}</span>
-                <h1 id="preview_title" class="text-3xl md:text-4xl font-bold mt-3 mb-6 leading-tight tracking-tight text-slate-900">
-                    {{ $heroSection->title ?? 'Core Focus Areas' }}
-                </h1>
-                <p id="preview_description" class="text-xl text-slate-600 mb-8 leading-relaxed">
-                    {{ $heroSection->description ?? 'CEPIRD operates at the critical intersection of policy, innovation, research, and entrepreneurship development.' }}
-                </p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Live preview updates for text fields
-    const fields = {
-        'subtitle': 'preview_subtitle',
-        'title': 'preview_title',
-        'description': 'preview_description'
-    };
-
-    Object.keys(fields).forEach(function(inputId) {
-        const input = document.getElementById(inputId);
-        const preview = document.getElementById(fields[inputId]);
-
-        if (input && preview) {
-            input.addEventListener('input', function() {
-                preview.textContent = this.value || preview.dataset.default || '';
-            });
-        }
-    });
-
     // Image preview functionality
     const imageInput = document.getElementById('background_image');
     const imagePreview = document.getElementById('image_preview');
@@ -168,10 +135,17 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Reset to current image or placeholder
                 @if($heroSection && $heroSection->background_image)
-                    imagePreview.innerHTML = `
-                        <p class="text-sm text-slate-600 mb-2">Current image:</p>
-                        <img src="{{ asset('storage/' . $heroSection->background_image) }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
-                    `;
+                    @if(str_starts_with($heroSection->background_image, 'http'))
+                        imagePreview.innerHTML = `
+                            <p class="text-sm text-slate-600 mb-2">Current image:</p>
+                            <img src="{{ $heroSection->background_image }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
+                        `;
+                    @else
+                        imagePreview.innerHTML = `
+                            <p class="text-sm text-slate-600 mb-2">Current image:</p>
+                            <img src="{{ asset('storage/' . $heroSection->background_image) }}" alt="Current background" class="w-32 h-20 object-cover rounded-sm border border-slate-200">
+                        `;
+                    @endif
                 @else
                     imagePreview.innerHTML = `
                         <p class="text-sm text-slate-600 mb-2">No image selected</p>

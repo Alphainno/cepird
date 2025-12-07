@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             FounderSeeder::class,
             CtaSectionSeeder::class,
             AboutHeroSectionSeeder::class,
+            FocusAreaHeroSectionSeeder::class,
         ]);
     }
 }
