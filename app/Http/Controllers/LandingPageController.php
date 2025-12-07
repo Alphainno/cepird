@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HeroSection;
 use App\Models\AboutSection;
-use App\Models\FocusAreaSection;
-use App\Models\FocusArea;
-use App\Models\VisionSection;
+use App\Models\FocusAreaHeroSection;
 use App\Models\Program;
 use App\Models\Founder;
 use App\Models\CtaSection;
@@ -47,7 +45,8 @@ class LandingPageController extends Controller
 
     public function focusAreas()
     {
-        return view('pages.focusarea');
+        $heroSection = FocusAreaHeroSection::getActive();
+        return view('pages.focusarea', compact('heroSection'));
     }
 
     public function programs()

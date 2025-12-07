@@ -102,3 +102,8 @@ Route::post('/admin/header', [App\Http\Controllers\Admin\HeaderController::class
 // Admin Footer Routes
 Route::get('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'index'])->name('admin.footer.index');
 Route::post('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'store'])->name('admin.footer.store');
+
+// Admin Focus Area Hero Routes
+Route::get('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'index'])->name('admin.focus-area-hero.index');
+Route::put('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'update'])->name('admin.focus-area-hero.update');
+Route::post('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'update'])->name('admin.focus-area-hero.store');

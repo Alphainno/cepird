@@ -37,15 +37,26 @@
         </a>
 
         <!-- Focus Area -->
-        <a href="{{ route('admin.focus-areas.index') }}"
-            class="sidebar-link flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
-            <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                <path d="M12 14l-2 2 2 2" />
-            </svg>
-            Focus Area
-        </a>
+        <div>
+            <button onclick="toggleMenu('focusAreaMenu', this)"
+                class="sidebar-link w-full flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+                <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    <path d="M12 14l-2 2 2 2" />
+                </svg>
+                <span class="flex-1 text-left">Focus Area</span>
+                <svg class="w-4 h-4 submenu-arrow text-indigo-300" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <div id="focusAreaMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
+                <a href="{{ route('admin.focus-areas.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Focus Areas</a>
+                <a href="{{ route('admin.focus-area-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
+            </div>
+        </div>
 
         <!-- Home (submenu) -->
         <div>
