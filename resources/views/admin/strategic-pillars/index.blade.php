@@ -249,7 +249,7 @@
 
             <!-- Delete Button (Outside Update Form) -->
             <div class="px-6 py-4 bg-slate-50 border-t border-slate-200">
-                <form action="{{ route('admin.strategic-pillars.destroy', $pillar) }}" method="POST" 
+                <form action="{{ route('admin.strategic-pillars.destroy', $pillar) }}" method="POST"
                     onsubmit="return confirm('Are you sure you want to delete this pillar?');">
                     @csrf
                     @method('DELETE')
@@ -277,7 +277,7 @@
 function toggleCreateForm() {
     const form = document.getElementById('createPillarForm');
     form.classList.toggle('hidden');
-    
+
     // Scroll to form when showing
     if (!form.classList.contains('hidden')) {
         form.scrollIntoView({ behavior: 'smooth', block: 'start' });
