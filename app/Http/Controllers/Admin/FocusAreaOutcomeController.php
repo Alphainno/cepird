@@ -64,10 +64,7 @@ class FocusAreaOutcomeController extends Controller
             $outcomes = FocusAreaOutcome::ordered()->get();
         }
 
-        // Prefill create form with the first seeded outcome so inputs show data
-        $prefill = $outcomes->first();
-
-        return view('admin.focus-areas.outcomes', compact('outcomes', 'prefill'));
+        return view('admin.focus-areas.outcomes', compact('outcomes'));
     }
 
     public function store(Request $request)
