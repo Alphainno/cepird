@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
             ImpactMetricSeeder::class,
             ImpactSectionSeeder::class,
             FocusAreaCtaSectionSeeder::class,
+            ContactHeroSectionSeeder::class,
         ]);
     }
 }

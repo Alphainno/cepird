@@ -36,6 +36,26 @@
             Footer
         </a>
 
+        <!-- Contact (submenu) -->
+        <div>
+            <button onclick="toggleMenu('contactMenu', this)"
+                class="sidebar-link w-full flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+                <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="flex-1 text-left">Contact</span>
+                <svg class="w-4 h-4 submenu-arrow text-indigo-300" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <div id="contactMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
+                <a href="{{ route('admin.contact-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
+            </div>
+        </div>
+
+
         <!-- Focus Area -->
         <div>
             <button onclick="toggleMenu('focusAreaMenu', this)"

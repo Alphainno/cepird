@@ -4,23 +4,32 @@
 
 @section('content')
 
+@php
+    $contactHeroTitle = $contactHero?->title ?? 'Contact Us';
+    $contactHeroBadge = $contactHero?->badge_text ?? 'Get In Touch';
+    $contactHeroDescription = $contactHero?->description ?? "Have questions or want to collaborate? We'd love to hear from you. Reach out and let's build the future together.";
+    $contactHeroBackground = ($contactHero && $contactHero->background_url)
+        ? $contactHero->background_url
+        : 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&auto=format&fit=crop&q=80';
+@endphp
+
 <!-- Hero Section -->
 <section class="relative bg-white pt-32 pb-28 overflow-hidden mt-20">
     <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&auto=format&fit=crop&q=80"
-             alt="Contact us"
+        <img src="{{ $contactHeroBackground }}"
+             alt="Contact hero"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-blue-900/85"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-5xl mx-auto">
-            <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">Get In Touch</span>
+            <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">{{ $contactHeroBadge }}</span>
             <h1 class="text-5xl md:text-6xl font-bold mt-3 mb-6 leading-tight tracking-tight text-white">
-                Contact Us
+                {{ $contactHeroTitle }}
             </h1>
             <p class="text-xl text-slate-200 mb-8 leading-relaxed font-light">
-                Have questions or want to collaborate? We'd love to hear from you. Reach out and let's build the future together.
+                {{ $contactHeroDescription }}
             </p>
         </div>
     </div>

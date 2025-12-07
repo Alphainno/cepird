@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeController;
 use App\Http\Controllers\Admin\ImpactMetricController;
 use App\Http\Controllers\Admin\ImpactSectionController;
+use App\Http\Controllers\Admin\ContactHeroSectionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\StrategicPillarController;
@@ -97,6 +98,11 @@ Route::post('/admin/founder', [FounderController::class, 'update'])->name('admin
 Route::get('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'index'])->name('admin.cta.index');
 Route::put('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.update');
 Route::post('/admin/cta', [App\Http\Controllers\Admin\CtaController::class, 'update'])->name('admin.cta.store');
+
+// Admin Contact Hero Routes
+Route::get('/admin/contact-hero', [ContactHeroSectionController::class, 'index'])->name('admin.contact-hero.index');
+Route::put('/admin/contact-hero', [ContactHeroSectionController::class, 'update'])->name('admin.contact-hero.update');
+Route::post('/admin/contact-hero', [ContactHeroSectionController::class, 'update'])->name('admin.contact-hero.store');
 
 // Admin About Hero Routes
 Route::get('/admin/about/hero', [App\Http\Controllers\Admin\AboutHeroController::class, 'index'])->name('admin.about.hero.index');
