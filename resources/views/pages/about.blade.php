@@ -58,7 +58,7 @@
             <div class="relative">
                 <div class="relative overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                     <!-- Background Image -->
-                    <img src="{{ $aboutIntroduction->image ? asset('storage/' . $aboutIntroduction->image) : ($aboutIntroduction->image_url ?? 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80') }}"
+                    <img src="{{ $aboutIntroduction && $aboutIntroduction->image ? asset('storage/' . $aboutIntroduction->image) : ($aboutIntroduction && $aboutIntroduction->image_url ? $aboutIntroduction->image_url : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80') }}"
                          alt="Successful team"
                          class="w-full h-full object-cover">
                 </div>
