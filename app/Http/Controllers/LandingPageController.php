@@ -50,8 +50,10 @@ class LandingPageController extends Controller
     public function focusAreas()
     {
         $heroSection = FocusAreaHeroSection::getActive();
+        $focusAreaSection = FocusAreaSection::with('allFocusAreas')->where('is_active', true)->first();
         $strategicPillars = StrategicPillar::active()->ordered()->get();
-        return view('pages.focusarea', compact('heroSection', 'strategicPillars'));
+        $focusAreas = FocusArea::active()->ordered()->get();
+        return view('pages.focusarea', compact('heroSection', 'focusAreaSection', 'strategicPillars', 'focusAreas'));
     }
 
     public function programs()

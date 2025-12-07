@@ -48,6 +48,7 @@ Route::post('/admin/about', [AboutSectionController::class, 'update'])->name('ad
 Route::get('/admin/focus-areas', [FocusAreaController::class, 'index'])->name('admin.focus-areas.index');
 Route::put('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.update');
 Route::post('/admin/focus-areas', [FocusAreaController::class, 'update'])->name('admin.focus-areas.store');
+Route::put('/admin/focus-areas/{focusArea}', [FocusAreaController::class, 'updateFocusArea'])->name('admin.focus-areas.update-focus-area');
 
 // Admin Vision Routes
 Route::get('/admin/vision', [VisionController::class, 'index'])->name('admin.vision.index');

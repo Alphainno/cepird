@@ -31,20 +31,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col justify-center items-center mb-12 border-b border-slate-100 pb-4 w-full">
             <div class="text-center">
-                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $strategicPillars->first()->badge_text ?? 'Our Strategic Pillars' }}</span>
-                <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ $strategicPillars->first()->section_title ?? 'Four Core Focus Areas' }}</h2>
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $focusAreas->first()->focusAreaSection->badge_text ?? 'Our Focus Areas' }}</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">{{ $focusAreas->first()->focusAreaSection->title ?? 'Core Focus Areas' }}</h2>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            @forelse($strategicPillars ?? [] as $pillar)
-            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-{{ $pillar->color_theme }}-200 transition-colors group cursor-pointer">
-                <div class="bg-{{ $pillar->color_theme }}-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-{{ $pillar->color_theme }}-900 text-xl group-hover:bg-{{ $pillar->color_theme }}-200 transition-colors">
-                    {{ $pillar->icon }}
+            @forelse($focusAreas ?? [] as $focusArea)
+            <div class="p-6 bg-white rounded-sm border border-slate-100 hover:border-blue-200 transition-colors group cursor-pointer">
+                <div class="bg-blue-100 w-12 h-12 flex items-center justify-center rounded-sm mb-4 text-blue-900 text-xl group-hover:bg-blue-200 transition-colors">
+                    {{ $focusArea->icon ?? '📋' }}
                 </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ $pillar->title }}</h3>
-                <p class="text-sm text-slate-600 mb-4">{{ $pillar->description }}</p>
-                <a href="{{ $pillar->link_href }}" class="text-{{ $pillar->color_theme }}-600 hover:text-{{ $pillar->color_theme }}-700 font-semibold text-sm flex items-center gap-2">
+                <h3 class="font-bold text-lg text-slate-900 mb-2">{{ $focusArea->title }}</h3>
+                <p class="text-sm text-slate-600 mb-4">{{ $focusArea->description }}</p>
+                <a href="#{{ $focusArea->slug ?: \Illuminate\Support\Str::slug($focusArea->title) }}" class="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center gap-2">
                     Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
@@ -67,197 +67,67 @@
     </div>
 </section>
 
-<!-- Detailed Section: Policy Development -->
-<section id="policy-development" class="py-20 bg-white">
+@foreach($focusAreas ?? [] as $index => $focusArea)
+@php
+    $sectionId = $focusArea->slug ?: \Illuminate\Support\Str::slug($focusArea->title ?? 'focus-area-' . ($index + 1));
+    $isEven = $index % 2 === 1;
+    $bgClass = $isEven ? 'bg-slate-50' : 'bg-white';
+@endphp
+<section id="{{ $sectionId }}" class="py-20 {{ $bgClass }}">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Focus Area 1</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-6">Policy Development</h2>
+            <div class="{{ $isEven ? 'md:order-last' : '' }}">
+                <img src="{{ $focusArea->image_path ? (str_starts_with($focusArea->image_path, 'http') ? $focusArea->image_path : asset('storage/' . $focusArea->image_path)) : 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80' }}"
+                     alt="{{ $focusArea->title }}"
+                     class="rounded-sm shadow-lg w-full object-cover">
+            </div>
+            <div class="{{ $isEven ? 'md:order-first' : '' }}">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">{{ $focusArea->subheading ?? 'Focus Area ' . ($index + 1) }}</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-6">{{ $focusArea->title }}</h2>
                 <p class="text-lg text-slate-700 mb-6 leading-relaxed">
-                    CEPIRD designs <span class="font-semibold">evidence-based policy frameworks</span> that strengthen entrepreneurship ecosystems, accelerate digital transformation, and foster sustainable economic growth in Bangladesh.
+                    {{ $focusArea->detail_description ?? $focusArea->description }}
                 </p>
 
                 <div class="space-y-4 mb-8">
+                    @if($focusArea->highlight1_title)
                     <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">📈</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">{{ $focusArea->highlight1_icon ?? '📌' }}</div>
                         <div>
-                            <h4 class="font-semibold text-slate-900">Digital Commerce Framework</h4>
-                            <p class="text-slate-600 text-sm mt-1">Policies supporting e-commerce growth and digital payment systems</p>
+                            <h4 class="font-semibold text-slate-900">{{ $focusArea->highlight1_title }}</h4>
+                            <p class="text-slate-600 text-sm mt-1">{{ $focusArea->highlight1_description }}</p>
                         </div>
                     </div>
+                    @endif
+                    @if($focusArea->highlight2_title)
                     <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">🤝</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">{{ $focusArea->highlight2_icon ?? '📌' }}</div>
                         <div>
-                            <h4 class="font-semibold text-slate-900">SME Empowerment Policies</h4>
-                            <p class="text-slate-600 text-sm mt-1">Frameworks ensuring small and medium enterprises can thrive and scale</p>
+                            <h4 class="font-semibold text-slate-900">{{ $focusArea->highlight2_title }}</h4>
+                            <p class="text-slate-600 text-sm mt-1">{{ $focusArea->highlight2_description }}</p>
                         </div>
                     </div>
+                    @endif
+                    @if($focusArea->highlight3_title)
                     <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">🌱</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-sm flex items-center justify-center text-lg">{{ $focusArea->highlight3_icon ?? '📌' }}</div>
                         <div>
-                            <h4 class="font-semibold text-slate-900">Startup Ecosystem Support</h4>
-                            <p class="text-slate-600 text-sm mt-1">Policy interventions creating favorable conditions for startup growth</p>
+                            <h4 class="font-semibold text-slate-900">{{ $focusArea->highlight3_title }}</h4>
+                            <p class="text-slate-600 text-sm mt-1">{{ $focusArea->highlight3_description }}</p>
                         </div>
                     </div>
+                    @endif
                 </div>
 
-                <a href="#" class="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-sm hover:bg-blue-800 transition-colors">
-                    Explore Policy Research
+                @if($focusArea->cta_text || $focusArea->cta_link)
+                <a href="{{ $focusArea->cta_link ?? '#' }}" class="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-sm hover:bg-blue-800 transition-colors">
+                    {{ $focusArea->cta_text ?? 'Learn More' }}
                 </a>
-            </div>
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
-                     alt="Policy Development"
-                     class="rounded-sm shadow-lg w-full object-cover">
+                @endif
             </div>
         </div>
     </div>
 </section>
-
-<!-- Detailed Section: Technology Innovation -->
-<section id="technology-innovation" class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="relative md:order-last">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80"
-                     alt="Technology Innovation"
-                     class="rounded-sm shadow-lg w-full object-cover">
-            </div>
-            <div class="md:order-first">
-                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Focus Area 2</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-6">Technology-Enabled Innovation</h2>
-                <p class="text-lg text-slate-700 mb-6 leading-relaxed">
-                    We champion <span class="font-semibold">digital adoption and tech-driven solutions</span> that enable entrepreneurs to compete globally while solving local challenges through innovation.
-                </p>
-
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-teal-50 rounded-sm flex items-center justify-center text-lg">🤖</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">AI & Machine Learning</h4>
-                            <p class="text-slate-600 text-sm mt-1">Integrating AI solutions for business optimization and innovation</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-teal-50 rounded-sm flex items-center justify-center text-lg">⛓️</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Blockchain Technology</h4>
-                            <p class="text-slate-600 text-sm mt-1">Exploring blockchain for transparency, security, and trust</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-teal-50 rounded-sm flex items-center justify-center text-lg">💻</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Digital Skills Training</h4>
-                            <p class="text-slate-600 text-sm mt-1">Upskilling the workforce for future-ready tech careers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="inline-block px-8 py-3 bg-teal-600 text-white font-semibold rounded-sm hover:bg-teal-700 transition-colors">
-                    Explore Tech Initiatives
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Detailed Section: Research -->
-<section id="research" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-amber-600 font-bold tracking-wider uppercase text-sm">Focus Area 3</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-6">Research</h2>
-                <p class="text-lg text-slate-700 mb-6 leading-relaxed">
-                    Our <span class="font-semibold">rigorous research initiatives</span> generate evidence-based insights that inform policy decisions, guide institutional strategies, and drive entrepreneurial innovation across Bangladesh.
-                </p>
-
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-amber-50 rounded-sm flex items-center justify-center text-lg">📚</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Annual Policy Reports</h4>
-                            <p class="text-slate-600 text-sm mt-1">Comprehensive entrepreneurship policy analysis and recommendations</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-amber-50 rounded-sm flex items-center justify-center text-lg">📊</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Ecosystem Index</h4>
-                            <p class="text-slate-600 text-sm mt-1">Measuring startup ecosystem maturity and identifying growth opportunities</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-amber-50 rounded-sm flex items-center justify-center text-lg">🎯</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Impact Studies</h4>
-                            <p class="text-slate-600 text-sm mt-1">Evaluating socio-economic impact of entrepreneurship initiatives</p>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-sm hover:bg-amber-700 transition-colors">
-                    Explore Publications
-                </a>
-            </div>
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop&q=80"
-                     alt="Research"
-                     class="rounded-sm shadow-lg w-full object-cover">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Detailed Section: Entrepreneurship Support -->
-<section id="entrepreneurship-support" class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="relative md:order-last">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
-                     alt="Entrepreneurship Support"
-                     class="rounded-sm shadow-lg w-full object-cover">
-            </div>
-            <div class="md:order-first">
-                <span class="text-indigo-600 font-bold tracking-wider uppercase text-sm">Focus Area 4</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-3 mb-6">Entrepreneurship Support</h2>
-                <p class="text-lg text-slate-700 mb-6 leading-relaxed">
-                    We empower entrepreneurs and innovators with <span class="font-semibold">comprehensive support services</span> including mentorship, training, incubation, and ecosystem connectivity to transform ideas into thriving ventures.
-                </p>
-
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-indigo-50 rounded-sm flex items-center justify-center text-lg">🎓</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Entrepreneurship Training</h4>
-                            <p class="text-slate-600 text-sm mt-1">Business model, finance, and leadership development programs</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-indigo-50 rounded-sm flex items-center justify-center text-lg">🏢</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Incubation Programs</h4>
-                            <p class="text-slate-600 text-sm mt-1">Structured support from ideation to market launch and beyond</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-indigo-50 rounded-sm flex items-center justify-center text-lg">🤝</div>
-                        <div>
-                            <h4 class="font-semibold text-slate-900">Mentorship & Networking</h4>
-                            <p class="text-slate-600 text-sm mt-1">Connecting entrepreneurs with industry experts and investors</p>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-sm hover:bg-indigo-700 transition-colors">
-                    Explore Support Programs
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+@endforeach
 
 <!-- Key Deliverables -->
 <section class="py-20 bg-white">
