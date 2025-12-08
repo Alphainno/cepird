@@ -89,13 +89,13 @@
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="text-5xl font-bold {{ $colors['text'] }} mb-2">{{ $stat->value }}</div>
                 <p class="font-semibold text-slate-900 mb-1">{{ $stat->label }}</p>
                 @if($stat->description)
                     <p class="text-sm text-slate-600">{{ $stat->description }}</p>
                 @endif
-                
+
                 <div class="mt-3 flex items-center justify-center gap-2">
                     <span class="text-xs px-2 py-1 bg-white rounded">Order: {{ $stat->order }}</span>
                     @if(!$stat->is_active)
