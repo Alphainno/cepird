@@ -49,7 +49,7 @@ class HeaderSeeder extends Seeder
                 'url' => '/research',
                 'sort_order' => 5,
             ],
-         
+
             [
                 'title' => 'Contact Us',
                 'url' => '/contact',
