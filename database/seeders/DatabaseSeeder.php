@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // Landing Page
             HeroSectionSeeder::class,
-            
+
             // About Page
             AboutSectionSeeder::class,
             AboutHeroSectionSeeder::class,
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             CoreValueSeeder::class,
             WhatWeDoSeeder::class,
             FounderSeeder::class,
-            
+
             // Focus Areas Page
             FocusAreaSeeder::class,
             FocusAreaHeroSectionSeeder::class,
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             FocusAreaOutcomeSeeder::class,
             FocusAreaOutcomeSectionSeeder::class,
             FocusAreaCtaSectionSeeder::class,
-            
+
             // Programs Page
             ProgramInitiativeSeeder::class,
             VisionSectionSeeder::class,
@@ -62,25 +62,25 @@ class DatabaseSeeder extends Seeder
             ProgramCategorySeeder::class,
             ProgramSectionSeeder::class,
             ProgramImpactSeeder::class,
-            
+
             // Research Page
             ResearchHeroSectionSeeder::class,
             ResearchCategorySeeder::class,
             ResearchPaperSeeder::class,
-            
+
             // Contact Page
             ContactHeroSectionSeeder::class,
             ContactInfoSectionSeeder::class,
             ContactMapSectionSeeder::class,
             ContactCtaSectionSeeder::class,
-            
+
             // Shared Components
             CtaSectionSeeder::class,
             ImpactMetricSeeder::class,
             ImpactSectionSeeder::class,
             HeaderSeeder::class,
             FooterSeeder::class,
-            
+
         ]);
     }
 }
