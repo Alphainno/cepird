@@ -54,7 +54,7 @@
         @php
             $overviewSection = $programOverviewSection ?? null;
         @endphp
-        
+
         <div class="text-center mb-16">
             @if($overviewSection)
                 <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $overviewSection->badge_text }}</span>

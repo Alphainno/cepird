@@ -20,10 +20,10 @@
                     <label for="badge_text" class="block text-sm font-semibold text-slate-700 mb-2">
                         Badge Text <span class="text-red-500">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="badge_text" 
-                        name="badge_text" 
+                    <input
+                        type="text"
+                        id="badge_text"
+                        name="badge_text"
                         value="{{ old('badge_text', $overviewSection->badge_text ?? '') }}"
                         class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         placeholder="Our Impact Initiatives"
@@ -39,10 +39,10 @@
                     <label for="title" class="block text-sm font-semibold text-slate-700 mb-2">
                         Section Title <span class="text-red-500">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
                         value="{{ old('title', $overviewSection->title ?? '') }}"
                         class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         placeholder="Four Core Program Areas"
@@ -58,9 +58,9 @@
                     <label for="description" class="block text-sm font-semibold text-slate-700 mb-2">
                         Description <span class="text-red-500">*</span>
                     </label>
-                    <textarea 
-                        id="description" 
-                        name="description" 
+                    <textarea
+                        id="description"
+                        name="description"
                         rows="4"
                         class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         placeholder="From cutting-edge research to hands-on entrepreneurship support..."
@@ -73,10 +73,10 @@
 
                 <!-- Active Status -->
                 <div class="flex items-center">
-                    <input 
-                        type="checkbox" 
-                        id="is_active" 
-                        name="is_active" 
+                    <input
+                        type="checkbox"
+                        id="is_active"
+                        name="is_active"
                         value="1"
                         {{ old('is_active', $overviewSection->is_active ?? true) ? 'checked' : '' }}
                         class="w-4 h-4 text-teal-600 border-slate-300 rounded focus:ring-2 focus:ring-teal-500"
@@ -88,13 +88,13 @@
 
                 <!-- Submit Button -->
                 <div class="flex items-center gap-4 pt-4">
-                    <button 
+                    <button
                         type="submit"
                         class="px-6 py-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-colors"
                     >
                         Save Changes
                     </button>
-                    <a 
+                    <a
                         href="{{ route('admin.dashboard') }}"
                         class="px-6 py-2 bg-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-300 transition-colors"
                     >
