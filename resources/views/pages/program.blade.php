@@ -30,11 +30,11 @@
             @else
                 <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">Empowering Ideas. Influencing Policy. Impacting the Future.</span>
             @endif
-            
+
             <h1 class="text-5xl md:text-6xl font-bold mt-3 mb-6 leading-tight tracking-tight text-white">
                 {{ $heroSection->title ?? 'Programs & Initiatives' }}
             </h1>
-            
+
             @if($heroSection && $heroSection->description)
                 <p class="text-xl text-slate-200 mb-8 leading-relaxed font-light">
                     {{ $heroSection->description }}
