@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\FocusAreaController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\ProgramController;
-use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeController;
 use App\Http\Controllers\Admin\ImpactMetricController;
 use App\Http\Controllers\Admin\ImpactSectionController;
@@ -20,6 +19,7 @@ use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\Admin\ProgramHeroSectionController;
+use App\Http\Controllers\Admin\ResearchHeroSectionController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
@@ -52,6 +52,11 @@ Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name(
 Route::get('/admin/hero', [HeroSectionController::class, 'index'])->name('admin.hero.index');
 Route::put('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.update');
 Route::post('/admin/hero', [HeroSectionController::class, 'update'])->name('admin.hero.store');
+
+// Admin Research Hero Section Routes
+Route::get('/admin/research-hero', [ResearchHeroSectionController::class, 'index'])->name('admin.research-hero.index');
+Route::put('/admin/research-hero', [ResearchHeroSectionController::class, 'update'])->name('admin.research-hero.update');
+Route::post('/admin/research-hero', [ResearchHeroSectionController::class, 'update'])->name('admin.research-hero.store');
 
 // Admin About Section Routes
 Route::get('/admin/about', [AboutSectionController::class, 'index'])->name('admin.about.index');

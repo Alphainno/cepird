@@ -4,8 +4,15 @@
 
 @section('content')
 
+@php
+    $heroSection = App\Models\ResearchHeroSection::getActive();
+@endphp
+
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 pt-32 pb-20 overflow-hidden mt-16">
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 pt-32 pb-20 overflow-hidden mt-16 {{ $heroSection && $heroSection->background_image ? 'bg-cover bg-center bg-no-repeat' : '' }}"
+         @if($heroSection && $heroSection->background_image)
+         style="background-image: linear-gradient(to bottom right, rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.8), rgba(20, 184, 166, 0.7)), url('{{ asset('storage/' . $heroSection->background_image) }}');"
+         @endif>
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
@@ -13,13 +20,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-4xl mx-auto">
             <div class="inline-block mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                <span class="text-white text-sm font-medium">Research Library</span>
+                <span class="text-white text-sm font-medium">{{ $heroSection ? $heroSection->badge_text : 'Research Library' }}</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
-                Explore Our <span class="text-amber-400">Research</span>
+                {{ $heroSection ? $heroSection->title_line1 : 'Explore Our' }} <span class="text-amber-400">{{ $heroSection ? $heroSection->title_line2 : 'Research' }}</span>
             </h1>
             <p class="text-xl text-blue-100 leading-relaxed">
-                Evidence-based insights shaping policy, innovation, and sustainable development
+                {{ $heroSection ? $heroSection->subtitle : 'Evidence-based insights shaping policy, innovation, and sustainable development' }}
             </p>
         </div>
     </div>

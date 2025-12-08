@@ -158,18 +158,28 @@
             </div>
         </div>
 
-        <!-- Research -->
-        <a href="#"
-            class="sidebar-link flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
-            <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" x2="8" y1="13" y2="13"/>
-                <line x1="16" x2="8" y1="17" y2="17"/>
-                <line x1="10" x2="8" y1="9" y2="9"/>
-            </svg>
-            Research
-        </a>
+        <!-- Research (submenu) -->
+        <div>
+            <button onclick="toggleMenu('researchMenu', this)"
+                class="sidebar-link w-full flex items-center px-4 py-3 rounded-xl hover:bg-indigo-700/70 transition duration-150">
+                <svg class="w-5 h-5 mr-3 text-indigo-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" x2="8" y1="13" y2="13"/>
+                    <line x1="16" x2="8" y1="17" y2="17"/>
+                    <line x1="10" x2="8" y1="9" y2="9"/>
+                </svg>
+                <span class="flex-1 text-left">Research</span>
+                <svg class="w-4 h-4 submenu-arrow text-indigo-300" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <div id="researchMenu" class="submenu ml-4 space-y-1 text-sm pt-1">
+                <a href="{{ route('admin.research-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
+            </div>
+        </div>
 
         <div>
             <button onclick="toggleMenu('productsMenu', this)"
