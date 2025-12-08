@@ -7,7 +7,7 @@
 <!-- Hero Section -->
 <section class="relative bg-white pt-32 pb-28 overflow-hidden mt-20 z-10">
     <div class="absolute inset-0">
-        <img src="{{ $heroSection ? asset('storage/' . $heroSection->background_image) : 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&q=80' }}"
+        <img src="{{ $heroSection && $heroSection->background_url ? $heroSection->background_url : 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&q=80' }}"
              alt="Team collaboration"
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-blue-900/85"></div>
