@@ -65,14 +65,14 @@
                             Categories
                         </h3>
                         <div class="space-y-2">
-                            <label class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors group">
-                                <input type="checkbox" class="w-4 h-4 text-blue-900 border-slate-300 rounded focus:ring-blue-500" checked>
+                            <label class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors group category-filter" data-category="all">
+                                <input type="radio" name="category-filter" class="w-4 h-4 text-blue-900 border-slate-300 focus:ring-blue-500" checked>
                                 <span class="text-slate-700 group-hover:text-slate-900 font-medium">All Research</span>
                                 <span class="ml-auto text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600">{{ $papers->count() }}</span>
                             </label>
                             @foreach($categories as $category)
-                            <label class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors group">
-                                <input type="checkbox" class="w-4 h-4 text-blue-900 border-slate-300 rounded focus:ring-blue-500">
+                            <label class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors group category-filter" data-category="{{ $category->id }}">
+                                <input type="radio" name="category-filter" class="w-4 h-4 text-blue-900 border-slate-300 focus:ring-blue-500">
                                 <span class="text-slate-700 group-hover:text-slate-900 font-medium">{{ $category->name }}</span>
                                 <span class="ml-auto text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600">{{ $category->paper_count }}</span>
                             </label>
@@ -127,7 +127,7 @@
 
                     @forelse($papers as $paper)
                     <!-- Research Paper Card -->
-                    <div class="research-card bg-white rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                    <div class="research-card bg-white rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden group" data-category-id="{{ $paper->category_id }}">
                         <div class="p-6">
                             <div class="flex items-start gap-4">
                                 <!-- Icon -->
@@ -195,12 +195,7 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
                                             View Details
                                         </button>
-                                        <button class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg border border-slate-300 transition-colors text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
-                                            Share
-                                        </button>
-
-                                        <!-- Hidden data for modal -->
+                                          <!-- Hidden data for modal -->
                                         <div class="hidden paper-data"
                                              data-id="{{ $paper->id }}"
                                              data-title="{{ $paper->title }}"
@@ -324,11 +319,49 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('research-search');
     const researchCards = document.querySelectorAll('.research-card');
+    const categoryFilters = document.querySelectorAll('.category-filter');
+
+    // Category filter functionality
+    categoryFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            const selectedCategory = this.dataset.category;
+            filterPapers(selectedCategory);
+        });
+    });
+
+    function filterPapers(categoryId) {
+        let visibleCount = 0;
+        
+        researchCards.forEach(card => {
+            if (categoryId === 'all') {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                if (card.dataset.categoryId === categoryId) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+
+        // Update results count
+        updateResultsCount(visibleCount);
+    }
+
+    function updateResultsCount(count) {
+        const resultsText = document.querySelector('.text-slate-600.mt-1');
+        if (resultsText) {
+            resultsText.innerHTML = `Showing <span class="font-semibold text-slate-900">${count}</span> results`;
+        }
+    }
 
     // Search functionality
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
+            let visibleCount = 0;
 
             researchCards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
@@ -337,12 +370,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     .map(tag => tag.textContent.toLowerCase())
                     .join(' ');
 
-                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                // Check if card matches search and is visible due to category filter
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm);
+                
+                if (matchesSearch && card.style.display !== 'none') {
                     card.style.display = 'block';
-                } else {
+                    visibleCount++;
+                } else if (!matchesSearch) {
                     card.style.display = 'none';
+                } else if (card.style.display === 'none') {
+                    // Hidden by category filter
+                    visibleCount++;
                 }
             });
+
+            if (searchTerm) {
+                updateResultsCount(visibleCount);
+            }
         });
     }
 });
