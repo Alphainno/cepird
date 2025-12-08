@@ -45,14 +45,15 @@ class HeaderSeeder extends Seeder
                 'sort_order' => 4,
             ],
             [
-                'title' => 'Founder',
-                'url' => '/founder',
+                'title' => 'Research',
+                'url' => '/research',
                 'sort_order' => 5,
             ],
+         
             [
                 'title' => 'Contact Us',
                 'url' => '/contact',
-                'sort_order' => 6,
+                'sort_order' => 7,
             ],
         ];
 
