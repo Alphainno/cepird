@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ContactCtaSectionController;
 use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
+use App\Http\Controllers\Admin\ProgramHeroSectionController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
@@ -176,3 +177,17 @@ Route::get('/admin/strategic-pillars', [StrategicPillarController::class, 'index
 Route::post('/admin/strategic-pillars', [StrategicPillarController::class, 'store'])->name('admin.strategic-pillars.store');
 Route::put('/admin/strategic-pillars/{strategicPillar}', [StrategicPillarController::class, 'update'])->name('admin.strategic-pillars.update');
 Route::delete('/admin/strategic-pillars/{strategicPillar}', [StrategicPillarController::class, 'destroy'])->name('admin.strategic-pillars.destroy');
+
+// Admin Program Hero Routes
+Route::get('/admin/programs-hero', [ProgramHeroSectionController::class, 'index'])->name('admin.programs-hero.index');
+Route::put('/admin/programs-hero', [ProgramHeroSectionController::class, 'update'])->name('admin.programs-hero.update');
+Route::post('/admin/programs-hero', [ProgramHeroSectionController::class, 'update'])->name('admin.programs-hero.store');
+
+// Image serving route
+Route::get('/images/{path}', function ($path) {
+    $fullPath = public_path('images/' . $path);
+    if (file_exists($fullPath)) {
+        return response()->file($fullPath);
+    }
+    abort(404);
+})->where('path', '.*');

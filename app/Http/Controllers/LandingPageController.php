@@ -72,7 +72,8 @@ class LandingPageController extends Controller
 
     public function programs()
     {
-        return view('pages.program');
+        $programHeroSection = \App\Models\ProgramHeroSection::getActive();
+        return view('pages.program', compact('programHeroSection'));
     }
 
     public function founder()

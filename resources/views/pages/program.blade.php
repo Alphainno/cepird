@@ -5,23 +5,45 @@
 @section('content')
 
 <!-- Hero Section -->
+@php
+    $heroSection = $programHeroSection ?? null;
+@endphp
+
 <section class="relative bg-white pt-32 pb-28 overflow-hidden mt-20">
     <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format&fit=crop&q=80"
-             alt="Programs and initiatives"
-             class="w-full h-full object-cover">
+        @if($heroSection && $heroSection->background_image)
+            <img src="{{ $heroSection->background_url }}"
+                 alt="{{ $heroSection->title }}"
+                 class="w-full h-full object-cover">
+        @else
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format&fit=crop&q=80"
+                 alt="Programs and initiatives"
+                 class="w-full h-full object-cover">
+        @endif
         <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-teal-900/85"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-5xl mx-auto">
-            <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">Empowering Ideas. Influencing Policy. Impacting the Future.</span>
+            @if($heroSection && $heroSection->badge_text)
+                <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">{{ $heroSection->badge_text }}</span>
+            @else
+                <span class="text-teal-300 font-bold tracking-wider uppercase text-sm">Empowering Ideas. Influencing Policy. Impacting the Future.</span>
+            @endif
+            
             <h1 class="text-5xl md:text-6xl font-bold mt-3 mb-6 leading-tight tracking-tight text-white">
-                Programs & Initiatives
+                {{ $heroSection->title ?? 'Programs & Initiatives' }}
             </h1>
-            <p class="text-xl text-slate-200 mb-8 leading-relaxed font-light">
-                CEPIRD's comprehensive programs drive research, innovation, entrepreneurship development, and policy transformation across Bangladesh.
-            </p>
+            
+            @if($heroSection && $heroSection->description)
+                <p class="text-xl text-slate-200 mb-8 leading-relaxed font-light">
+                    {{ $heroSection->description }}
+                </p>
+            @else
+                <p class="text-xl text-slate-200 mb-8 leading-relaxed font-light">
+                    CEPIRD's comprehensive programs drive research, innovation, entrepreneurship development, and policy transformation across Bangladesh.
+                </p>
+            @endif
         </div>
     </div>
 </section>
