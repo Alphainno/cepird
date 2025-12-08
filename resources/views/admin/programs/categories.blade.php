@@ -42,7 +42,7 @@
                             <td class="px-6 py-4 text-sm font-medium text-slate-900">{{ $category->title }}</td>
                             <td class="px-6 py-4 text-sm text-slate-600 max-w-xs truncate">{{ $category->description }}</td>
                             <td class="px-6 py-4">
-                                <span class="px-3 py-1 text-xs font-medium rounded-full 
+                                <span class="px-3 py-1 text-xs font-medium rounded-full
                                     @if($category->color == 'blue') bg-blue-100 text-blue-800
                                     @elseif($category->color == 'teal') bg-teal-100 text-teal-800
                                     @elseif($category->color == 'amber') bg-amber-100 text-amber-800
@@ -99,20 +99,20 @@
         <div class="p-6 border-b border-slate-200">
             <h2 id="modalTitle" class="text-2xl font-bold text-slate-900">Add Program Category</h2>
         </div>
-        
+
         <form id="categoryForm" method="POST" class="p-6 space-y-6">
             @csrf
             <input type="hidden" id="methodField" name="_method" value="POST">
-            
+
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <label for="title" class="block text-sm font-semibold text-slate-700 mb-2">
                         Title <span class="text-red-500">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
                         required
                         class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                         placeholder="e.g., Research & Publications"
@@ -123,10 +123,10 @@
                     <label for="icon" class="block text-sm font-semibold text-slate-700 mb-2">
                         Icon (Emoji)
                     </label>
-                    <input 
-                        type="text" 
-                        id="icon" 
-                        name="icon" 
+                    <input
+                        type="text"
+                        id="icon"
+                        name="icon"
                         class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                         placeholder="📘"
                     >
@@ -137,9 +137,9 @@
                 <label for="description" class="block text-sm font-semibold text-slate-700 mb-2">
                     Description
                 </label>
-                <textarea 
-                    id="description" 
-                    name="description" 
+                <textarea
+                    id="description"
+                    name="description"
                     rows="3"
                     class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                     placeholder="Brief description of this program category"
@@ -151,9 +151,9 @@
                     <label for="color" class="block text-sm font-semibold text-slate-700 mb-2">
                         Color <span class="text-red-500">*</span>
                     </label>
-                    <select 
-                        id="color" 
-                        name="color" 
+                    <select
+                        id="color"
+                        name="color"
                         required
                         class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                     >
@@ -168,10 +168,10 @@
                     <label for="order" class="block text-sm font-semibold text-slate-700 mb-2">
                         Order <span class="text-red-500">*</span>
                     </label>
-                    <input 
-                        type="number" 
-                        id="order" 
-                        name="order" 
+                    <input
+                        type="number"
+                        id="order"
+                        name="order"
                         required
                         min="0"
                         class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
@@ -184,10 +184,10 @@
                 <label for="anchor_link" class="block text-sm font-semibold text-slate-700 mb-2">
                     Anchor Link <span class="text-red-500">*</span>
                 </label>
-                <input 
-                    type="text" 
-                    id="anchor_link" 
-                    name="anchor_link" 
+                <input
+                    type="text"
+                    id="anchor_link"
+                    name="anchor_link"
                     required
                     class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                     placeholder="#research-publications"
@@ -196,10 +196,10 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <input 
-                    type="checkbox" 
-                    id="is_active" 
-                    name="is_active" 
+                <input
+                    type="checkbox"
+                    id="is_active"
+                    name="is_active"
                     value="1"
                     checked
                     class="w-5 h-5 text-indigo-600 border-slate-300 rounded focus:ring-2 focus:ring-indigo-500"
@@ -210,8 +210,8 @@
             </div>
 
             <div class="flex items-center gap-4 pt-4 border-t border-slate-200">
-                <button 
-                    type="submit" 
+                <button
+                    type="submit"
                     class="px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-200 transition-all"
                 >
                     <svg class="w-5 h-5 inline-block mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,7 +219,7 @@
                     </svg>
                     Save Category
                 </button>
-                <button 
+                <button
                     type="button"
                     onclick="closeModal()"
                     class="px-6 py-2.5 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-all"
@@ -245,13 +245,13 @@
                 Are you sure you want to delete "<span id="deleteCategoryName" class="font-semibold text-slate-900"></span>"? This action cannot be undone.
             </p>
             <div class="flex items-center gap-3">
-                <button 
+                <button
                     onclick="closeDeleteModal()"
                     class="flex-1 px-4 py-2.5 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-all"
                 >
                     Cancel
                 </button>
-                <button 
+                <button
                     id="confirmDeleteBtn"
                     class="flex-1 px-4 py-2.5 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all"
                 >
@@ -304,7 +304,7 @@ function openEditModal(category) {
     document.getElementById('modalTitle').textContent = 'Edit Program Category';
     document.getElementById('categoryForm').action = `/admin/program-categories/${category.id}`;
     document.getElementById('methodField').value = 'PUT';
-    
+
     document.getElementById('title').value = category.title;
     document.getElementById('description').value = category.description || '';
     document.getElementById('icon').value = category.icon || '';
@@ -312,7 +312,7 @@ function openEditModal(category) {
     document.getElementById('anchor_link').value = category.anchor_link;
     document.getElementById('order').value = category.order;
     document.getElementById('is_active').checked = category.is_active;
-    
+
     document.getElementById('categoryModal').classList.remove('hidden');
 }
 
