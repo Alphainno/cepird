@@ -16,30 +16,35 @@ class ResearchCategorySeeder extends Seeder
         $categories = [
             [
                 'name' => 'Climate Change',
+                'slug' => 'climate-change',
                 'color' => 'blue',
                 'order' => 1,
                 'is_active' => true,
             ],
             [
                 'name' => 'Sustainability',
+                'slug' => 'sustainability',
                 'color' => 'green',
                 'order' => 2,
                 'is_active' => true,
             ],
             [
                 'name' => 'Policy',
+                'slug' => 'policy',
                 'color' => 'purple',
                 'order' => 3,
                 'is_active' => true,
             ],
             [
                 'name' => 'Economic Development',
+                'slug' => 'economic-development',
                 'color' => 'yellow',
                 'order' => 4,
                 'is_active' => true,
             ],
             [
                 'name' => 'Environmental',
+                'slug' => 'environmental',
                 'color' => 'teal',
                 'order' => 5,
                 'is_active' => true,

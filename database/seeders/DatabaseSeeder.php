@@ -59,6 +59,11 @@ class DatabaseSeeder extends Seeder
             ContactCtaSectionSeeder::class,
             ProgramSectionSeeder::class,
             ResearchHeroSectionSeeder::class,
+            ResearchCategorySeeder::class,
+            ResearchPaperSeeder::class,
+            HeaderSeeder::class,
+            FooterSeeder::class,
+            
         ]);
     }
 }
