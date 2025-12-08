@@ -11,7 +11,7 @@ class ContactCtaSectionController extends Controller
     public function index()
     {
         $ctaSection = ContactCtaSection::first();
-        
+
         return view('admin.contact.cta', compact('ctaSection'));
     }
 
@@ -28,7 +28,7 @@ class ContactCtaSectionController extends Controller
         ]);
 
         $ctaSection = ContactCtaSection::first();
-        
+
         if (!$ctaSection) {
             $ctaSection = new ContactCtaSection();
         }
