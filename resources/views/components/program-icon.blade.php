@@ -15,7 +15,7 @@
         'video-camera' => '🎥',
         'lightning-bolt' => '⚡',
     ];
-    
+
     $displayIcon = $iconMap[$icon] ?? ($icon ?: '📘');
 @endphp
 {{ $displayIcon }}

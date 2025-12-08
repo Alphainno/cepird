@@ -45,7 +45,7 @@
                 </div>
 
                 <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $section->title }}</h3>
-                
+
                 @if($section->badge_text)
                     <p class="text-sm {{ $colors['text'] }} font-semibold mb-2">{{ $section->badge_text }}</p>
                 @endif

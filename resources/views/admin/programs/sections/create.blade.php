@@ -20,7 +20,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
     <form id="sectionForm" action="{{ route('admin.program-sections.store') }}" method="POST" class="p-6">
         @csrf
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Title -->
             <div>
@@ -113,10 +113,10 @@
 <script>
 document.getElementById('sectionForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const form = this;
     const formData = new FormData(form);
-    
+
     fetch(form.action, {
         method: 'POST',
         body: formData,

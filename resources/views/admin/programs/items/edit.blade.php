@@ -21,7 +21,7 @@
     <form id="itemForm" action="{{ route('admin.program-items.update', $item) }}" method="POST" class="p-6">
         @csrf
         @method('PUT')
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Title -->
             <div class="md:col-span-2">
@@ -228,10 +228,10 @@ function removeMetadata(btn) {
 
 document.getElementById('itemForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const form = this;
     const formData = new FormData(form);
-    
+
     fetch(form.action, {
         method: 'POST',
         body: formData,

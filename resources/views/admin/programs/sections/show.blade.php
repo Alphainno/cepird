@@ -69,7 +69,7 @@
     <div class="px-6 py-4 border-b border-gray-100">
         <h2 class="text-lg font-bold text-gray-800">Program Items ({{ $section->items->count() }})</h2>
     </div>
-    
+
     @if($section->items->count() > 0)
         <div class="divide-y divide-gray-100">
             @foreach($section->items as $item)
