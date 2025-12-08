@@ -18,6 +18,7 @@ class ProgramSection extends Model
         'section_id',
         'order',
         'is_active',
+        'program_category_id',
     ];
 
     protected $casts = [
@@ -46,6 +47,14 @@ class ProgramSection extends Model
     public function activeItems()
     {
         return $this->hasMany(ProgramItem::class)->where('is_active', true)->orderBy('order');
+    }
+
+    /**
+     * Get the category that this section belongs to.
+     */
+    public function category()
+    {
+        return $this->belongsTo(ProgramCategory::class, 'program_category_id');
     }
 
     /**

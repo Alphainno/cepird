@@ -23,6 +23,21 @@
         @method('PUT')
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Category -->
+            <div class="md:col-span-2">
+                <label for="program_category_id" class="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                <select name="program_category_id" id="program_category_id"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+                    <option value="">-- Select a Category (Optional) --</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ $section->program_category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->title }}
+                        </option>
+                    @endforeach
+                </select>
+                <p class="text-sm text-gray-500 mt-1">Link this section to a program category for better organization</p>
+            </div>
+
             <!-- Title -->
             <div>
                 <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Section Title *</label>

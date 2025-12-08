@@ -23,7 +23,8 @@ class ProgramSectionController extends Controller
      */
     public function create()
     {
-        return view('admin.programs.sections.create');
+        $categories = \App\Models\ProgramCategory::orderBy('order')->get();
+        return view('admin.programs.sections.create', compact('categories'));
     }
 
     /**
@@ -40,6 +41,7 @@ class ProgramSectionController extends Controller
             'section_id' => 'nullable|string|max:255',
             'order' => 'nullable|integer',
             'is_active' => 'boolean',
+            'program_category_id' => 'nullable|exists:program_categories,id',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
@@ -78,7 +80,8 @@ class ProgramSectionController extends Controller
      */
     public function edit(ProgramSection $section)
     {
-        return view('admin.programs.sections.edit', compact('section'));
+        $categories = \App\Models\ProgramCategory::orderBy('order')->get();
+        return view('admin.programs.sections.edit', compact('section', 'categories'));
     }
 
     /**
@@ -95,6 +98,7 @@ class ProgramSectionController extends Controller
             'section_id' => 'nullable|string|max:255',
             'order' => 'nullable|integer',
             'is_active' => 'boolean',
+            'program_category_id' => 'nullable|exists:program_categories,id',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
