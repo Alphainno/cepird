@@ -189,6 +189,10 @@ Route::post('/admin/program-categories', [\App\Http\Controllers\Admin\ProgramCat
 Route::put('/admin/program-categories/{programCategory}', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'update'])->name('admin.program-categories.update');
 Route::delete('/admin/program-categories/{programCategory}', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'destroy'])->name('admin.program-categories.destroy');
 
+// Admin Program Overview Section Routes
+Route::get('/admin/program-overview', [\App\Http\Controllers\Admin\ProgramOverviewSectionController::class, 'index'])->name('admin.program-overview.index');
+Route::put('/admin/program-overview', [\App\Http\Controllers\Admin\ProgramOverviewSectionController::class, 'update'])->name('admin.program-overview.update');
+
 // Image serving route
 Route::get('/images/{path}', function ($path) {
     $fullPath = public_path('images/' . $path);

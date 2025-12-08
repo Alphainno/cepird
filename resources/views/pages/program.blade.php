@@ -51,12 +51,24 @@
 <!-- Programs Overview -->
 <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        @php
+            $overviewSection = $programOverviewSection ?? null;
+        @endphp
+        
         <div class="text-center mb-16">
-            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Impact Initiatives</span>
-            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">Four Core Program Areas</h2>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                From cutting-edge research to hands-on entrepreneurship support, our programs are designed to create measurable impact across Bangladesh's innovation ecosystem.
-            </p>
+            @if($overviewSection)
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $overviewSection->badge_text }}</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">{{ $overviewSection->title }}</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    {{ $overviewSection->description }}
+                </p>
+            @else
+                <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Our Impact Initiatives</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">Four Core Program Areas</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    From cutting-edge research to hands-on entrepreneurship support, our programs are designed to create measurable impact across Bangladesh's innovation ecosystem.
+                </p>
+            @endif
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
