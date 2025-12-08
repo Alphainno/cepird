@@ -214,40 +214,36 @@
 @endforelse
 
 <!-- Program Impact Stats -->
+@if($impactSection && $impactSection->is_active && $impactStats->count() > 0)
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">Measurable Impact</span>
-            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">Programs by the Numbers</h2>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                Our programs create tangible outcomes that empower individuals, strengthen institutions, and transform Bangladesh's entrepreneurial landscape.
-            </p>
+            <span class="text-teal-600 font-bold tracking-wider uppercase text-sm">{{ $impactSection->badge_text }}</span>
+            <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6">{{ $impactSection->title }}</h2>
+            @if($impactSection->description)
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    {{ $impactSection->description }}
+                </p>
+            @endif
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-sm border border-blue-200 text-center">
-                <div class="text-5xl font-bold text-blue-900 mb-2">50+</div>
-                <p class="font-semibold text-slate-900 mb-1">Research Publications</p>
-                <p class="text-sm text-slate-600">Evidence-based studies driving policy</p>
-            </div>
-            <div class="p-8 bg-gradient-to-br from-teal-50 to-teal-100 rounded-sm border border-teal-200 text-center">
-                <div class="text-5xl font-bold text-teal-900 mb-2">1,200+</div>
-                <p class="font-semibold text-slate-900 mb-1">Trained Individuals</p>
-                <p class="text-sm text-slate-600">Certified in entrepreneurship & tech</p>
-            </div>
-            <div class="p-8 bg-gradient-to-br from-amber-50 to-amber-100 rounded-sm border border-amber-200 text-center">
-                <div class="text-5xl font-bold text-amber-900 mb-2">200+</div>
-                <p class="font-semibold text-slate-900 mb-1">Startups Accelerated</p>
-                <p class="text-sm text-slate-600">Through innovation programs</p>
-            </div>
-            <div class="p-8 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-sm border border-indigo-200 text-center">
-                <div class="text-5xl font-bold text-indigo-900 mb-2">25+</div>
-                <p class="font-semibold text-slate-900 mb-1">National Events</p>
-                <p class="text-sm text-slate-600">Summits, conferences & forums</p>
-            </div>
+            @foreach($impactStats as $stat)
+                @php
+                    $colors = $stat->getColorClasses();
+                @endphp
+                <div class="p-8 bg-gradient-to-br {{ $colors['gradient'] }} rounded-sm border {{ $colors['border'] }} text-center">
+                    <div class="text-5xl font-bold {{ $colors['text'] }} mb-2">{{ $stat->value }}</div>
+                    <p class="font-semibold text-slate-900 mb-1">{{ $stat->label }}</p>
+                    @if($stat->description)
+                        <p class="text-sm text-slate-600">{{ $stat->description }}</p>
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 
 <!-- CTA Section -->
 <section>

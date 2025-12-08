@@ -209,6 +209,15 @@ Route::get('/admin/program-items/{item}/edit', [\App\Http\Controllers\Admin\Prog
 Route::put('/admin/program-items/{item}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'updateItem'])->name('admin.program-items.update');
 Route::delete('/admin/program-items/{item}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'destroyItem'])->name('admin.program-items.destroy');
 
+// Admin Program Impact Stats Routes
+Route::get('/admin/program-impact', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'index'])->name('admin.program-impact.index');
+Route::get('/admin/program-impact/create', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'create'])->name('admin.program-impact.create');
+Route::post('/admin/program-impact', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'store'])->name('admin.program-impact.store');
+Route::get('/admin/program-impact/{stat}/edit', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'edit'])->name('admin.program-impact.edit');
+Route::put('/admin/program-impact/{stat}', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'update'])->name('admin.program-impact.update');
+Route::delete('/admin/program-impact/{stat}', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'destroy'])->name('admin.program-impact.destroy');
+Route::put('/admin/program-impact-section', [\App\Http\Controllers\Admin\ProgramImpactController::class, 'updateSection'])->name('admin.program-impact.update-section');
+
 // Image serving route
 Route::get('/images/{path}', function ($path) {
     $fullPath = public_path('images/' . $path);

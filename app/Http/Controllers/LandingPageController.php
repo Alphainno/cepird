@@ -78,7 +78,9 @@ class LandingPageController extends Controller
         $programOverviewSection = ProgramOverviewSection::getActive();
         $programCategories = \App\Models\ProgramCategory::getActive();
         $programSections = ProgramSection::with('activeItems')->where('is_active', true)->orderBy('order')->get();
-        return view('pages.program', compact('programHeroSection', 'programOverviewSection', 'programCategories', 'programSections'));
+        $impactSection = \App\Models\ProgramImpactSection::getActive();
+        $impactStats = \App\Models\ProgramImpactStat::getActive();
+        return view('pages.program', compact('programHeroSection', 'programOverviewSection', 'programCategories', 'programSections', 'impactSection', 'impactStats'));
     }
 
     public function founder()
