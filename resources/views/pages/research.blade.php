@@ -29,11 +29,11 @@
 <section class="py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-12 gap-8">
-            
+
             <!-- Left Sidebar - Filters & Search -->
             <aside class="lg:col-span-3">
                 <div class="sticky top-24 space-y-6">
-                    
+
                     <!-- Search Box -->
                     <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-5">
                         <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
@@ -41,10 +41,10 @@
                             Search Research
                         </h3>
                         <div class="relative">
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 id="research-search"
-                                placeholder="Search papers, topics..." 
+                                placeholder="Search papers, topics..."
                                 class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 placeholder-slate-400"
                             >
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-3.5 text-slate-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -121,7 +121,7 @@
 
             <!-- Right Content - Research Papers Grid -->
             <main class="lg:col-span-9">
-                
+
                 <!-- Results Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
                     <div>
@@ -140,7 +140,7 @@
 
                 <!-- Research Papers Grid -->
                 <div id="research-grid" class="grid gap-6">
-                    
+
                     <!-- Research Paper Card 1 -->
                     <div class="research-card bg-white rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden group">
                         <div class="p-6">
@@ -151,7 +151,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Content -->
                                 <div class="flex-1">
                                     <div class="flex items-start justify-between gap-4 mb-3">
@@ -162,15 +162,15 @@
                                             </h3>
                                         </div>
                                     </div>
-                                    
+
                                     <p class="text-slate-600 text-sm mb-2 font-medium">
                                         Mohammad Shahriar Khan, Dr. Ahmed Rahman, Prof. Sarah Ahmed
                                     </p>
-                                    
+
                                     <p class="text-slate-600 leading-relaxed mb-4">
                                         This research explores comprehensive digital transformation frameworks specifically designed for emerging entrepreneurial ecosystems. Through extensive case studies and empirical data from Bangladesh's startup landscape...
                                     </p>
-                                    
+
                                     <!-- Meta Information -->
                                     <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-4">
                                         <div class="flex items-center gap-1.5">
@@ -186,14 +186,14 @@
                                             <span>128 Citations</span>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Tags -->
                                     <div class="flex flex-wrap gap-2 mb-4">
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Digital Economy</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Startup Ecosystem</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Policy Framework</span>
                                     </div>
-                                    
+
                                     <!-- Action Buttons -->
                                     <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-100">
                                         <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white font-medium rounded-lg transition-colors text-sm">
@@ -224,7 +224,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Content -->
                                 <div class="flex-1">
                                     <div class="flex items-start justify-between gap-4 mb-3">
@@ -235,15 +235,15 @@
                                             </h3>
                                         </div>
                                     </div>
-                                    
+
                                     <p class="text-slate-600 text-sm mb-2 font-medium">
                                         Dr. Fatima Hassan, Mohammad Rahman
                                     </p>
-                                    
+
                                     <p class="text-slate-600 leading-relaxed mb-4">
                                         A comprehensive analysis of youth-focused entrepreneurship initiatives and their measurable impact on regional economic development. This study examines program outcomes across multiple districts...
                                     </p>
-                                    
+
                                     <!-- Meta Information -->
                                     <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-4">
                                         <div class="flex items-center gap-1.5">
@@ -259,14 +259,14 @@
                                             <span>95 Citations</span>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Tags -->
                                     <div class="flex flex-wrap gap-2 mb-4">
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Youth Development</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Economic Impact</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Skills Training</span>
                                     </div>
-                                    
+
                                     <!-- Action Buttons -->
                                     <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-100">
                                         <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white font-medium rounded-lg transition-colors text-sm">
@@ -297,7 +297,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Content -->
                                 <div class="flex-1">
                                     <div class="flex items-start justify-between gap-4 mb-3">
@@ -308,15 +308,15 @@
                                             </h3>
                                         </div>
                                     </div>
-                                    
+
                                     <p class="text-slate-600 text-sm mb-2 font-medium">
                                         Prof. Kamal Ahmed, Dr. Nusrat Jahan
                                     </p>
-                                    
+
                                     <p class="text-slate-600 leading-relaxed mb-4">
                                         This research presents innovative frameworks for sustainable growth in small and medium enterprises, emphasizing technological adoption and environmental responsibility in business operations...
                                     </p>
-                                    
+
                                     <!-- Meta Information -->
                                     <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-4">
                                         <div class="flex items-center gap-1.5">
@@ -332,14 +332,14 @@
                                             <span>67 Citations</span>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Tags -->
                                     <div class="flex flex-wrap gap-2 mb-4">
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">SME Growth</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Sustainability</span>
                                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-full">Technology Adoption</span>
                                     </div>
-                                    
+
                                     <!-- Action Buttons -->
                                     <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-100">
                                         <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white font-medium rounded-lg transition-colors text-sm">
@@ -389,19 +389,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('research-search');
     const researchCards = document.querySelectorAll('.research-card');
-    
+
     // Search functionality
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            
+
             researchCards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
                 const description = card.querySelector('p').textContent.toLowerCase();
                 const tags = Array.from(card.querySelectorAll('.px-3.py-1.bg-slate-100'))
                     .map(tag => tag.textContent.toLowerCase())
                     .join(' ');
-                
+
                 if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
                     card.style.display = 'block';
                 } else {
