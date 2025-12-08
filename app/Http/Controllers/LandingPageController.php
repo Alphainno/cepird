@@ -83,6 +83,11 @@ class LandingPageController extends Controller
         return view('pages.program', compact('programHeroSection', 'programOverviewSection', 'programCategories', 'programSections', 'impactSection', 'impactStats'));
     }
 
+    public function research()
+    {
+        return view('pages.research');
+    }
+
     public function founder()
     {
         return view('pages.founder');

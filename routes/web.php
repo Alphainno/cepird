@@ -29,6 +29,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/about', [LandingPageController::class, 'about'])->name('about');
 Route::get('/focus-areas', [LandingPageController::class, 'focusAreas'])->name('focus-areas');
 Route::get('/programs', [LandingPageController::class, 'programs'])->name('programs');
+Route::get('/research', [LandingPageController::class, 'research'])->name('research');
 Route::get('/founder', [LandingPageController::class, 'founder'])->name('founder');
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactFormController::class, 'submit'])->name('contact.submit');
