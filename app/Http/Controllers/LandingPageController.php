@@ -30,6 +30,7 @@ use App\Models\ContactMapSection;
 use App\Models\ContactCtaSection;
 use App\Models\ProgramOverviewSection;
 use App\Models\ProgramSection;
+use App\Models\ProgramCategory;
 
 class LandingPageController extends Controller
 {
@@ -40,9 +41,11 @@ class LandingPageController extends Controller
         $focusAreaSection = FocusAreaSection::with('focusAreas')->where('is_active', true)->first();
         $visionSection = VisionSection::with('missionPoints')->where('is_active', true)->first();
         $programs = Program::active()->ordered()->get()->groupBy('category');
+        $programOverviewSection = ProgramOverviewSection::getActive();
+        $programCategories = ProgramCategory::getActive();
         $founder = Founder::getActive();
         $ctaSection = CtaSection::getActive();
-        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs', 'founder', 'ctaSection'));
+        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs', 'programOverviewSection', 'programCategories', 'founder', 'ctaSection'));
     }
 
     public function about()
