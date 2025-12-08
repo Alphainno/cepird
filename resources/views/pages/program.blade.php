@@ -246,7 +246,7 @@
 @endif
 
 <!-- CTA Section -->
-<section class="relative py-24 bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+{{-- <section class="relative py-24 bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxIDEuNzktNCA0LTRzNCAxLjc5IDQgNC0xLjc5IDQtNCA0LTQtMS43OS00LTR6bTAtMjBjMC0yLjIxIDEuNzktNCA0LTRzNCAxLjc5IDQgNC0xLjc5IDQtNCA0LTQtMS43OS00LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')]"></div>
     </div>
@@ -261,12 +261,9 @@
                 <a href="#" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg shadow-lg hover:shadow-xl">
                     Apply Now
                 </a>
-                <a href="#" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg shadow-lg hover:shadow-xl">
-                    Download Brochure
-                </a>
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 @endsection
