@@ -60,7 +60,7 @@ class ResearchPaperSeeder extends Seeder
                 'citations' => 156,
                 'tags' => ['Policy', 'Environmental Governance', 'Development'],
                 'icon_color' => 'purple-900',
-                'is_featured' => false,
+                'is_featured' => true,
                 'is_active' => true,
                 'order' => 3,
             ],

@@ -43,9 +43,11 @@ class LandingPageController extends Controller
         $programs = Program::active()->ordered()->get()->groupBy('category');
         $programOverviewSection = ProgramOverviewSection::getActive();
         $programCategories = ProgramCategory::getActive();
+        $researchCategories = \App\Models\ResearchCategory::with('papers')->where('is_active', true)->orderBy('order')->get();
+        $featuredPapers = \App\Models\ResearchPaper::with('category')->where('is_active', true)->where('is_featured', true)->orderBy('order')->get();
         $founder = Founder::getActive();
         $ctaSection = CtaSection::getActive();
-        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs', 'programOverviewSection', 'programCategories', 'founder', 'ctaSection'));
+        return view('pages.landing', compact('heroSection', 'aboutSection', 'focusAreaSection', 'visionSection', 'programs', 'programOverviewSection', 'programCategories', 'researchCategories', 'featuredPapers', 'founder', 'ctaSection'));
     }
 
     public function about()

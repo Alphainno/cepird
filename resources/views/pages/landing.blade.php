@@ -13,6 +13,7 @@
     @include('landingSection.vision', ['visionSection' => $visionSection])
 
     @include('landingSection.programs')
+    @include('landingSection.research')
 
     @include('landingSection.founder')
 
