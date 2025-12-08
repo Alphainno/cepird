@@ -183,6 +183,12 @@ Route::get('/admin/programs-hero', [ProgramHeroSectionController::class, 'index'
 Route::put('/admin/programs-hero', [ProgramHeroSectionController::class, 'update'])->name('admin.programs-hero.update');
 Route::post('/admin/programs-hero', [ProgramHeroSectionController::class, 'update'])->name('admin.programs-hero.store');
 
+// Admin Program Categories Routes
+Route::get('/admin/program-categories', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'index'])->name('admin.program-categories.index');
+Route::post('/admin/program-categories', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'store'])->name('admin.program-categories.store');
+Route::put('/admin/program-categories/{programCategory}', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'update'])->name('admin.program-categories.update');
+Route::delete('/admin/program-categories/{programCategory}', [\App\Http\Controllers\Admin\ProgramCategoryController::class, 'destroy'])->name('admin.program-categories.destroy');
+
 // Image serving route
 Route::get('/images/{path}', function ($path) {
     $fullPath = public_path('images/' . $path);
