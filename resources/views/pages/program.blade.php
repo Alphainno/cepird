@@ -246,16 +246,22 @@
 @endif
 
 <!-- CTA Section -->
-<section>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Our Programs</h2>
+<section class="relative py-24 bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-800 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxIDEuNzktNCA0LTRzNCAxLjc5IDQgNC0xLjc5IDQtNCA0LTQtMS43OS00LTR6bTAtMjBjMC0yLjIxIDEuNzktNCA0LTRzNCAxLjc5IDQgNC0xLjc5IDQtNCA0LTQtMS43OS00LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')]"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Join Our Programs</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Whether you're an aspiring entrepreneur, researcher, or innovator, CEPIRD has a program designed to help you achieve your goals and create meaningful impact.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg">
+                <a href="#" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg shadow-lg hover:shadow-xl">
                     Apply Now
                 </a>
-                <a href="#" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg">
+                <a href="#" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg shadow-lg hover:shadow-xl">
                     Download Brochure
                 </a>
             </div>
