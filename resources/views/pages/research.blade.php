@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 pt-40 pb-20 overflow-hidden">
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 pt-32 pb-20 overflow-hidden mt-16">
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
