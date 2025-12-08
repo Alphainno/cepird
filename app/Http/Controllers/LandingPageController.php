@@ -29,6 +29,7 @@ use App\Models\ContactInfoSection;
 use App\Models\ContactMapSection;
 use App\Models\ContactCtaSection;
 use App\Models\ProgramOverviewSection;
+use App\Models\ProgramSection;
 
 class LandingPageController extends Controller
 {
@@ -76,7 +77,8 @@ class LandingPageController extends Controller
         $programHeroSection = \App\Models\ProgramHeroSection::getActive();
         $programOverviewSection = ProgramOverviewSection::getActive();
         $programCategories = \App\Models\ProgramCategory::getActive();
-        return view('pages.program', compact('programHeroSection', 'programOverviewSection', 'programCategories'));
+        $programSections = ProgramSection::with('activeItems')->where('is_active', true)->orderBy('order')->get();
+        return view('pages.program', compact('programHeroSection', 'programOverviewSection', 'programCategories', 'programSections'));
     }
 
     public function founder()

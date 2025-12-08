@@ -193,6 +193,22 @@ Route::delete('/admin/program-categories/{programCategory}', [\App\Http\Controll
 Route::get('/admin/program-overview', [\App\Http\Controllers\Admin\ProgramOverviewSectionController::class, 'index'])->name('admin.program-overview.index');
 Route::put('/admin/program-overview', [\App\Http\Controllers\Admin\ProgramOverviewSectionController::class, 'update'])->name('admin.program-overview.update');
 
+// Admin Program Sections (Category Details) Routes
+Route::get('/admin/program-sections', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'index'])->name('admin.program-sections.index');
+Route::get('/admin/program-sections/create', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'create'])->name('admin.program-sections.create');
+Route::post('/admin/program-sections', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'store'])->name('admin.program-sections.store');
+Route::get('/admin/program-sections/{section}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'show'])->name('admin.program-sections.show');
+Route::get('/admin/program-sections/{section}/edit', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'edit'])->name('admin.program-sections.edit');
+Route::put('/admin/program-sections/{section}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'update'])->name('admin.program-sections.update');
+Route::delete('/admin/program-sections/{section}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'destroy'])->name('admin.program-sections.destroy');
+
+// Admin Program Items Routes
+Route::get('/admin/program-sections/{section}/items/create', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'createItem'])->name('admin.program-items.create');
+Route::post('/admin/program-sections/{section}/items', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'storeItem'])->name('admin.program-items.store');
+Route::get('/admin/program-items/{item}/edit', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'editItem'])->name('admin.program-items.edit');
+Route::put('/admin/program-items/{item}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'updateItem'])->name('admin.program-items.update');
+Route::delete('/admin/program-items/{item}', [\App\Http\Controllers\Admin\ProgramSectionController::class, 'destroyItem'])->name('admin.program-items.destroy');
+
 // Image serving route
 Route::get('/images/{path}', function ($path) {
     $fullPath = public_path('images/' . $path);

@@ -153,6 +153,7 @@
                 <a href="{{ route('admin.programs-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
                 <a href="{{ route('admin.program-overview.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Overview Section</a>
                 <a href="{{ route('admin.program-categories.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Categories</a>
+                <a href="{{ route('admin.program-sections.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Category Details</a>
             </div>
         </div>
 
