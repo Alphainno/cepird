@@ -20,19 +20,6 @@
         </div>
     </div>
 
-    <!-- Success Message -->
-    @if(session('success'))
-        <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-sm">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if(session('error'))
-        <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-sm">
-            {{ session('error') }}
-        </div>
-    @endif
-
     <!-- Research Papers Table -->
     <div class="bg-white rounded-sm shadow-sm border border-slate-200">
         <div class="overflow-x-auto">
