@@ -129,7 +129,7 @@ class ProgramSectionController extends Controller
     {
         $section->delete();
 
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->wantsJson()) {
             return response()->json(['success' => true, 'message' => 'Program section deleted successfully!']);
         }
 
@@ -277,7 +277,7 @@ class ProgramSectionController extends Controller
         $sectionId = $item->program_section_id;
         $item->delete();
 
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->wantsJson()) {
             return response()->json(['success' => true, 'message' => 'Program item deleted successfully!']);
         }
 

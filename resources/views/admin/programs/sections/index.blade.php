@@ -123,11 +123,12 @@ function deleteSection(id) {
                 }
             });
 
-            fetch(`/admin/program-sections/${id}`, {
+            fetch(`{{ url('/admin/program-sections') }}/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
             .then(response => response.json())
