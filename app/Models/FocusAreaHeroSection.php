@@ -24,12 +24,12 @@ class FocusAreaHeroSection extends Model
         if (!$this->background_image) {
             return null;
         }
-        
+
         // Check if it's an external URL (http/https)
         if (str_starts_with($this->background_image, 'http://') || str_starts_with($this->background_image, 'https://')) {
             return $this->background_image;
         }
-        
+
         // Otherwise, it's a storage path
         return asset('storage/' . $this->background_image);
     }
