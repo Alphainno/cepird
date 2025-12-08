@@ -322,16 +322,16 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-gradient-to-br from-blue-900 via-slate-900 to-teal-800 rounded-sm p-12 md:p-16 text-white text-center shadow-2xl">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build the Future Together</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">{{ ($contactCta && $contactCta->title) ? $contactCta->title : "Let's Build the Future Together" }}</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Whether you're looking to collaborate, contribute, or simply learn more about our initiatives, we're excited to connect with you.
+                {{ ($contactCta && $contactCta->description) ? $contactCta->description : "Whether you're looking to collaborate, contribute, or simply learn more about our initiatives, we're excited to connect with you." }}
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="{{ route('about') }}" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg">
-                    Learn About Us
+                <a href="{{ ($contactCta && $contactCta->button_1_url) ? (str_starts_with($contactCta->button_1_url, 'http') ? $contactCta->button_1_url : route($contactCta->button_1_url)) : route('about') }}" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-sm hover:bg-blue-50 transition-colors text-lg">
+                    {{ ($contactCta && $contactCta->button_1_text) ? $contactCta->button_1_text : 'Learn About Us' }}
                 </a>
-                <a href="{{ route('programs') }}" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg">
-                    Explore Programs
+                <a href="{{ ($contactCta && $contactCta->button_2_url) ? (str_starts_with($contactCta->button_2_url, 'http') ? $contactCta->button_2_url : route($contactCta->button_2_url)) : route('programs') }}" class="px-10 py-4 bg-teal-600 text-white font-bold rounded-sm hover:bg-teal-700 transition-colors border border-teal-500 text-lg">
+                    {{ ($contactCta && $contactCta->button_2_text) ? $contactCta->button_2_text : 'Explore Programs' }}
                 </a>
             </div>
         </div>

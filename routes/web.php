@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ImpactSectionController;
 use App\Http\Controllers\Admin\ContactHeroSectionController;
 use App\Http\Controllers\Admin\ContactInfoSectionController;
 use App\Http\Controllers\Admin\ContactMapSectionController;
+use App\Http\Controllers\Admin\ContactCtaSectionController;
 use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
@@ -118,6 +119,11 @@ Route::post('/admin/contact-info', [ContactInfoSectionController::class, 'update
 Route::get('/admin/contact-map', [ContactMapSectionController::class, 'index'])->name('admin.contact-map.index');
 Route::put('/admin/contact-map', [ContactMapSectionController::class, 'update'])->name('admin.contact-map.update');
 Route::post('/admin/contact-map', [ContactMapSectionController::class, 'update'])->name('admin.contact-map.store');
+
+// Admin Contact CTA Routes
+Route::get('/admin/contact-cta', [ContactCtaSectionController::class, 'index'])->name('admin.contact-cta.index');
+Route::put('/admin/contact-cta', [ContactCtaSectionController::class, 'update'])->name('admin.contact-cta.update');
+Route::post('/admin/contact-cta', [ContactCtaSectionController::class, 'update'])->name('admin.contact-cta.store');
 
 // Admin Contact Submissions Routes
 Route::get('/admin/contact/submissions', [ContactSubmissionController::class, 'index'])->name('admin.contact.submissions.index');

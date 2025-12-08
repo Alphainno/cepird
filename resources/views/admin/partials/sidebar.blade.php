@@ -54,6 +54,7 @@
                 <a href="{{ route('admin.contact-hero.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Hero Section</a>
                 <a href="{{ route('admin.contact-info.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Contact Information</a>
                 <a href="{{ route('admin.contact-map.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Map Section</a>
+                <a href="{{ route('admin.contact-cta.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">CTA Section</a>
                 <a href="{{ route('admin.contact.submissions.index') }}" class="block pl-8 pr-4 py-2 rounded-lg text-indigo-200 hover:bg-indigo-700/50 transition">Messages</a>
             </div>
         </div>
