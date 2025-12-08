@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function filterPapers(categoryId) {
         let visibleCount = 0;
-        
+
         researchCards.forEach(card => {
             if (categoryId === 'all') {
                 card.style.display = 'block';
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Check if card matches search and is visible due to category filter
                 const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm);
-                
+
                 if (matchesSearch && card.style.display !== 'none') {
                     card.style.display = 'block';
                     visibleCount++;
