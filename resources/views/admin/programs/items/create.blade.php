@@ -18,9 +18,8 @@
 </div>
 
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <form id="itemForm" action="{{ route('admin.program-items.store') }}" method="POST" class="p-6">
+    <form id="itemForm" action="{{ route('admin.program-items.store', $section) }}" method="POST" class="p-6">
         @csrf
-        <input type="hidden" name="program_section_id" value="{{ $section->id }}">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Title -->

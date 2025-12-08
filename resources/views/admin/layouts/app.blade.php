@@ -24,6 +24,9 @@
         }
     </script>
 
+    <!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
@@ -55,6 +58,9 @@
 
     <!-- Toast Notifications Container -->
     <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom JavaScript -->
     <script src="{{ asset('js/admin.js') }}"></script>

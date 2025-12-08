@@ -99,27 +99,58 @@
 @push('scripts')
 <script>
 function deleteSection(id) {
-    if (confirm('Are you sure you want to delete this section? All items within it will also be deleted.')) {
-        fetch(`/admin/program-sections/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showToast(data.message, 'success');
-                setTimeout(() => location.reload(), 1000);
-            } else {
-                showToast('Failed to delete section', 'error');
-            }
-        })
-        .catch(error => {
-            showToast('An error occurred', 'error');
-        });
-    }
+    Swal.fire({
+        title: 'Delete Program Section?',
+        text: 'This will permanently delete this section and all items within it. This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc2626',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true,
+        focusCancel: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Show loading state
+            Swal.fire({
+                title: 'Deleting...',
+                text: 'Please wait while we delete the section.',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            fetch(`/admin/program-sections/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: data.message,
+                        icon: 'success',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Error!', 'Failed to delete section', 'error');
+                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', 'An error occurred while deleting', 'error');
+            });
+        }
+    });
 }
 </script>
 @endpush
