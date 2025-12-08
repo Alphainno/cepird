@@ -199,9 +199,9 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
                                             Share
                                         </button>
-                                        
+
                                         <!-- Hidden data for modal -->
-                                        <div class="hidden paper-data" 
+                                        <div class="hidden paper-data"
                                              data-id="{{ $paper->id }}"
                                              data-title="{{ $paper->title }}"
                                              data-authors="{{ $paper->authors }}"
@@ -370,7 +370,7 @@ function showPaperDetails(paperId) {
     document.getElementById('modalDescription').textContent = description;
     document.getElementById('modalDate').textContent = date;
     document.getElementById('modalCitations').textContent = `${citations} Citations`;
-    
+
     // Category badge
     const categoryBadge = document.getElementById('modalCategory');
     categoryBadge.textContent = category;
@@ -390,7 +390,7 @@ function showPaperDetails(paperId) {
     const tagsWrapper = document.getElementById('modalTagsWrapper');
     if (tags && tags.length > 0) {
         tagsWrapper.style.display = 'block';
-        tagsContainer.innerHTML = tags.map(tag => 
+        tagsContainer.innerHTML = tags.map(tag =>
             `<span class="px-3 py-1 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">${tag}</span>`
         ).join('');
     } else {
