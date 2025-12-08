@@ -16,7 +16,7 @@ class ResearchCategoryController extends Controller
         $categories = ResearchCategory::withCount('papers')
                                      ->orderBy('order')
                                      ->get();
-        
+
         return view('admin.research-categories.index', compact('categories'));
     }
 

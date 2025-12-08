@@ -87,7 +87,7 @@ class LandingPageController extends Controller
     {
         $categories = \App\Models\ResearchCategory::getActive();
         $papers = \App\Models\ResearchPaper::getActive();
-        
+
         return view('pages.research', compact('categories', 'papers'));
     }
 

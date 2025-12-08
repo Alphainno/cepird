@@ -17,7 +17,7 @@ class ResearchPaperController extends Controller
         $papers = ResearchPaper::with('category')
                               ->orderBy('publication_date', 'desc')
                               ->paginate(20);
-        
+
         return view('admin.research-papers.index', compact('papers'));
     }
 
@@ -29,7 +29,7 @@ class ResearchPaperController extends Controller
         $categories = ResearchCategory::where('is_active', true)
                                      ->orderBy('order')
                                      ->get();
-        
+
         return view('admin.research-papers.create', compact('categories'));
     }
 
@@ -83,7 +83,7 @@ class ResearchPaperController extends Controller
         $categories = ResearchCategory::where('is_active', true)
                                      ->orderBy('order')
                                      ->get();
-        
+
         return view('admin.research-papers.edit', compact('paper', 'categories'));
     }
 
