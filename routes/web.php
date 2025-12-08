@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\FocusAreaCtaSectionController;
 use App\Http\Controllers\Admin\FocusAreaOutcomeSectionController;
 use App\Http\Controllers\Admin\ProgramHeroSectionController;
 use App\Http\Controllers\Admin\ResearchHeroSectionController;
+use App\Http\Controllers\Admin\ResearchPaperController;
+use App\Http\Controllers\Admin\ResearchCategoryController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {
@@ -57,6 +59,22 @@ Route::post('/admin/hero', [HeroSectionController::class, 'update'])->name('admi
 Route::get('/admin/research-hero', [ResearchHeroSectionController::class, 'index'])->name('admin.research-hero.index');
 Route::put('/admin/research-hero', [ResearchHeroSectionController::class, 'update'])->name('admin.research-hero.update');
 Route::post('/admin/research-hero', [ResearchHeroSectionController::class, 'update'])->name('admin.research-hero.store');
+
+// Admin Research Papers Routes
+Route::get('/admin/research-papers', [ResearchPaperController::class, 'index'])->name('admin.research-papers.index');
+Route::get('/admin/research-papers/create', [ResearchPaperController::class, 'create'])->name('admin.research-papers.create');
+Route::post('/admin/research-papers', [ResearchPaperController::class, 'store'])->name('admin.research-papers.store');
+Route::get('/admin/research-papers/{paper}/edit', [ResearchPaperController::class, 'edit'])->name('admin.research-papers.edit');
+Route::put('/admin/research-papers/{paper}', [ResearchPaperController::class, 'update'])->name('admin.research-papers.update');
+Route::delete('/admin/research-papers/{paper}', [ResearchPaperController::class, 'destroy'])->name('admin.research-papers.destroy');
+
+// Admin Research Categories Routes
+Route::get('/admin/research-categories', [ResearchCategoryController::class, 'index'])->name('admin.research-categories.index');
+Route::get('/admin/research-categories/create', [ResearchCategoryController::class, 'create'])->name('admin.research-categories.create');
+Route::post('/admin/research-categories', [ResearchCategoryController::class, 'store'])->name('admin.research-categories.store');
+Route::get('/admin/research-categories/{category}/edit', [ResearchCategoryController::class, 'edit'])->name('admin.research-categories.edit');
+Route::put('/admin/research-categories/{category}', [ResearchCategoryController::class, 'update'])->name('admin.research-categories.update');
+Route::delete('/admin/research-categories/{category}', [ResearchCategoryController::class, 'destroy'])->name('admin.research-categories.destroy');
 
 // Admin About Section Routes
 Route::get('/admin/about', [AboutSectionController::class, 'index'])->name('admin.about.index');
