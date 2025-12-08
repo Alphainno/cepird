@@ -886,7 +886,7 @@
 </section>
 
 <!-- CTA Section -->
-<sectionter">
+<section>
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Our Programs</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Whether you're an aspiring entrepreneur, researcher, or innovator, CEPIRD has a program designed to help you achieve your goals and create meaningful impact.
