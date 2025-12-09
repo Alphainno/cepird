@@ -6,6 +6,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard - CEPIRD')</title>
 
+    <!-- Favicon -->
+    @php
+        $headerSetting = \App\Models\HeaderSetting::where('is_active', true)->first();
+    @endphp
+    @if($headerSetting && $headerSetting->logo)
+        <link rel="icon" type="image/png" href="{{ asset('storage/' . $headerSetting->logo) }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('storage/' . $headerSetting->logo) }}">
+    @endif
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

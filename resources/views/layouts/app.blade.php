@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'CEPIRD - Center for Entrepreneurial Policy & Innovation')</title>
 
+    <!-- Favicon -->
+    @php
+        $headerSetting = \App\Models\HeaderSetting::where('is_active', true)->first();
+    @endphp
+    @if($headerSetting && $headerSetting->logo)
+        <link rel="icon" type="image/png" href="{{ asset('storage/' . $headerSetting->logo) }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('storage/' . $headerSetting->logo) }}">
+    @endif
+
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
