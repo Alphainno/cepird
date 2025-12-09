@@ -50,7 +50,7 @@
         @include('admin.partials.sidebar')
 
         <!-- ================= MAIN CONTENT ================= -->
-        <div class="flex-1 overflow-x-hidden">
+        <div class="flex-1 overflow-x-hidden lg:ml-64">
 
             @include('admin.partials.header')
 

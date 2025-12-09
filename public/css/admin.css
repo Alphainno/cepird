@@ -52,6 +52,6 @@
 @media (min-width: 1024px) {
     #sidebar {
         transform: translateX(0);
-        position: relative;
+        position: fixed;
     }
 }

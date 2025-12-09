@@ -1,6 +1,6 @@
 <!-- ================= SIDEBAR ================= -->
 <aside id="sidebar"
-    class="fixed lg:fixed lg:left-0 lg:top-0 w-64 h-screen bg-primary-dark text-white shadow-xl flex-shrink-0 overflow-y-auto">
+    class="fixed !lg:fixed lg:left-0 lg:top-0 w-64 h-screen bg-primary-dark text-white shadow-xl flex-shrink-0 overflow-auto">
 
     <div class="p-6 border-b border-indigo-700">
          <img src="{{ asset('images/logo.png') }}" alt="Nexsports Logo" class="h-16 mx-auto mb-3 object-contain transform group-hover:scale-110 transition-all duration-300">
