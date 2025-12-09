@@ -15,7 +15,8 @@
 }
 
 .submenu.open {
-    max-height: 500px; /* Arbitrary large number for smooth transition */
+    max-height: 500px;
+    /* Arbitrary large number for smooth transition */
     transition: max-height 0.5s ease-in;
 }
 
@@ -41,7 +42,8 @@
     /* Fixed position on mobile, slide in/out */
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
-    z-index: 50; /* Above content */
+    z-index: 50;
+    /* Above content */
 }
 
 #sidebar.open {
@@ -54,4 +56,8 @@
         transform: translateX(0);
         position: fixed;
     }
+}
+
+#sidebar::-webkit-scrollbar {
+    display: none;
 }

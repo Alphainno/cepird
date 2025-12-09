@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
+            'role' => 'administrator',
+            'phone' => '+1 (555) 123-4567',
+            'bio' => 'System Administrator for CEPIRD platform.',
         ]);
 
         // Seed Hero Section

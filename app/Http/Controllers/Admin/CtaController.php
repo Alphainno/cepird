@@ -19,10 +19,8 @@ class CtaController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'primary_button_text' => 'required|string|max:255',
-            'primary_button_url' => 'required|string|max:255',
-            'secondary_button_text' => 'required|string|max:255',
-            'secondary_button_url' => 'required|string|max:255',
+            'button_text' => 'required|string|max:255',
+            'button_url' => 'required|string|max:255',
             'is_active' => 'boolean'
         ]);
 

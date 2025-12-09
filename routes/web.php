@@ -49,7 +49,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.log
 
 Route::post('/dashboard', [DashboardController::class, 'authenticate'])->name('admin.login.perform');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+// Protected Admin Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
 
 // Admin Hero Section Routes
 Route::get('/admin/hero', [HeroSectionController::class, 'index'])->name('admin.hero.index');
@@ -192,6 +194,11 @@ Route::post('/admin/header', [App\Http\Controllers\Admin\HeaderController::class
 Route::get('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'index'])->name('admin.footer.index');
 Route::post('/admin/footer', [App\Http\Controllers\Admin\FooterController::class, 'store'])->name('admin.footer.store');
 
+// Admin Profile Routes
+Route::get('/admin/profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('admin.profile.index');
+Route::put('/admin/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('admin.profile.update');
+Route::post('/admin/logout', [App\Http\Controllers\Admin\ProfileController::class, 'logout'])->name('admin.logout');
+
 // Admin Focus Area Hero Routes
 Route::get('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'index'])->name('admin.focus-area-hero.index');
 Route::put('/admin/focus-area-hero', [App\Http\Controllers\Admin\FocusAreaHeroSectionController::class, 'update'])->name('admin.focus-area-hero.update');
@@ -251,3 +258,5 @@ Route::get('/images/{path}', function ($path) {
     }
     abort(404);
 })->where('path', '.*');
+
+}); // End of auth middleware group

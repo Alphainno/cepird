@@ -102,7 +102,7 @@
                     @enderror
                 </div>
             </div>
-
+{{--
             <!-- Button 2 -->
             <div class="grid md:grid-cols-2 gap-4">
                 <div>
@@ -125,7 +125,7 @@
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Founder Name -->
             <div>
@@ -157,7 +157,7 @@
         </form>
     </div>
 
-    <!-- Preview Section -->
+    {{-- <!-- Preview Section -->
     <div class="bg-white rounded-sm shadow-sm border border-slate-200">
         <div class="p-6 border-b border-slate-200">
             <h2 class="text-lg font-semibold text-slate-900">Live Preview</h2>
@@ -186,7 +186,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <script>

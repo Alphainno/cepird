@@ -9,10 +9,8 @@ class CtaSection extends Model
     protected $fillable = [
         'title',
         'description',
-        'primary_button_text',
-        'primary_button_url',
-        'secondary_button_text',
-        'secondary_button_url',
+        'button_text',
+        'button_url',
         'is_active'
     ];
 

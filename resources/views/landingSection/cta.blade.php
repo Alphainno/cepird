@@ -4,12 +4,9 @@
     <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{{ $ctaSection->title }}</h2>
         <p class="text-slate-400 mb-10 text-lg">{{ $ctaSection->description }}</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="{{ $ctaSection->primary_button_url }}" class="px-8 py-3 bg-teal-500 text-white font-bold rounded-sm hover:bg-teal-600 transition-colors">
-                {{ $ctaSection->primary_button_text }}
-            </a>
-            <a href="{{ $ctaSection->secondary_button_url }}" class="px-8 py-3 bg-transparent border border-slate-600 text-white font-bold rounded-sm hover:bg-white hover:text-slate-900 transition-colors">
-                {{ $ctaSection->secondary_button_text }}
+        <div class="flex justify-center">
+            <a href="{{ $ctaSection->button_url }}" class="px-8 py-3 bg-teal-500 text-white font-bold rounded-sm hover:bg-teal-600 transition-colors">
+                {{ $ctaSection->button_text }}
             </a>
         </div>
     </div>

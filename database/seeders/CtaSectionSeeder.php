@@ -16,10 +16,8 @@ class CtaSectionSeeder extends Seeder
         CtaSection::create([
             'title' => 'Join the Movement Toward a Future-Ready Bangladesh.',
             'description' => 'Whether you are a policy maker, student, or entrepreneur, there is a place for you at CEPIRD.',
-            'primary_button_text' => 'Become a Member',
-            'primary_button_url' => '#',
-            'secondary_button_text' => 'Contact CEPIRD',
-            'secondary_button_url' => '#',
+            'button_text' => 'Contact CEPIRD',
+            'button_url' => '/contact',
             'is_active' => true
         ]);
     }

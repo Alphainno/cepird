@@ -45,49 +45,25 @@
                 @enderror
             </div>
 
-            <!-- Primary Button -->
+            <!-- Contact Button -->
             <div class="grid md:grid-cols-2 gap-4">
                 <div>
-                    <label for="primary_button_text" class="block text-sm font-medium text-slate-700 mb-2">Primary Button Text <span class="text-red-500">*</span></label>
-                    <input type="text" name="primary_button_text" id="primary_button_text"
-                        value="{{ old('primary_button_text', $cta->primary_button_text ?? '') }}"
-                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="e.g., Become a Member" required>
-                    @error('primary_button_text')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div>
-                    <label for="primary_button_url" class="block text-sm font-medium text-slate-700 mb-2">Primary Button URL <span class="text-red-500">*</span></label>
-                    <input type="text" name="primary_button_url" id="primary_button_url"
-                        value="{{ old('primary_button_url', $cta->primary_button_url ?? '') }}"
-                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="e.g., # or https://example.com" required>
-                    @error('primary_button_url')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            <!-- Secondary Button -->
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label for="secondary_button_text" class="block text-sm font-medium text-slate-700 mb-2">Secondary Button Text <span class="text-red-500">*</span></label>
-                    <input type="text" name="secondary_button_text" id="secondary_button_text"
-                        value="{{ old('secondary_button_text', $cta->secondary_button_text ?? '') }}"
+                    <label for="button_text" class="block text-sm font-medium text-slate-700 mb-2">Button Text <span class="text-red-500">*</span></label>
+                    <input type="text" name="button_text" id="button_text"
+                        value="{{ old('button_text', $cta->button_text ?? 'Contact CEPIRD') }}"
                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="e.g., Contact CEPIRD" required>
-                    @error('secondary_button_text')
+                    @error('button_text')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
-                    <label for="secondary_button_url" class="block text-sm font-medium text-slate-700 mb-2">Secondary Button URL <span class="text-red-500">*</span></label>
-                    <input type="text" name="secondary_button_url" id="secondary_button_url"
-                        value="{{ old('secondary_button_url', $cta->secondary_button_url ?? '') }}"
+                    <label for="button_url" class="block text-sm font-medium text-slate-700 mb-2">Button URL <span class="text-red-500">*</span></label>
+                    <input type="text" name="button_url" id="button_url"
+                        value="{{ old('button_url', $cta->button_url ?? '/contact') }}"
                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="e.g., # or https://example.com" required>
-                    @error('secondary_button_url')
+                        placeholder="e.g., /contact or https://example.com" required>
+                    @error('button_url')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>

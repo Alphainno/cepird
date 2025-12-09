@@ -30,8 +30,8 @@ class HeroSectionController extends Controller
             'description' => 'required|string',
             'button1_text' => 'required|string|max:255',
             'button1_link' => 'nullable|string|max:255',
-            'button2_text' => 'nullable|string|max:255',
-            'button2_link' => 'nullable|string|max:255',
+            // 'button2_text' => 'nullable|string|max:255',
+            // 'button2_link' => 'nullable|string|max:255',
             'founder_name' => 'nullable|string|max:255',
         ]);
 
@@ -47,8 +47,8 @@ class HeroSectionController extends Controller
             $heroSection->description = $validated['description'];
             $heroSection->button1_text = $validated['button1_text'];
             $heroSection->button1_link = $validated['button1_link'];
-            $heroSection->button2_text = $validated['button2_text'];
-            $heroSection->button2_link = $validated['button2_link'];
+            // $heroSection->button2_text = $validated['button2_text'];
+            // $heroSection->button2_link = $validated['button2_link'];
             $heroSection->founder_name = $validated['founder_name'];
             $heroSection->is_active = $validated['is_active'];
             $heroSection->save();

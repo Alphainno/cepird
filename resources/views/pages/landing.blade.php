@@ -6,7 +6,7 @@
 
     @include('landingSection.hero', ['heroSection' => $heroSection])
 
-    @include('landingSection.about', ['aboutSection' => $aboutSection])
+    {{-- @include('landingSection.about', ['aboutSection' => $aboutSection]) --}}
 
     @include('landingSection.focus-areas', ['focusAreaSection' => $focusAreaSection])
 
