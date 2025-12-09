@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\ProgramHeroSectionController;
 use App\Http\Controllers\Admin\ResearchHeroSectionController;
 use App\Http\Controllers\Admin\ResearchPaperController;
 use App\Http\Controllers\Admin\ResearchCategoryController;
+use App\Http\Controllers\Admin\FounderController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\StrategicPillarController;
 // Route::get('/', function () {

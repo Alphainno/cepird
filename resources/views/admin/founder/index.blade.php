@@ -62,7 +62,7 @@
                 <label for="image" class="block text-sm font-medium text-slate-700 mb-2">Founder Image</label>
                 <div id="imagePreview" class="mb-2">
                     @if($founder->image)
-                    <img src="{{ asset($founder->image) }}" alt="Current image" class="w-20 h-20 object-cover rounded border">
+                    <img src="{{ asset('storage/' . $founder->image) }}" alt="Current image" class="w-20 h-20 object-cover rounded border">
                     <p class="text-sm text-slate-600 mt-1">Current image</p>
                     @else
                     <div class="w-20 h-20 border-2 border-dashed border-slate-300 rounded flex items-center justify-center text-slate-400">
@@ -165,7 +165,7 @@ function previewImage(event) {
         // Reset to original state
         previewContainer.innerHTML = `
             @if($founder->image)
-            <img src="{{ asset($founder->image) }}" alt="Current image" class="w-20 h-20 object-cover rounded border">
+            <img src="{{ asset('storage/' . $founder->image) }}" alt="Current image" class="w-20 h-20 object-cover rounded border">
             <p class="text-sm text-slate-600 mt-1">Current image</p>
             @else
             <div class="w-20 h-20 border-2 border-dashed border-slate-300 rounded flex items-center justify-center text-slate-400">
