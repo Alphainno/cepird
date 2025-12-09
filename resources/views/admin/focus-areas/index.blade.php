@@ -8,14 +8,51 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
             <h1 class="text-2xl font-bold text-slate-900">Focus Areas Management</h1>
-            <p class="text-slate-600 mt-1">Manage the focus areas content on the landing page</p>
+            <p class="text-slate-660 mt-1">Manage the focus areas content on the landing page</p>
         </div>
     </div>
 
+    <!-- Main Form for Adding New Focus Areas -->
+    <form action="{{ route('admin.focus-areas.update') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
+        <div class="bg-white rounded-sm shadow-sm border border-slate-200">
+            <!-- Section Details -->
+            <div class="px-6 pt-6 pb-4 border-b border-slate-200">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">Section Settings</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Badge Text</label>
+                        <input type="text" name="badge_text"
+                            value="{{ old('badge_text', $focusAreaSection->badge_text ?? 'Our Focus Areas') }}"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="e.g., Our Focus Areas">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Main Title <span class="text-red-500">*</span></label>
+                        <input type="text" name="title"
+                            value="{{ old('title', $focusAreaSection->title ?? 'Core Focus Areas') }}"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="e.g., Core Focus Areas" required>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Subtitle</label>
+                    <textarea name="subtitle" rows="2"
+                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Enter section subtitle...">{{ old('subtitle', $focusAreaSection->subtitle ?? '') }}</textarea>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Quote</label>
+                    <textarea name="quote" rows="2"
+                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Enter inspirational quote...">{{ old('quote', $focusAreaSection->quote ?? '') }}</textarea>
+                </div>
+            </div>
 
             <!-- Focus Areas -->
-            <div class="space-y-6 px-6 pb-6">
+            <div class="space-y-6 px-6 pb-6 pt-6">
                 <div class="flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-slate-900">Focus Areas</h3>
                 </div>
@@ -23,10 +60,11 @@
                 <div id="focusAreasContainer" class="space-y-4">
                     @if($focusAreaSection->allFocusAreas->count() > 0)
                         @foreach($focusAreaSection->allFocusAreas as $index => $focusArea)
-                            <form action="{{ route('admin.focus-areas.update-focus-area', $focusArea) }}" method="POST" class="focus-area-form">
+                        <!-- Individual Update Form for Existing Focus Areas -->
+                        <div class="focus-area-item bg-slate-50 p-4 rounded-sm border border-slate-200 existing-focus-area" data-focus-area-id="{{ $focusArea->id }}">
+                            <form action="{{ route('admin.focus-areas.update-focus-area', $focusArea) }}" method="POST" enctype="multipart/form-data" class="focus-area-form">
                                 @csrf
                                 @method('PUT')
-                                <div class="focus-area-item bg-slate-50 p-4 rounded-sm border border-slate-200" data-focus-area-id="{{ $focusArea->id }}">
                                     <div class="flex items-center justify-between mb-3">
                                         <h4 class="text-md font-medium text-slate-800">Focus Area {{ $index + 1 }}</h4>
                                         <div class="flex items-center space-x-2">
@@ -112,14 +150,54 @@
                                             class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                             placeholder="#policy-development">
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-2">Image Path / URL</label>
-                                        <input type="text" name="image_path"
-                                            value="{{ old('image_path', $focusArea->image_path) }}"
-                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                            placeholder="storage/uploads/policy.jpg or https://...">
+                                </div>
+
+                                <div class="mt-4 border-t border-slate-200 pt-4">
+                                    <h5 class="text-sm font-semibold text-slate-800 mb-3">Image</h5>
+
+                                    @if($focusArea->image_path)
+                                    <div class="mb-3">
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Current Image</label>
+                                        <img src="{{ filter_var($focusArea->image_path, FILTER_VALIDATE_URL) ? $focusArea->image_path : asset('storage/' . $focusArea->image_path) }}"
+                                             alt="{{ $focusArea->title }}"
+                                             class="h-32 w-auto rounded-sm border border-slate-200 object-cover">
+                                    </div>
+                                    @endif
+
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-slate-700 mb-2">Upload New Image</label>
+                                            <input type="file" name="image" accept="image/*"
+                                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                                onchange="previewImage{{ $focusArea->id }}(event)">
+                                            <p class="mt-1 text-xs text-slate-500">JPG, PNG, GIF, WEBP (Max: 2MB)</p>
+                                            <img id="imagePreview{{ $focusArea->id }}" class="mt-2 h-32 w-auto rounded-sm border border-slate-200 object-cover" style="display: none;">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-slate-700 mb-2">Or Enter Image URL</label>
+                                            <input type="text" name="image_url"
+                                                value="{{ old('image_url', filter_var($focusArea->image_path, FILTER_VALIDATE_URL) ? $focusArea->image_path : '') }}"
+                                                class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                placeholder="https://example.com/image.jpg">
+                                            <p class="mt-1 text-xs text-slate-500">Upload takes priority over URL</p>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                function previewImage{{ $focusArea->id }}(event) {
+                                    const preview = document.getElementById('imagePreview{{ $focusArea->id }}');
+                                    const file = event.target.files[0];
+                                    if (file) {
+                                        const reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            preview.src = e.target.result;
+                                            preview.style.display = 'block';
+                                        }
+                                        reader.readAsDataURL(file);
+                                    }
+                                }
+                                </script>
 
                                 <div class="mt-6 border-t border-slate-200 pt-4">
                                     <h5 class="text-sm font-semibold text-slate-800 mb-3">Highlights</h5>
@@ -173,8 +251,8 @@
                                         Update Focus Area
                                     </button>
                                 </div>
-                                </div>
                             </form>
+                        </div>
                         @endforeach
                     @else
                         <!-- Default focus area template -->
@@ -238,7 +316,7 @@
                                     placeholder="Long description for the detailed section">CEPIRD designs evidence-based policy frameworks that strengthen entrepreneurship ecosystems, accelerate digital transformation, and foster sustainable economic growth in Bangladesh.</textarea>
                             </div>
 
-                            <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 mb-2">CTA Text</label>
                                     <input type="text" name="focus_areas[0][cta_text]" value="Explore Policy Research"
@@ -251,11 +329,24 @@
                                         class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         placeholder="#policy-development">
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Image Path / URL</label>
-                                    <input type="text" name="focus_areas[0][image_path]" value="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
-                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="storage/uploads/policy.jpg or https://...">
+                            </div>
+
+                            <div class="mt-4 border-t border-slate-200 pt-4">
+                                <h5 class="text-sm font-semibold text-slate-800 mb-3">Image</h5>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Upload Image</label>
+                                        <input type="file" name="focus_areas[0][image]" accept="image/*"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                        <p class="mt-1 text-xs text-slate-500">JPG, PNG, GIF, WEBP (Max: 2MB)</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Or Enter Image URL</label>
+                                        <input type="text" name="focus_areas[0][image_url]" value="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="https://example.com/image.jpg">
+                                        <p class="mt-1 text-xs text-slate-500">Upload takes priority over URL</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -313,28 +404,41 @@
                 </div>
             </div>
 
-            <!-- Is Active -->
-            <div class="flex items-center">
-                <input type="checkbox" name="is_active" id="is_active"
-                    {{ old('is_active', $focusAreaSection->is_active ?? true) ? 'checked' : '' }}
-                    class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">
-                <label for="is_active" class="ml-2 text-sm font-medium text-slate-700">Active (Display on website)</label>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="flex justify-end pt-4 border-t border-slate-200">
+            <!-- Save All Button -->
+            <div class="flex justify-end px-6 pb-6 pt-4 border-t border-slate-200">
                 <button type="submit"
                     class="px-6 py-3 bg-blue-900 text-white font-semibold rounded-sm hover:bg-blue-800 transition-colors">
-                    Save Changes
+                    Save All Changes
                 </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let focusAreaIndex = {{ $focusAreaSection->allFocusAreas->count() ?: 1 }};
+
+    // Generic image preview function
+    window.previewFocusAreaImage = function(input, previewId) {
+        const preview = document.getElementById(previewId);
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    };
+
+    // Prevent nested form submission
+    document.querySelectorAll('.focus-area-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.stopPropagation();
+        });
+    });
 
     // Add new focus area
     document.getElementById('addFocusAreaBtn').addEventListener('click', function() {
@@ -344,8 +448,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove focus area
     document.addEventListener('click', function(e) {
         if (e.target.closest('.removeFocusAreaBtn')) {
-            e.target.closest('.focus-area-item').remove();
-            updateFocusAreaNumbers();
+            const focusAreaItem = e.target.closest('.focus-area-item');
+            // Only allow deletion of new items (not existing ones with individual forms)
+            if (!focusAreaItem.classList.contains('existing-focus-area')) {
+                focusAreaItem.remove();
+                updateFocusAreaNumbers();
+            } else {
+                if (confirm('Are you sure you want to delete this focus area? This action cannot be undone.')) {
+                    // For existing focus areas, you might want to add a delete route
+                    alert('Please use the individual delete button or contact administrator.');
+                }
+            }
         }
     });
 
@@ -414,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 placeholder="Long description for the detailed section"></textarea>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                        <div class="grid md:grid-cols-2 gap-4 mt-4">
                             <div>
                                 <label class="block text-sm font-medium text-slate-700 mb-2">CTA Text</label>
                                 <input type="text" name="focus_areas[${focusAreaIndex}][cta_text]"
@@ -427,11 +540,26 @@ document.addEventListener('DOMContentLoaded', function() {
                                     class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="#anchor">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Image Path / URL</label>
-                                <input type="text" name="focus_areas[${focusAreaIndex}][image_path]"
-                                    class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="storage/uploads/image.jpg or https://...">
+                        </div>
+
+                        <div class="mt-4 border-t border-slate-200 pt-4">
+                            <h5 class="text-sm font-semibold text-slate-800 mb-3">Image</h5>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Upload Image</label>
+                                    <input type="file" name="focus_areas[${focusAreaIndex}][image]" accept="image/*"
+                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                        onchange="previewFocusAreaImage(this, 'imagePreviewNew${focusAreaIndex}')">
+                                    <p class="mt-1 text-xs text-slate-500">JPG, PNG, GIF, WEBP (Max: 2MB)</p>
+                                    <img id="imagePreviewNew${focusAreaIndex}" class="mt-2 h-32 w-auto rounded-sm border border-slate-200 object-cover" style="display: none;">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Or Enter Image URL</label>
+                                    <input type="text" name="focus_areas[${focusAreaIndex}][image_url]"
+                                        class="w-full px-4 py-2 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="https://example.com/image.jpg">
+                                    <p class="mt-1 text-xs text-slate-500">Upload takes priority over URL</p>
+                                </div>
                             </div>
                         </div>
 

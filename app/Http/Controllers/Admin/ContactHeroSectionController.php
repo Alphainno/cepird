@@ -30,7 +30,7 @@ class ContactHeroSectionController extends Controller
         $heroSection->badge_text = $validated['badge_text'] ?? null;
         $heroSection->title = $validated['title'];
         $heroSection->description = $validated['description'] ?? null;
-        $heroSection->is_active = $request->boolean('is_active', false);
+        $heroSection->is_active = $request->has('is_active') ? true : false;
 
         if ($request->hasFile('background_image')) {
             if ($heroSection->background_image && Storage::disk('public')->exists($heroSection->background_image)) {

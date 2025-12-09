@@ -4,11 +4,7 @@
 
 @section('content')
 <div class="space-y-6">
-    @if(session('success'))
-        <div class="p-4 rounded-sm border border-green-200 bg-green-50 text-green-800 text-sm">
-            {{ session('success') }}
-        </div>
-    @endif
+   
 
     @if($errors->any())
         <div class="p-4 rounded-sm border border-red-200 bg-red-50 text-red-800 text-sm space-y-1">

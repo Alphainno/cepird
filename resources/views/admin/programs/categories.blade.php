@@ -163,21 +163,6 @@
                         <option value="indigo">Indigo</option>
                     </select>
                 </div>
-
-                <div>
-                    <label for="order" class="block text-sm font-semibold text-slate-700 mb-2">
-                        Order <span class="text-red-500">*</span>
-                    </label>
-                    <input
-                        type="number"
-                        id="order"
-                        name="order"
-                        required
-                        min="0"
-                        class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                        placeholder="0"
-                    >
-                </div>
             </div>
 
             <div>

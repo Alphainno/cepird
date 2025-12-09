@@ -22,11 +22,16 @@ class ProgramCategoryController extends Controller
             'icon' => 'nullable|string|max:50',
             'color' => 'required|in:blue,teal,amber,indigo',
             'anchor_link' => 'required|string|max:255',
-            'order' => 'required|integer|min:0',
             'is_active' => 'nullable|boolean',
         ]);
 
         $validated['is_active'] = $request->boolean('is_active', true);
+
+        // Increment order of all existing categories
+        ProgramCategory::query()->increment('order');
+
+        // Set new category order to 1 (top position)
+        $validated['order'] = 1;
 
         ProgramCategory::create($validated);
 

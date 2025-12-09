@@ -42,6 +42,15 @@ class ResearchCategoryController extends Controller
 
         $validated['is_active'] = $request->has('is_active');
 
+        // If order is specified, increment order of existing categories at that position or higher
+        if (isset($validated['order'])) {
+            $order = (int) $validated['order'];
+            ResearchCategory::where('order', '>=', $order)->increment('order');
+        } else {
+            // If no order specified, add to the end
+            $validated['order'] = ResearchCategory::max('order') + 1;
+        }
+
         ResearchCategory::create($validated);
 
         return redirect()->route('admin.research-categories.index')
@@ -69,6 +78,24 @@ class ResearchCategoryController extends Controller
         ]);
 
         $validated['is_active'] = $request->has('is_active');
+
+        // If order has changed, adjust other categories' order numbers
+        if (isset($validated['order']) && $validated['order'] != $category->order) {
+            $oldOrder = $category->order;
+            $newOrder = (int) $validated['order'];
+
+            if ($newOrder < $oldOrder) {
+                // Moving up: increment order of categories between new and old position
+                ResearchCategory::where('id', '!=', $category->id)
+                               ->whereBetween('order', [$newOrder, $oldOrder])
+                               ->increment('order');
+            } else {
+                // Moving down: decrement order of categories between old and new position
+                ResearchCategory::where('id', '!=', $category->id)
+                               ->whereBetween('order', [$oldOrder, $newOrder])
+                               ->decrement('order');
+            }
+        }
 
         $category->update($validated);
 

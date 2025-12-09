@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // Landing Page
             HeroSectionSeeder::class,
+        
 
             // About Page
             AboutSectionSeeder::class,

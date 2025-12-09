@@ -94,6 +94,7 @@ Route::put('/admin/focus-areas/{focusArea}', [FocusAreaController::class, 'updat
 Route::get('/admin/focus-area-outcomes', [FocusAreaOutcomeController::class, 'index'])->name('admin.focus-area-outcomes.index');
 Route::post('/admin/focus-area-outcomes', [FocusAreaOutcomeController::class, 'store'])->name('admin.focus-area-outcomes.store');
 Route::put('/admin/focus-area-outcomes/{focusAreaOutcome}', [FocusAreaOutcomeController::class, 'update'])->name('admin.focus-area-outcomes.update');
+Route::delete('/admin/focus-area-outcomes/{focusAreaOutcome}', [FocusAreaOutcomeController::class, 'destroy'])->name('admin.focus-area-outcomes.destroy');
 
 // Admin Focus Area Outcome Section Routes
 Route::get('/admin/focus-area-outcome-section', [FocusAreaOutcomeSectionController::class, 'index'])->name('admin.focus-area-outcome-section.index');

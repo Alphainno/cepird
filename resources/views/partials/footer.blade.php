@@ -106,18 +106,9 @@
 
         <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
             <p>{{ $footerSetting->copyright_text ?? '© ' . date('Y') . ' CEPIRD. All rights reserved.' }}</p>
-            @if($legalLinks && $legalLinks->count() > 0)
-            <div class="flex gap-4 mt-4 md:mt-0">
-                @foreach($legalLinks as $link)
-                    <a href="{{ $link->url }}" class="hover:text-white" @if($link->open_in_new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $link->title }}</a>
-                @endforeach
+            <div class="mt-4 md:mt-0">
+                <p>Design & Develop by Alphainno</p>
             </div>
-            @else
-            <div class="flex gap-4 mt-4 md:mt-0">
-                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a>
-                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
-            </div>
-            @endif
         </div>
     </div>
 </footer>

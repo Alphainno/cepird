@@ -107,4 +107,11 @@ class FocusAreaOutcomeController extends Controller
 
         return redirect()->route('admin.focus-area-outcomes.index')->with('success', 'Outcome updated successfully.');
     }
+
+    public function destroy(FocusAreaOutcome $focusAreaOutcome)
+    {
+        $focusAreaOutcome->delete();
+
+        return redirect()->route('admin.focus-area-outcomes.index')->with('success', 'Outcome deleted successfully.');
+    }
 }

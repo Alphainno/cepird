@@ -31,10 +31,10 @@ class FocusAreaController extends Controller
     {
         $validated = $request->validate([
             'badge_text' => 'nullable|string|max:255',
-            'title' => 'required|string|max:255',
+            'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string',
             'quote' => 'nullable|string',
-            'focus_areas' => 'required|array|min:1',
+            'focus_areas' => 'nullable|array',
             'focus_areas.*.title' => 'required|string|max:255',
             'focus_areas.*.description' => 'required|string',
             'focus_areas.*.slug' => 'nullable|string|max:255',
@@ -42,7 +42,8 @@ class FocusAreaController extends Controller
             'focus_areas.*.detail_description' => 'nullable|string',
             'focus_areas.*.cta_text' => 'nullable|string|max:255',
             'focus_areas.*.cta_link' => 'nullable|string|max:255',
-            'focus_areas.*.image_path' => 'nullable|string|max:255',
+            'focus_areas.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'focus_areas.*.image_url' => 'nullable|string|max:255',
             'focus_areas.*.highlight1_icon' => 'nullable|string|max:255',
             'focus_areas.*.highlight1_title' => 'nullable|string|max:255',
             'focus_areas.*.highlight1_description' => 'nullable|string',
@@ -63,30 +64,38 @@ class FocusAreaController extends Controller
 
         if ($focusAreaSection) {
             $focusAreaSection->update([
-                'badge_text' => $validated['badge_text'],
-                'title' => $validated['title'],
-                'subtitle' => $validated['subtitle'],
-                'quote' => $validated['quote'],
+                'badge_text' => $validated['badge_text'] ?? null,
+                'title' => $validated['title'] ?? 'Core Focus Areas',
+                'subtitle' => $validated['subtitle'] ?? null,
+                'quote' => $validated['quote'] ?? null,
                 'is_active' => $isActive,
             ]);
             $message = 'Focus areas section updated successfully!';
         } else {
             $focusAreaSection = FocusAreaSection::create([
-                'badge_text' => $validated['badge_text'],
-                'title' => $validated['title'],
-                'subtitle' => $validated['subtitle'],
-                'quote' => $validated['quote'],
+                'badge_text' => $validated['badge_text'] ?? null,
+                'title' => $validated['title'] ?? 'Core Focus Areas',
+                'subtitle' => $validated['subtitle'] ?? null,
+                'quote' => $validated['quote'] ?? null,
                 'is_active' => $isActive,
             ]);
             $message = 'Focus areas section created successfully!';
         }
 
-        // Handle focus areas
-        $existingFocusAreaIds = $focusAreaSection->allFocusAreas->pluck('id')->toArray();
-        $updatedFocusAreaIds = [];
+        // Handle focus areas - Only create new ones, don't delete existing ones
+        if (!empty($validated['focus_areas'])) {
+            foreach ($validated['focus_areas'] as $index => $focusAreaData) {
+                $focusAreaIsActive = isset($focusAreaData['is_active']) && ($focusAreaData['is_active'] === 'on' || $focusAreaData['is_active'] === true || $focusAreaData['is_active'] === '1');
 
-        foreach ($validated['focus_areas'] as $index => $focusAreaData) {
-            $focusAreaIsActive = isset($focusAreaData['is_active']) && ($focusAreaData['is_active'] === 'on' || $focusAreaData['is_active'] === true || $focusAreaData['is_active'] === '1');
+            // Handle image upload
+            $imagePath = null;
+            if ($request->hasFile("focus_areas.{$index}.image")) {
+                $image = $request->file("focus_areas.{$index}.image");
+                $imageName = time() . '_' . $index . '_' . $image->getClientOriginalName();
+                $imagePath = $image->storeAs('focus_areas', $imageName, 'public');
+            } elseif (!empty($focusAreaData['image_url'])) {
+                $imagePath = $focusAreaData['image_url'];
+            }
 
             $focusAreaToSave = [
                 'slug' => $focusAreaData['slug'] ?? null,
@@ -95,7 +104,7 @@ class FocusAreaController extends Controller
                 'description' => $focusAreaData['description'],
                 'icon' => $focusAreaData['icon'] ?? '📋',
                 'detail_description' => $focusAreaData['detail_description'] ?? null,
-                'image_path' => $focusAreaData['image_path'] ?? null,
+                'image_path' => $imagePath,
                 'cta_text' => $focusAreaData['cta_text'] ?? null,
                 'cta_link' => $focusAreaData['cta_link'] ?? null,
                 'highlight1_icon' => $focusAreaData['highlight1_icon'] ?? null,
@@ -107,29 +116,14 @@ class FocusAreaController extends Controller
                 'highlight3_icon' => $focusAreaData['highlight3_icon'] ?? null,
                 'highlight3_title' => $focusAreaData['highlight3_title'] ?? null,
                 'highlight3_description' => $focusAreaData['highlight3_description'] ?? null,
-                'sort_order' => $index + 1,
+                'sort_order' => $index + 1 + $focusAreaSection->allFocusAreas->count(),
                 'is_active' => $focusAreaIsActive,
             ];
 
-            if (isset($focusAreaData['id']) && in_array($focusAreaData['id'], $existingFocusAreaIds)) {
-                // Update existing focus area
-                $focusArea = FocusArea::find($focusAreaData['id']);
-                if ($focusArea) {
-                    $focusArea->update($focusAreaToSave);
-                    $updatedFocusAreaIds[] = $focusArea->id;
-                }
-            } else {
-                // Create new focus area
-                $focusAreaToSave['focus_area_section_id'] = $focusAreaSection->id;
-                $focusArea = FocusArea::create($focusAreaToSave);
-                $updatedFocusAreaIds[] = $focusArea->id;
-            }
+            // Only create new focus areas from the main form
+            $focusAreaToSave['focus_area_section_id'] = $focusAreaSection->id;
+            FocusArea::create($focusAreaToSave);
         }
-
-        // Delete focus areas that are no longer in the form
-        $focusAreasToDelete = array_diff($existingFocusAreaIds, $updatedFocusAreaIds);
-        if (!empty($focusAreasToDelete)) {
-            FocusArea::whereIn('id', $focusAreasToDelete)->delete();
         }
 
         return redirect()->route('admin.focus-areas.index')->with('success', $message);
@@ -148,7 +142,8 @@ class FocusAreaController extends Controller
             'detail_description' => 'nullable|string',
             'cta_text' => 'nullable|string|max:255',
             'cta_link' => 'nullable|string|max:255',
-            'image_path' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_url' => 'nullable|string|max:255',
             'highlight1_icon' => 'nullable|string|max:255',
             'highlight1_title' => 'nullable|string|max:255',
             'highlight1_description' => 'nullable|string',
@@ -164,6 +159,21 @@ class FocusAreaController extends Controller
 
         $isActive = $request->has('is_active');
 
+        // Handle image upload
+        $imagePath = $focusArea->image_path;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imagePath = $image->storeAs('focus_areas', $imageName, 'public');
+
+            // Delete old image if it exists and is stored locally
+            if ($focusArea->image_path && !filter_var($focusArea->image_path, FILTER_VALIDATE_URL)) {
+                \Storage::disk('public')->delete($focusArea->image_path);
+            }
+        } elseif ($request->filled('image_url')) {
+            $imagePath = $validated['image_url'];
+        }
+
         $focusArea->update([
             'title' => $validated['title'],
             'description' => $validated['description'],
@@ -172,7 +182,7 @@ class FocusAreaController extends Controller
             'detail_description' => $validated['detail_description'],
             'cta_text' => $validated['cta_text'],
             'cta_link' => $validated['cta_link'],
-            'image_path' => $validated['image_path'],
+            'image_path' => $imagePath,
             'highlight1_icon' => $validated['highlight1_icon'],
             'highlight1_title' => $validated['highlight1_title'],
             'highlight1_description' => $validated['highlight1_description'],

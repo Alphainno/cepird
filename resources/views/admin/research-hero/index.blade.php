@@ -120,52 +120,10 @@
             </div>
         </form>
     </div>
-
-    <!-- Preview Section -->
-    <div class="bg-white rounded-sm shadow-sm border border-slate-200">
-        <div class="p-6 border-b border-slate-200">
-            <h2 class="text-lg font-semibold text-slate-900">Live Preview</h2>
-            <p class="text-sm text-slate-600 mt-1">This preview updates as you type</p>
-        </div>
-        <div class="p-6 bg-slate-50">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-4">
-                    <span class="flex h-2 w-2 rounded-full bg-teal-500"></span>
-                    <span id="preview_badge" class="text-xs font-bold text-blue-900 uppercase tracking-wide">{{ $heroSection->badge_text ?? "Research Library" }}</span>
-                </div>
-                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-4">
-                    <span id="preview_title1">{{ $heroSection->title_line1 ?? 'Explore Our' }}</span> <br/>
-                    <span id="preview_title2" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">
-                        {{ $heroSection->title_line2 ?? 'Research' }}
-                    </span>
-                </h1>
-                <p id="preview_subtitle" class="text-slate-600 mb-6">{{ $heroSection->subtitle ?? 'Evidence-based insights shaping policy, innovation, and sustainable development' }}</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Live preview updates
-    const fields = {
-        'badge_text': 'preview_badge',
-        'title_line1': 'preview_title1',
-        'title_line2': 'preview_title2',
-        'subtitle': 'preview_subtitle'
-    };
-
-    Object.keys(fields).forEach(function(inputId) {
-        const input = document.getElementById(inputId);
-        const preview = document.getElementById(fields[inputId]);
-
-        if (input && preview) {
-            input.addEventListener('input', function() {
-                preview.textContent = this.value || preview.dataset.default || '';
-            });
-        }
-    });
-
     // Image preview functionality
     const imageInput = document.getElementById('background_image');
     const imagePreview = document.getElementById('image-preview');

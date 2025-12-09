@@ -60,25 +60,20 @@
             <div class="grid md:grid-cols-2 gap-6 items-start">
                 <div>
                     <label for="background_image" class="block text-sm font-medium text-slate-700 mb-2">Background Image</label>
-                    <input type="file" name="background_image" id="background_image" accept="image/*" class="block w-full text-sm text-slate-700 border border-slate-300 rounded-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <input type="file" name="background_image" id="background_image" accept="image/*" class="block w-full text-sm text-slate-700 border border-slate-300 rounded-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" onchange="previewContactHeroImage(event)">
                     <p class="mt-2 text-xs text-slate-500">Recommended size: at least 1600px wide</p>
                     @error('background_image')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
-                @php
-                    $heroPreview = $heroSection?->background_url ?? null;
-                @endphp
-                @if($heroPreview)
-                    <div class="border border-slate-200 rounded-sm overflow-hidden">
-                        <img src="{{ $heroPreview }}" alt="Contact hero background" class="w-full h-40 object-cover">
-                    </div>
-                @endif
+                <div id="heroImagePreview" class="border border-slate-200 rounded-sm overflow-hidden {{ $heroSection?->background_url ? '' : 'hidden' }}">
+                    <img id="heroPreviewImg" src="{{ $heroSection?->background_url ?? '' }}" alt="Contact hero background" class="w-full h-40 object-cover">
+                </div>
             </div>
 
             <div class="flex items-center">
-                <input type="checkbox" name="is_active" id="is_active" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded" {{ old('is_active', $heroSection->is_active ?? true) ? 'checked' : '' }}>
+                <input type="checkbox" name="is_active" id="is_active" value="1" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded" {{ old('is_active', $heroSection?->is_active ?? true) ? 'checked' : '' }}>
                 <label for="is_active" class="ml-2 block text-sm text-slate-700">Active (display on site)</label>
             </div>
 
@@ -89,3 +84,21 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+function previewContactHeroImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewContainer = document.getElementById('heroImagePreview');
+            const previewImg = document.getElementById('heroPreviewImg');
+            previewImg.src = e.target.result;
+            previewContainer.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+}
+</script>
+@endpush
